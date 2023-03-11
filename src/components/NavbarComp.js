@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container';
-import {Navbar,Nav,NavDropdown,Form,FormControl,Button} from 'react-bootstrap'
+import {Navbar,Nav,Button} from 'react-bootstrap'
 import { BrowserRouter, Routes, Route,Link } from 'react-router-dom';
 import { About } from './About';
 import { Home } from './Home';
@@ -19,26 +19,10 @@ const NavbarComp = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
-
               <Nav.Link as={Link} to={"/about"}>About</Nav.Link>
               <Nav.Link as={Link} to={"/cart"}>View Cart</Nav.Link>
               <Nav.Link as={Link} to={"/profile"}>Profile</Nav.Link>
-
-
-
-              <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                />
-              <Button variant="outline-success">Search</Button>
-            </Form>
-
-    
             <Button className="ms-2" variant="outline-primary" as={Link} to={"/signup"}>Sign Up/Login</Button>
-
             </Nav>
           </Navbar.Collapse>
         </Container>
