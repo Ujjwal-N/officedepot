@@ -23,10 +23,6 @@ export const Signup = () => {
     loginEmail: '',
     loginPassword: ''
   });
-  const [login, setLogin] = useState({
-    email: '',
-    password: ''
-  })
 
   const toggleLogin = () => setShowLogin(!showLogin); // function to toggle between sign up and log in
 
