@@ -7,6 +7,7 @@ import { Home } from './Home';
 import { Profile } from './Profile';
 import { Cart } from './Cart';
 import { Signup } from './Signup';
+import { Products } from './Products';
 
 const NavbarComp = () => {
     return (
@@ -20,6 +21,7 @@ const NavbarComp = () => {
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
               <Nav.Link as={Link} to={"/about"}>About</Nav.Link>
+              <Nav.Link as={Link} to={"/products"}>Products</Nav.Link>
               <Nav.Link as={Link} to={"/cart"}>View Cart</Nav.Link>
               <Nav.Link as={Link} to={"/profile"}>Profile</Nav.Link>
             <Button className="ms-2" variant="outline-primary" as={Link} to={"/signup"}>Sign Up/Login</Button>
@@ -35,6 +37,7 @@ const NavbarComp = () => {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/products" element={<Products/>}/>
         </Routes>
       </div>
 

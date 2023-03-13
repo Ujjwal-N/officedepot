@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Row, Col } from 'react-bootstrap';
+import '../css/signup.css';
 
 export const Signup = () => {
   const [showLogin, setShowLogin] = useState(false); // state to toggle between sign up and log in
@@ -39,45 +40,47 @@ export const Signup = () => {
   };
 
   return (
+    <div className="signup-pad">
+    <div className="signup-container">
     <Form onSubmit={handleSubmit}>
       {!showLogin && (<Row>
         <Col>
-          <Form.Group controlId="name">
+          <Form.Group controlId="name" className="pad-here">
             <Form.Label>Name</Form.Label>
             <Form.Control type="text" placeholder="Enter name" onChange={handleChange} />
           </Form.Group>
 
-          <Form.Group controlId="email">
+          <Form.Group controlId="email" className="pad-here">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" onChange={handleChange} />
           </Form.Group>
 
-          <Form.Group controlId="password" style={{ marginBottom: '2rem' }} >
+          <Form.Group controlId="password" style={{ marginBottom: '2rem' }} className="pad-here">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Enter password" onChange={handleChange}/>
           </Form.Group>
 
-          <Form.Group controlId="address">
+          <Form.Group controlId="address" className="pad-here">
             <Form.Label>Address</Form.Label>
             <Form.Control type="text" placeholder="Enter address" onChange={handleChange}/>
           </Form.Group>
 
           <Row>
-            <Col md={7}>
+            <Col md={7} className="pad-here">
               <Form.Group controlId="city">
                 <Form.Label>City</Form.Label>
                 <Form.Control type="text" placeholder="Enter city" onChange={handleChange}/>
               </Form.Group>
             </Col>
 
-            <Col md={3}>
+            <Col md={3} className="pad-here">
               <Form.Group controlId="state">
                 <Form.Label>State</Form.Label>
                 <Form.Control type="text" placeholder="Enter state" onChange={handleChange}/>
               </Form.Group>
             </Col>
 
-            <Col md={2}>
+            <Col md={2} className="pad-here">
               <Form.Group controlId="zip">
                 <Form.Label>ZIP</Form.Label>
                 <Form.Control type="text" placeholder="Enter zip code" onChange={handleChange}/>
@@ -87,42 +90,42 @@ export const Signup = () => {
         </Col>
 
         <Col>
-          <Form.Group controlId="ccNumber">
+          <Form.Group controlId="ccNumber" className="pad-here">
             <Form.Label>Credit Card Number</Form.Label>
             <Form.Control type="text" placeholder="Enter credit card number" onChange={handleChange}/>
           </Form.Group>
 
-          <Form.Group controlId="expirationDate">
+          <Form.Group controlId="expirationDate" className="pad-here">
             <Form.Label>Expiration Date</Form.Label>
             <Form.Control type="text" placeholder="Enter expiration date" onChange={handleChange}/>
           </Form.Group>
 
-          <Form.Group controlId="cvv" style={{ marginBottom: '2rem' }}>
+          <Form.Group controlId="cvv" style={{ marginBottom: '2rem' }} className="pad-here">
             <Form.Label>CVV</Form.Label>
             <Form.Control type="text" placeholder="Enter cvv" onChange={handleChange}/>
           </Form.Group>
 
-          <Form.Group controlId="billingAddress">
+          <Form.Group controlId="billingAddress" className="pad-here">
             <Form.Label>Billing Address</Form.Label>
             <Form.Control type="text" placeholder="Enter billing address" onChange={handleChange}/>
           </Form.Group>
 
           <Row>
-            <Col md={7}>
+            <Col md={7} className="pad-here">
               <Form.Group controlId="billingCity">
                 <Form.Label>City</Form.Label>
                 <Form.Control type="text" placeholder="Enter city" onChange={handleChange}/>
               </Form.Group>
             </Col>
 
-            <Col md={3}>
+            <Col md={3} className="pad-here">
               <Form.Group controlId="billingState">
                 <Form.Label>State</Form.Label>
                 <Form.Control type="text" placeholder="Enter state" onChange={handleChange}/>
               </Form.Group>
             </Col>
 
-            <Col md={2}>
+            <Col md={2} className="pad-here">
               <Form.Group controlId="billingZip">
                 <Form.Label>ZIP</Form.Label>
                 <Form.Control type="text" placeholder="Enter zip code" onChange={handleChange}/>
@@ -161,6 +164,8 @@ export const Signup = () => {
         </Col>
 
     </Form>
+    </div>
+    </div>
   );
 };
 
