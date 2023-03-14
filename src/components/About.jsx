@@ -1,9 +1,12 @@
 import React from 'react'
+import Aboutinfo from './Aboutinfo';
+import { Footer } from './Footer';
 
 export const About = () => {
   return (
     <div>
-        <h1>About</h1>
+        <Aboutinfo/>
+        <Footer/>
     </div>
   )
 }

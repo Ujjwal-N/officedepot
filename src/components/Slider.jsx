@@ -2,17 +2,18 @@ import React from 'react';
 import styled from "styled-components";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import chair from '../Images/chair.jpg';
 import '../css/slider.css';
 import { useState } from "react";
 import {sliderItems} from "./imageData"
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   position: relative;
   overflow: hidden;
+  border: 2px solid #444;
+  margin-top: -90px;
 `;
 
 const Arrow = styled.div`
@@ -70,12 +71,12 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 70px;
+  font-size: 65px;
 `;
 
 const Desc = styled.p`
   margin: 50px 0px;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 500;
   letter-spacing: 3px;
 `;
