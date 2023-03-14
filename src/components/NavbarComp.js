@@ -32,6 +32,7 @@ const NavbarComp = () => {
 
       <div>
         <Routes>
+        <Route path="/" element={<Home/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/cart" element={<Cart/>}/>
