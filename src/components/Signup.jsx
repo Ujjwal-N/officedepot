@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Row, Col } from 'react-bootstrap';
 import '../css/signup.css';
+import axios from 'axios';
 
 export const Signup = () => {
   const [showLogin, setShowLogin] = useState(false); // state to toggle between sign up and log in
@@ -37,6 +38,15 @@ export const Signup = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(formData);
+    const { name, email, password } = formData;
+    console.log({ name, email, password });
+    axios.post('http://3.133.128.233:5001/register', { name, email, password })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
