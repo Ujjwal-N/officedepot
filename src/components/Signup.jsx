@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import '../css/signup.css';
 import axios from 'axios';
 
-export const Signup = () => {
+export const Signup = ({setName}) => {
+  const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(false); // state to toggle between sign up and log in
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
     address: '',
@@ -22,7 +24,7 @@ export const Signup = () => {
     billingCity: '',
     billingState: '',
     billingZip: '',
-    loginEmail: '',
+    loginUsername: '',
     loginPassword: ''
   });
 
@@ -37,16 +39,32 @@ export const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
-    const { name, email, password } = formData;
-    console.log({ name, email, password });
-    axios.post('http://3.133.128.233:5001/register', { name, email, password })
+    if(!showLogin){
+      const { username, email, password } = formData;
+      axios.post('http://3.133.128.233:5001/register', { "username": username, "email": email, "password": password })
+        .then((response) => {
+          console.log(response.status);
+          console.log(response.data);
+          setName(username);
+          navigate('/home', { replace: true });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }else{
+      const { loginUsername, loginPassword } = formData;
+      console.log(loginUsername, loginPassword);
+      axios.post('http://3.133.128.233:5001/login', { "username": loginUsername, "password": loginPassword })
       .then((response) => {
         console.log(response.data);
+        setName(loginUsername);
+        navigate('/home', { replace: true });
       })
       .catch((error) => {
         console.log(error);
       });
+    }
+
   };
 
   return (
@@ -55,9 +73,9 @@ export const Signup = () => {
     <Form onSubmit={handleSubmit}>
       {!showLogin && (<Row>
         <Col>
-          <Form.Group controlId="name" className="pad-here">
-            <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter name" onChange={handleChange} />
+          <Form.Group controlId="username" className="pad-here">
+            <Form.Label>Username</Form.Label>
+            <Form.Control type="text" placeholder="Enter username" onChange={handleChange} />
           </Form.Group>
 
           <Form.Group controlId="email" className="pad-here">
@@ -156,9 +174,9 @@ export const Signup = () => {
       <Col>
           {showLogin && (
             <div>
-              <Form.Group controlId="loginEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" onChange={handleChange}/>
+              <Form.Group controlId="loginUsername">
+                <Form.Label>Username</Form.Label>
+                <Form.Control type="text" placeholder="Enter username" onChange={handleChange}/>
               </Form.Group>
 
               <Form.Group controlId="loginPassword">

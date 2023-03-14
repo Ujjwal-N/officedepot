@@ -3,12 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComp from './components/NavbarComp';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 function App() {
-
+  const [name, setName] = useState('');
   return (
     <div className="App">
-        <NavbarComp />
+        <NavbarComp name={name} setName={setName} />
     </div>
   );
 }
