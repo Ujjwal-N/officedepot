@@ -47,15 +47,21 @@ const Slide = styled.div`
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
+  align-items: center;
+  justify-content: center;
 `;
 
 const ImgContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   flex: 1;
 `;
 
 const Image = styled.img`
-  height: 80%;
+  height: auto;
+  max-width: 100%;
 `;
 
 const InfoContainer = styled.div`
