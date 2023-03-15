@@ -38,11 +38,11 @@ const ImgContainer = styled.div`
 function Aboutinfo() {
   const containerStyle = {
     transform: 'scale(0.8)',
-    marginTop: '-170px',
+    marginTop: '-100px',
   };
  
   const headerStyle = {
-    fontSize: '45px',
+    fontSize: '45px', 
     fontWeight: 'bold',
   };
  
@@ -59,7 +59,7 @@ function Aboutinfo() {
 
   return (
     <div style={containerStyle}>
-       <Card style={{ height: '450px'}}>
+       <Card style={{ height: '100%'}}>
         <Card.Header style={headerStyle}>About Us</Card.Header>
         <Card.Body>
           <blockquote className="blockquote mb-0" style={quoteStyle}>
