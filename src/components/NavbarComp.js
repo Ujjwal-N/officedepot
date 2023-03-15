@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
-import {Navbar,Nav,Button} from 'react-bootstrap'
+import {Navbar,Nav,Button, NavbarBrand} from 'react-bootstrap'
 import { BrowserRouter, Routes, Route,Link,IndexRedirect } from 'react-router-dom';
 import { About } from './About';
 import { Home } from './Home';
@@ -9,8 +9,8 @@ import { Cart } from './Cart';
 import { Signup } from './Signup';
 import { Products } from './Products';
 
-const NavbarComp = () => {
-
+const NavbarComp = ({name, setName}) => {
+    
     return (
     <BrowserRouter>
       <div>
@@ -24,7 +24,7 @@ const NavbarComp = () => {
               <Nav.Link as={Link} to={"/products"}>Products</Nav.Link>
               <Nav.Link as={Link} to={"/cart"}>View Cart</Nav.Link>
               <Nav.Link as={Link} to={"/profile"}>Profile</Nav.Link>
-            <Button className="ms-2" variant="outline-primary" as={Link} to={"/signup"}>Sign Up/Login</Button>
+            {name ? <Navbar.Text>Hi {name}!</Navbar.Text> : <Button className="ms-2" variant="outline-primary" as={Link} to={"/signup"}>Sign Up/Login</Button>}
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -37,7 +37,7 @@ const NavbarComp = () => {
           <Route path="/home" element={<Home/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/profile" element={<Profile/>}/>
-          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/signup" element={<Signup setName={setName}/>}/>
           <Route path="/products" element={<Products/>}/>
         </Routes>
 
