@@ -5,13 +5,12 @@ import delivery from '../Images/delivery1.jpg';
 
 const Container = styled.div`
   width: 60%;
-  height: 20vh;
+  height: 100%;
   display: flex;
   position: relative;
   overflow: hidden;
   margin: auto;
   border: 2px solid #444;
-  margin-top: -90px;
 `;
 
 const ImgContainer = styled.div`

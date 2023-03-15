@@ -13,7 +13,9 @@ const Container = styled.div`
   position: relative;
   overflow: hidden;
   border: 2px solid #444;
-  margin-top: -90px;
+  display: flex;
+  align-items: center;
+  justify-content: center:
 `;
 
 const Arrow = styled.div`
