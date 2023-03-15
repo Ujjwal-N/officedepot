@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import {Navbar,Nav,Button, NavbarBrand} from 'react-bootstrap'
-import { BrowserRouter, Routes, Route,Link,IndexRedirect } from 'react-router-dom';
+import { BrowserRouter, Navigate, Routes, Route,Link,IndexRedirect } from 'react-router-dom';
 import { About } from './About';
 import { Home } from './Home';
 import { Profile } from './Profile';
 import { Cart } from './Cart';
 import { Signup } from './Signup';
 import { Products } from './Products';
+import { Chairs } from './Chairs';
+import ItemDescription from './ItemDescription';
 
 const NavbarComp = ({name, setName}) => {
     
@@ -32,13 +34,15 @@ const NavbarComp = ({name, setName}) => {
 
       <div>
         <Routes>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Navigate to="/home" replace={true} />} />
           <Route path="/about" element={<About/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/signup" element={<Signup setName={setName}/>}/>
           <Route path="/products" element={<Products/>}/>
+          <Route path="/chairs" element={<Chairs/>}/>
+          <Route path="/hammerPage" element={<ItemDescription/>}/>
         </Routes>
 
       </div>

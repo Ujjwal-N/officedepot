@@ -67,8 +67,43 @@ export const sliderItems = [
       bg: "fffff",
     },
 
-
-
     
+  ];
+
+
+ export const chairItems = [
+    {
+      id: 1,
+      img: chair,
+      title: "Chair 1",
+      desc: "GET 10% OFF FIRST TIME PURCHASE",
+      cost:"5,000",
+      bg: "fFFFF",
+    },
+    {
+      id: 2,
+      img: chair,
+      title: "Chair 2",
+      cost:"10,000",
+      bg: "fFFFF",
+    },
+    {
+      id: 3,
+      img: chair,
+      title: "Chair 3",
+      desc: "GET 10% OFF FIRST TIME PURCHASE",
+      cost:"2,000",
+      bg: "fFFFF",
+    },
+    
+     {
+      id: 4,
+      img: chair,
+       title: "Chair 4",
+      desc: "GET 10% OFF FIRST TIME PURCHASE",
+      cost:"1,000",
+      bg: "fFFFF",
+    },
+
   ];
 
