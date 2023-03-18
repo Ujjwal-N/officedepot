@@ -10,9 +10,14 @@ import chairCollection from "../Images/chairCollection.jpg"
 import hammerCollection from "../Images/hammerCollection.jpg"
 import screwCollection from "../Images/screwCollection.jpg"
 import tableCollection from "../Images/tableCollection.jpg"
+import fridgeCollection from "../Images/fridgeCollection.jpg"
+import outdoorCollection from "../Images/outdoorCollection.jpg"
+import kitchenCollection from "../Images/kitchenCollection.jpg"
+import indoorCollection from "../Images/indoorCollection.jpg"
+import bathroomCollection from "../Images/bathroomCollection.jpg"
 
 const SearchContainer = styled.div`
-  border: 1px solid lightgray;
+  border: 1px solid #444;
   width: 50%;
   display: flex;
   padding: 5px;
@@ -33,18 +38,23 @@ const Input = styled.input`
 const ImgContainer = styled.div`
   margin-top: 20px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ImgWrapper = styled.div`
-  display: inline-block;
-  margin-right: 34px;
   margin-top: 20px;
+  margin-right:40px;
+  height: 400px;
+  width: 600px;
 `;
 
 const Image = styled.img`
-  width: 500px;
+  width: 550px;
   height: 400px;
-  border: 2px solid lightblue;
+  border:  2px solid #444;
+  width: 100%;
   transition: transform 0.2s ease-out;
   cursor: pointer;
   
@@ -91,25 +101,17 @@ export const Products = () => {
             <figcaption>
                   NUMBER #1 TABLES IN MARKET
             </figcaption>
+           </figure>
+          </ImgWrapper>
+          </ImgContainer>
 
-            </figure>
-          </ImgWrapper>
-          <ImgWrapper>
-          <figure className="position-relative">
-            <Image src={screwCollection} alt="screwCollection" />
-            <figcaption>
-                  NUMBER #1 SCREWDRIVERS IN MARKET
-            </figcaption>
-          </figure>
-          </ImgWrapper>
-        </ImgContainer>
-                <ImgContainer>
+        <ImgContainer>
           <ImgWrapper>
             <figure className="position-relative">
-              <Image src={chairCollection} alt="chairCollection" />
+              <Image src={screwCollection} alt="screwCollection" />
 
               <figcaption>
-                 NUMBER #1 CHAIRS IN MARKET
+                  NUMBER #1 SCREWS IN MARKET
               </figcaption>
 
             </figure>
@@ -117,38 +119,33 @@ export const Products = () => {
           </ImgWrapper>
           <ImgWrapper>
             <figure className="position-relative">
-              <Image src={hammerCollection} alt="hammerCollection" />
+              <Image src={fridgeCollection} alt="fridgeCollection" />
                <figcaption>
-                  NUMBER #1 HAMMERS IN MARKET
+                  NUMBER #1 FRIDGES IN MARKET
               </figcaption>
 
             </figure>
           </ImgWrapper>
           <ImgWrapper>
            <figure className="position-relative">
-            <Image src={tableCollection } alt="tableCollection" />
+            <Image src={ outdoorCollection } alt="outdoorCollection" />
             <figcaption>
-                  NUMBER #1 TABLES IN MARKET
+                  NUMBER #1 OURDOOR FURNITURE
             </figcaption>
+           </figure>
+          </ImgWrapper>
 
-            </figure>
-          </ImgWrapper>
-          <ImgWrapper>
-          <figure className="position-relative">
-            <Image src={screwCollection} alt="screwCollection" />
-            <figcaption>
-                  NUMBER #1 SCREWDRIVERS IN MARKET
-            </figcaption>
-          </figure>
-          </ImgWrapper>
+          
         </ImgContainer>
-                <ImgContainer>
+ 
+        
+        <ImgContainer>
           <ImgWrapper>
             <figure className="position-relative">
-              <Image src={chairCollection} alt="chairCollection" />
+              <Image src={kitchenCollection} alt="kitchenCollection" />
 
               <figcaption>
-                 NUMBER #1 CHAIRS IN MARKET
+                  NUMBER #1 KITCHEN STUFF
               </figcaption>
 
             </figure>
@@ -156,31 +153,25 @@ export const Products = () => {
           </ImgWrapper>
           <ImgWrapper>
             <figure className="position-relative">
-              <Image src={hammerCollection} alt="hammerCollection" />
+              <Image src={indoorCollection} alt="indoorCollection" />
                <figcaption>
-                  NUMBER #1 HAMMERS IN MARKET
+                  NUMBER #1 INDOOR FURNITURE
               </figcaption>
 
             </figure>
           </ImgWrapper>
           <ImgWrapper>
            <figure className="position-relative">
-            <Image src={tableCollection } alt="tableCollection" />
+            <Image src={ bathroomCollection } alt="bathroomCollection" />
             <figcaption>
-                  NUMBER #1 TABLES IN MARKET
+                  NUMBER #1 BATHROOM FURNITURE
             </figcaption>
+           </figure>
+          </ImgWrapper>
 
-            </figure>
-          </ImgWrapper>
-          <ImgWrapper>
-          <figure className="position-relative">
-            <Image src={screwCollection} alt="screwCollection" />
-            <figcaption>
-                  NUMBER #1 SCREWDRIVERS IN MARKET
-            </figcaption>
-          </figure>
-          </ImgWrapper>
+          
         </ImgContainer>
+          
       </StyledContainer>
     </div>
   ) 

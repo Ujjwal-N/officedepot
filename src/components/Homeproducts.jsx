@@ -2,12 +2,14 @@ import React from 'react'
 import styled from "styled-components"
 import { productItems } from './imageData'
 import Homeproduct from './Homeproduct'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Container = styled.div`
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 `;
 
 
