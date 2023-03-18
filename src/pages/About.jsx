@@ -1,6 +1,6 @@
 import React from 'react'
-import Aboutinfo from './Aboutinfo';
-import { Footer } from './Footer';
+import Aboutinfo from '../components/Aboutinfo';
+import { Footer } from '../components/Footer';
 
 export const About = () => {
   return (

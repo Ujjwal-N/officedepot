@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import {Navbar,Nav,Button, NavbarBrand} from 'react-bootstrap'
 import { BrowserRouter, Navigate, Routes, Route,Link,IndexRedirect } from 'react-router-dom';
-import { About } from './About';
-import { Home } from './Home';
-import { Profile } from './Profile';
-import { Cart } from './Cart';
-import { Signup } from './Signup';
-import { Products } from './Products';
-import { Chairs } from './Chairs';
-import ItemDescription from './ItemDescription';
+import { About } from '../pages/About';
+import { Home } from '../pages/Home';
+import { Profile } from '../pages/Profile';
+import { Cart } from '../pages/Cart';
+import { Signup } from '../pages/Signup';
+import { Products } from '../pages/Products';
+import { Chairs } from '../pages/Chairs';
+import ItemDescription from '../pages/ItemDescription';
 
 const NavbarComp = ({name, setName}) => {
     

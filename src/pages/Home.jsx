@@ -1,8 +1,8 @@
 import React from 'react'
-import { Slider } from './Slider';
-import { Deliveryinfo } from './Deliveryinfo';
-import { Homeproducts } from './Homeproducts';
-import { Footer } from './Footer';
+import { Slider } from '../components/Slider';
+import { Deliveryinfo } from '../components/Deliveryinfo';
+import { Homeproducts } from '../components/Homeproducts';
+import { Footer } from '../components/Footer';
 
 
 
