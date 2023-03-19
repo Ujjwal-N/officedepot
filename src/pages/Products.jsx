@@ -3,6 +3,7 @@ import React from 'react';
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/productCollection.css';
+import { Footer } from '../components/Footer';
 
 import {Container} from "react-bootstrap"
 
@@ -16,6 +17,9 @@ import kitchenCollection from "../Images/kitchenCollection.jpg"
 import indoorCollection from "../Images/indoorCollection.jpg"
 import bathroomCollection from "../Images/bathroomCollection.jpg"
 
+import { BrowserRouter, Navigate, Routes, Route,Link,IndexRedirect } from 'react-router-dom';
+import { Chairs } from './Chairs';
+
 const SearchContainer = styled.div`
   border: 1px solid #444;
   width: 50%;
@@ -28,6 +32,7 @@ const SearchContainer = styled.div`
 const StyledContainer = styled(Container)`
   width: 100%;
   max-width: 3000px;
+  margin-bottom:20px;
 `;
 
 const Input = styled.input`
@@ -75,18 +80,18 @@ export const Products = () => {
 
       <StyledContainer>
         <ImgContainer>
-          <ImgWrapper>
+          <ImgWrapper as={Link} to={"/chairs"}>
             <figure className="position-relative">
               <Image src={chairCollection} alt="chairCollection" />
 
-              <figcaption>
+              <figcaption >
                  NUMBER #1 CHAIRS IN MARKET
               </figcaption>
 
             </figure>
       
           </ImgWrapper>
-          <ImgWrapper>
+          <ImgWrapper as={Link} to={"/chairs"}>
             <figure className="position-relative">
               <Image src={hammerCollection} alt="hammerCollection" />
                <figcaption>
@@ -95,7 +100,7 @@ export const Products = () => {
 
             </figure>
           </ImgWrapper>
-          <ImgWrapper>
+          <ImgWrapper as={Link} to={"/chairs"}>
            <figure className="position-relative">
             <Image src={tableCollection } alt="tableCollection" />
             <figcaption>
@@ -106,7 +111,7 @@ export const Products = () => {
           </ImgContainer>
 
         <ImgContainer>
-          <ImgWrapper>
+          <ImgWrapper as={Link} to={"/chairs"}>
             <figure className="position-relative">
               <Image src={screwCollection} alt="screwCollection" />
 
@@ -117,7 +122,7 @@ export const Products = () => {
             </figure>
       
           </ImgWrapper>
-          <ImgWrapper>
+          <ImgWrapper as={Link} to={"/chairs"}>
             <figure className="position-relative">
               <Image src={fridgeCollection} alt="fridgeCollection" />
                <figcaption>
@@ -126,7 +131,7 @@ export const Products = () => {
 
             </figure>
           </ImgWrapper>
-          <ImgWrapper>
+          <ImgWrapper as={Link} to={"/chairs"}>
            <figure className="position-relative">
             <Image src={ outdoorCollection } alt="outdoorCollection" />
             <figcaption>
@@ -140,7 +145,7 @@ export const Products = () => {
  
         
         <ImgContainer>
-          <ImgWrapper>
+          <ImgWrapper as={Link} to={"/chairs"}>
             <figure className="position-relative">
               <Image src={kitchenCollection} alt="kitchenCollection" />
 
@@ -151,7 +156,7 @@ export const Products = () => {
             </figure>
       
           </ImgWrapper>
-          <ImgWrapper>
+          <ImgWrapper as={Link} to={"/chairs"}>
             <figure className="position-relative">
               <Image src={indoorCollection} alt="indoorCollection" />
                <figcaption>
@@ -160,7 +165,7 @@ export const Products = () => {
 
             </figure>
           </ImgWrapper>
-          <ImgWrapper>
+          <ImgWrapper as={Link} to={"/chairs"}>
            <figure className="position-relative">
             <Image src={ bathroomCollection } alt="bathroomCollection" />
             <figcaption>
@@ -173,6 +178,17 @@ export const Products = () => {
         </ImgContainer>
           
       </StyledContainer>
+      <Footer/>
+
+
+      <div>
+        <Routes>
+            <Route path="/chairs" element={<Chairs/>}/>
+        </Routes>
+      </div>
+
     </div>
+
+    
   ) 
 }

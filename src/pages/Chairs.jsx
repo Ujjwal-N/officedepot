@@ -2,6 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import {Search } from '@mui/icons-material';
 import { Chairproducts } from '../components/Chairproducts';
+import { Footer } from '../components/Footer';
 
 const SearchContainer = styled.div`
   border: 1px solid lightgray;
@@ -43,12 +44,14 @@ const Container = styled.div``;
 export const Chairs = () => {
   return (
     <Container>
-     <SearchContainer>
+
+      <Title> Chairs </Title>
+
+
+      <SearchContainer>
         <Input placeholder="Search items..."/>
         <Search />
       </SearchContainer>
-
-      <Title> Chairs </Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Chairs: </FilterText>
@@ -61,9 +64,7 @@ export const Chairs = () => {
         </Filter>
       </FilterContainer>
 
-      <Chairproducts>
-
-      </Chairproducts>
+      
 
       <Chairproducts>
 
@@ -72,6 +73,11 @@ export const Chairs = () => {
       <Chairproducts>
 
       </Chairproducts>
+
+      <Chairproducts>
+
+      </Chairproducts>
+      <Footer/>
 
     </Container>
   )
