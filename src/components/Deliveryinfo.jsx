@@ -1,7 +1,7 @@
-import React from 'react'
-import '../css/slider.css';
+import React from "react";
+import "../css/slider.css";
 import styled from "styled-components";
-import delivery from '../Images/delivery1.jpg';
+import delivery from "../Images/delivery1.jpg";
 
 const Container = styled.div`
   width: 60%;
@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const ImgContainer = styled.div`
   height: 100%;
-  width:50%;
+  width: 50%;
   flex: 1;
   display: flex;
   align-items: center;
@@ -41,27 +41,21 @@ const Desc = styled.p`
   font-size: 30px;
   font-weight: 500;
   letter-spacing: 3px;
-
 `;
-
 
 export const Deliveryinfo = () => {
   return (
-    <div class = "deliveryPad">
-
-    <Container>
+    <div class="deliveryPad">
+      <Container>
         <ImgContainer>
-            <Image src={delivery} />
+          <Image src={delivery} />
         </ImgContainer>
 
         <InfoContainer>
-              <Title>GET FREE DELIVERY</Title>
-              <Desc>FOR ANY ORDER UNDER SOMETHING POUND</Desc>
+          <Title>GET FREE DELIVERY</Title>
+          <Desc>FOR ANY ORDER UNDER SOMETHING POUND</Desc>
         </InfoContainer>
-
-    </Container>
-        
+      </Container>
     </div>
-
-  )
-}
+  );
+};

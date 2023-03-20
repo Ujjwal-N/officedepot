@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
-import {Search } from '@mui/icons-material';
-import { Chairproducts } from './Chairproducts';
+import { Search } from "@mui/icons-material";
+import { Chairproducts } from "./Chairproducts";
 
 const SearchContainer = styled.div`
   border: 1px solid lightgray;
@@ -9,8 +9,8 @@ const SearchContainer = styled.div`
   display: flex;
   padding: 5px;
   margin: 0 auto;
-  justify-content: space-between; 
-  margin-top:40px;
+  justify-content: space-between;
+  margin-top: 40px;
 `;
 
 const Input = styled.input`
@@ -19,7 +19,7 @@ const Input = styled.input`
 `;
 
 const Title = styled.h1`
-  margin:20px;
+  margin: 20px;
 `;
 
 const FilterContainer = styled.div`
@@ -27,19 +27,18 @@ const FilterContainer = styled.div`
   justify-content: space-between;
 `;
 
-
 const Filter = styled.div`
-  margin:20px;
+  margin: 20px;
 `;
 
 const FilterText = styled.div`
-  font-size:20px;
-  font-weight:600;
+  font-size: 20px;
+  font-weight: 600;
 `;
 
 const Choice = styled.div`
-  font-size:20px;
-  font-weight:600;
+  font-size: 20px;
+  font-weight: 600;
 `;
 
 const Container = styled.div``;
@@ -47,8 +46,8 @@ const Container = styled.div``;
 export const Chairs = () => {
   return (
     <Container>
-     <SearchContainer>
-        <Input placeholder="Search items..."/>
+      <SearchContainer>
+        <Input placeholder="Search items..." />
         <Search />
       </SearchContainer>
 
@@ -65,18 +64,11 @@ export const Chairs = () => {
         </Filter>
       </FilterContainer>
 
-      <Chairproducts>
+      <Chairproducts></Chairproducts>
 
-      </Chairproducts>
+      <Chairproducts></Chairproducts>
 
-      <Chairproducts>
-
-      </Chairproducts>
-
-      <Chairproducts>
-
-      </Chairproducts>
-
+      <Chairproducts></Chairproducts>
     </Container>
-  )
-}
+  );
+};

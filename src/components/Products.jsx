@@ -1,15 +1,15 @@
-import { Search } from '@mui/icons-material';
-import React from 'react';
+import { Search } from "@mui/icons-material";
+import React from "react";
 import styled from "styled-components";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/productCollection.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../css/productCollection.css";
 
-import {Container} from "react-bootstrap"
+import { Container } from "react-bootstrap";
 
-import chairCollection from "../Images/chairCollection.jpg"
-import hammerCollection from "../Images/hammerCollection.jpg"
-import screwCollection from "../Images/screwCollection.jpg"
-import tableCollection from "../Images/tableCollection.jpg"
+import chairCollection from "../Images/chairCollection.jpg";
+import hammerCollection from "../Images/hammerCollection.jpg";
+import screwCollection from "../Images/screwCollection.jpg";
+import tableCollection from "../Images/tableCollection.jpg";
 
 const SearchContainer = styled.div`
   border: 1px solid lightgray;
@@ -17,7 +17,7 @@ const SearchContainer = styled.div`
   display: flex;
   padding: 5px;
   margin: 0 auto;
-  justify-content: space-between; 
+  justify-content: space-between;
 `;
 
 const StyledContainer = styled(Container)`
@@ -47,7 +47,7 @@ const Image = styled.img`
   border: 2px solid lightblue;
   transition: transform 0.2s ease-out;
   cursor: pointer;
-  
+
   &:hover {
     transform: scale(1.1);
     filter: brightness(80%);
@@ -69,119 +69,83 @@ export const Products = () => {
             <figure className="position-relative">
               <Image src={chairCollection} alt="chairCollection" />
 
-              <figcaption>
-                 NUMBER #1 CHAIRS IN MARKET
-              </figcaption>
-
+              <figcaption>NUMBER #1 CHAIRS IN MARKET</figcaption>
             </figure>
-      
           </ImgWrapper>
           <ImgWrapper>
             <figure className="position-relative">
               <Image src={hammerCollection} alt="hammerCollection" />
-               <figcaption>
-                  NUMBER #1 HAMMERS IN MARKET
-              </figcaption>
-
+              <figcaption>NUMBER #1 HAMMERS IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
           <ImgWrapper>
-           <figure className="position-relative">
-            <Image src={tableCollection } alt="tableCollection" />
-            <figcaption>
-                  NUMBER #1 TABLES IN MARKET
-            </figcaption>
-
+            <figure className="position-relative">
+              <Image src={tableCollection} alt="tableCollection" />
+              <figcaption>NUMBER #1 TABLES IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
           <ImgWrapper>
-          <figure className="position-relative">
-            <Image src={screwCollection} alt="screwCollection" />
-            <figcaption>
-                  NUMBER #1 SCREWDRIVERS IN MARKET
-            </figcaption>
-          </figure>
+            <figure className="position-relative">
+              <Image src={screwCollection} alt="screwCollection" />
+              <figcaption>NUMBER #1 SCREWDRIVERS IN MARKET</figcaption>
+            </figure>
           </ImgWrapper>
         </ImgContainer>
-                <ImgContainer>
+        <ImgContainer>
           <ImgWrapper>
             <figure className="position-relative">
               <Image src={chairCollection} alt="chairCollection" />
 
-              <figcaption>
-                 NUMBER #1 CHAIRS IN MARKET
-              </figcaption>
-
+              <figcaption>NUMBER #1 CHAIRS IN MARKET</figcaption>
             </figure>
-      
           </ImgWrapper>
           <ImgWrapper>
             <figure className="position-relative">
               <Image src={hammerCollection} alt="hammerCollection" />
-               <figcaption>
-                  NUMBER #1 HAMMERS IN MARKET
-              </figcaption>
-
+              <figcaption>NUMBER #1 HAMMERS IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
           <ImgWrapper>
-           <figure className="position-relative">
-            <Image src={tableCollection } alt="tableCollection" />
-            <figcaption>
-                  NUMBER #1 TABLES IN MARKET
-            </figcaption>
-
+            <figure className="position-relative">
+              <Image src={tableCollection} alt="tableCollection" />
+              <figcaption>NUMBER #1 TABLES IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
           <ImgWrapper>
-          <figure className="position-relative">
-            <Image src={screwCollection} alt="screwCollection" />
-            <figcaption>
-                  NUMBER #1 SCREWDRIVERS IN MARKET
-            </figcaption>
-          </figure>
+            <figure className="position-relative">
+              <Image src={screwCollection} alt="screwCollection" />
+              <figcaption>NUMBER #1 SCREWDRIVERS IN MARKET</figcaption>
+            </figure>
           </ImgWrapper>
         </ImgContainer>
-                <ImgContainer>
+        <ImgContainer>
           <ImgWrapper>
             <figure className="position-relative">
               <Image src={chairCollection} alt="chairCollection" />
 
-              <figcaption>
-                 NUMBER #1 CHAIRS IN MARKET
-              </figcaption>
-
+              <figcaption>NUMBER #1 CHAIRS IN MARKET</figcaption>
             </figure>
-      
           </ImgWrapper>
           <ImgWrapper>
             <figure className="position-relative">
               <Image src={hammerCollection} alt="hammerCollection" />
-               <figcaption>
-                  NUMBER #1 HAMMERS IN MARKET
-              </figcaption>
-
+              <figcaption>NUMBER #1 HAMMERS IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
           <ImgWrapper>
-           <figure className="position-relative">
-            <Image src={tableCollection } alt="tableCollection" />
-            <figcaption>
-                  NUMBER #1 TABLES IN MARKET
-            </figcaption>
-
+            <figure className="position-relative">
+              <Image src={tableCollection} alt="tableCollection" />
+              <figcaption>NUMBER #1 TABLES IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
           <ImgWrapper>
-          <figure className="position-relative">
-            <Image src={screwCollection} alt="screwCollection" />
-            <figcaption>
-                  NUMBER #1 SCREWDRIVERS IN MARKET
-            </figcaption>
-          </figure>
+            <figure className="position-relative">
+              <Image src={screwCollection} alt="screwCollection" />
+              <figcaption>NUMBER #1 SCREWDRIVERS IN MARKET</figcaption>
+            </figure>
           </ImgWrapper>
         </ImgContainer>
       </StyledContainer>
     </div>
-  ) 
-}
+  );
+};
