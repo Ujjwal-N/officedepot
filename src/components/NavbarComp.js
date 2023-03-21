@@ -10,6 +10,8 @@ import { Signup } from '../pages/Signup';
 import { Products } from '../pages/Products';
 import { Chairs } from '../pages/Chairs';
 import ItemDescription from '../pages/ItemDescription';
+import Admin from '../pages/Admin';
+import {Employee} from '../pages/Employee';
 
 const NavbarComp = ({name, setName}) => {
     
@@ -43,6 +45,7 @@ const NavbarComp = ({name, setName}) => {
           <Route path="/products" element={<Products/>}/>
           <Route path="/chairs" element={<Chairs/>}/>
           <Route path="/hammerPage" element={<ItemDescription/>}/>
+          <Route path="/admin" element={<Admin/>}/>
         </Routes>
 
       </div>
