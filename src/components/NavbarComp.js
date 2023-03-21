@@ -11,7 +11,11 @@ import { Products } from '../pages/Products';
 import { Chairs } from '../pages/Chairs';
 import ItemDescription from '../pages/ItemDescription';
 import Admin from '../pages/Admin';
-import {Employee} from '../pages/Employee';
+import Employee from '../pages/Employee';
+import Inventory from '../pages/Inventory';
+import Order from '../pages/Order';
+import Customers from '../pages/Customers';
+
 
 const NavbarComp = ({name, setName}) => {
     
