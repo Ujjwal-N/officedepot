@@ -8,14 +8,13 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
     <Form onSubmit={handleSubmit}>
       <Row>
         <Col>
-          <Form.Group controlId="username" className="pad-here">
-            <Form.Label>Username</Form.Label>
+          <Form.Group controlId="name" className="pad-here">
+            <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter username"
+              placeholder="Enter name"
               onChange={handleChange}
               value={formData.username}
-              disabled={!signup}
             />
           </Form.Group>
 
@@ -26,6 +25,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
               placeholder="Enter email"
               onChange={handleChange}
               value={formData.email}
+              disabled={!signup}
             />
           </Form.Group>
 

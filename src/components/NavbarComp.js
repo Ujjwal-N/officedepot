@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Navbar, Nav, Button, NavbarBrand } from "react-bootstrap";
-import {
-  BrowserRouter,
-  Navigate,
-  Routes,
-  Route,
-  Link,
-  IndexRedirect,
-} from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route, Link } from "react-router-dom";
 import { About } from "./About";
 import { Home } from "./Home";
 import { Profile } from "./Profile";
@@ -17,8 +10,9 @@ import { Signup } from "./Signup";
 import { Products } from "./Products";
 import { Chairs } from "./Chairs";
 import ItemDescription from "./ItemDescription";
+import userEvent from "@testing-library/user-event";
 
-const NavbarComp = ({ name, setName }) => {
+const NavbarComp = ({ userData, setUserData }) => {
   return (
     <BrowserRouter>
       <div>
@@ -45,8 +39,8 @@ const NavbarComp = ({ name, setName }) => {
                 <Nav.Link as={Link} to={"/profile"}>
                   Profile
                 </Nav.Link>
-                {name ? (
-                  <Navbar.Text>Hi {name}!</Navbar.Text>
+                {userData.name ? (
+                  <Navbar.Text>Hi {userData.name}!</Navbar.Text>
                 ) : (
                   <Button
                     className="ms-2"
@@ -69,7 +63,10 @@ const NavbarComp = ({ name, setName }) => {
             <Route path="/home" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/signup" element={<Signup setName={setName} />} />
+            <Route
+              path="/signup"
+              element={<Signup userData={userData} setUserData={setUserData} />}
+            />
             <Route path="/products" element={<Products />} />
             <Route path="/chairs" element={<Chairs />} />
             <Route path="/hammerPage" element={<ItemDescription />} />

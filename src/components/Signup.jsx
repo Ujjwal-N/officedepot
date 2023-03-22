@@ -7,33 +7,14 @@ import "../css/signup.css";
 import axios from "axios";
 import UserTextBoxes from "./UserTextBoxes";
 
-export const Signup = ({ setName }) => {
+export const Signup = ({ userData, setUserData }) => {
   const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(false); // state to toggle between sign up and log in
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    address: "",
-    city: "",
-    state: "",
-    zip: "",
-    ccNumber: "",
-    expirationDate: "",
-    cvv: "",
-    billingAddress: "",
-    billingCity: "",
-    billingState: "",
-    billingZip: "",
-    loginUsername: "",
-    loginPassword: "",
-  });
-
   const toggleLogin = () => setShowLogin(!showLogin); // function to toggle between sign up and log in
 
   const handleChange = (event) => {
-    setFormData({
-      ...formData,
+    setUserData({
+      ...userData,
       [event.target.id]: event.target.value,
     });
   };
@@ -41,33 +22,39 @@ export const Signup = ({ setName }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!showLogin) {
-      const { username, email, password } = formData;
+      const { name, email, password, address, city, state, zip, ccNumber } =
+        this.userData;
+      const [firstname, lastname] = name.split(" ");
+      const shippingaddress = address + "\n" + city + "\n" + state + "\n" + zip;
+      //{ firstname, lastname, email, password, shippingaddress, creditcard }
       axios
         .post("http://3.133.128.233:5001/register", {
-          username: username,
+          firstname: firstname,
+          lastname: lastname,
           email: email,
           password: password,
+          shippingaddress: shippingaddress,
+          creditcard: ccNumber,
         })
         .then((response) => {
           console.log(response.status);
           console.log(response.data);
-          setName(username);
           navigate("/home", { replace: true });
         })
         .catch((error) => {
           console.log(error);
         });
     } else {
-      const { loginUsername, loginPassword } = formData;
-      console.log(loginUsername, loginPassword);
+      const { loginEmail, loginPassword } = userData;
+      console.log(loginEmail, loginPassword);
       axios
         .post("http://3.133.128.233:5001/login", {
-          username: loginUsername,
+          email: loginEmail,
           password: loginPassword,
         })
         .then((response) => {
           console.log(response.data);
-          setName(loginUsername);
+          //setName(loginUsername); should be setUserData
           navigate("/home", { replace: true });
         })
         .catch((error) => {
@@ -86,7 +73,7 @@ export const Signup = ({ setName }) => {
           <UserTextBoxes
             handleSubmit={handleSubmit}
             handleChange={handleChange}
-            formData={formData}
+            formData={userData}
             signup={true}
           />
         )}
@@ -106,11 +93,11 @@ export const Signup = ({ setName }) => {
           <Col>
             {showLogin && (
               <div>
-                <Form.Group controlId="loginUsername">
-                  <Form.Label>Username</Form.Label>
+                <Form.Group controlId="loginEmail">
+                  <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter username"
+                    placeholder="Enter Email"
                     onChange={handleChange}
                   />
                 </Form.Group>
