@@ -121,7 +121,7 @@ export const Slider = () => {
         <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>SHOP NOW</Button>
+              <Button>{item.shop}</Button>
         </InfoContainer>
 
       </Slide >

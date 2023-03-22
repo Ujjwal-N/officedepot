@@ -7,6 +7,8 @@ import styled from "styled-components";
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PinterestIcon from '@mui/icons-material/Pinterest';
+import { Link } from "react-router-dom";
+
 
 const Container = styled.div`
   display: flex;
@@ -101,12 +103,10 @@ export const Footer = () => {
       <Middle>
         <Title>Links</Title>
         <List>
-          <ListItem>Cart</ListItem>
-          <ListItem>Collections</ListItem>
-          <ListItem>Products</ListItem>
-          <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>About</ListItem>
+          <ListItem><Link to="/cart">Cart</Link></ListItem>
+          <ListItem><Link to="/products">Collections</Link></ListItem>
+          <ListItem><Link to="/profile">My Account</Link></ListItem>
+           <ListItem><Link to="/about">About</Link></ListItem>
         </List>
       </Middle>
       <RightSide>

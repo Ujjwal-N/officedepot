@@ -13,6 +13,7 @@ export const sliderItems = [
       title: "#1 CHAIR IN THE MARKET",
       desc: "GET 10% OFF FIRST TIME PURCHASE",
       bg: "fFFFF",
+      shop:<Link to="/itemPage" style={{ color: 'white',textDecoration: 'none' }}>SHOP NOW</Link>
     },
     {
       id: 2,
@@ -20,6 +21,7 @@ export const sliderItems = [
       title: "BUY THIS SCREWDRIVER",
       desc: "TO SCREW YOUR HEAD STRAIGHT",
       bg: "fffff",
+      shop: <Link to="/itemPage" style={{ color: 'white',textDecoration: 'none' }}>SHOP NOW</Link>
     },
     {
       id: 3,
@@ -27,6 +29,7 @@ export const sliderItems = [
       title: "HAMMER TIME",
       desc: "GUARANTEE TO LAST A LIFETIME",
       bg: "fffff",
+      shop: <Link to="/itemPage" style={{ color: 'white',textDecoration: 'none' }}>SHOP NOW</Link>
     },
   ];
 
@@ -38,7 +41,7 @@ export const sliderItems = [
       title: "#1 CHAIR IN THE MARKET",
       desc: "GET 10% OFF FIRST TIME PURCHASE",
       bg: "fFFFF",
-      icon: <VisibilityIcon />,
+      icon: <Link to="/itemPage" style={{ color: 'red'}}><VisibilityIcon /></Link>,
       icon2: <ShoppingCartIcon />
     },
     {
@@ -47,7 +50,7 @@ export const sliderItems = [
       title: "BUY THIS SCREWDRIVER",
       desc: "TO SCREW YOUR HEAD STRAIGHT",
       bg: "fffff",
-      icon: <VisibilityIcon />,
+      icon: <Link to="/itemPage" style={{ color: 'blue'}}><VisibilityIcon /></Link>,
       icon2: <ShoppingCartIcon />
     },
     {
@@ -56,7 +59,7 @@ export const sliderItems = [
       title: "HAMMER TIME",
       desc: "GUARANTEE TO LAST A LIFETIME",
       bg: "fffff",
-      icon: <VisibilityIcon />,
+      icon: <Link to="/itemPage" style={{ color: 'green'}}><VisibilityIcon /></Link>,
       icon2: <ShoppingCartIcon />
     },
     
@@ -66,7 +69,7 @@ export const sliderItems = [
       title: "HAMMER TIME",
       desc: "GUARANTEE TO LAST A LIFETIME",
       bg: "fffff",
-      icon: <VisibilityIcon />,
+      icon: <Link to="/itemPage" style={{ color: 'lightblue'}}><VisibilityIcon /></Link>,
       icon2: <ShoppingCartIcon />
     },
 
@@ -76,7 +79,7 @@ export const sliderItems = [
       title: "HAMMER TIME",
       desc: "GUARANTEE TO LAST A LIFETIME",
       bg: "fffff",
-      icon: <VisibilityIcon />,
+      icon: <Link to="/itemPage" style={{ color: 'pink'}}><VisibilityIcon /></Link>,
       icon2: <ShoppingCartIcon />
     },
 
@@ -92,7 +95,7 @@ export const sliderItems = [
       desc: "GET 10% OFF FIRST TIME PURCHASE",
       cost:"5,000",
       bg: "fFFFF",
-      icon:  <Link to="/itemPage"><VisibilityIcon /></Link>,
+      icon:  <Link to="/itemPage" style={{ color: 'pink'}}><VisibilityIcon /></Link>,
       icon2: <ShoppingCartIcon />,
       icon3: <GradeIcon/>
     },
@@ -102,7 +105,7 @@ export const sliderItems = [
       title: "Chair 2",
       cost:"10,000",
       bg: "fFFFF",
-      icon: <VisibilityIcon />,
+      icon: <Link to="/itemPage" style={{ color: 'lightblue'}}><VisibilityIcon /></Link>,
       icon2: <ShoppingCartIcon />,
       icon3: <GradeIcon/>
     },
@@ -113,7 +116,7 @@ export const sliderItems = [
       desc: "GET 10% OFF FIRST TIME PURCHASE",
       cost:"2,000",
       bg: "fFFFF",
-      icon: <VisibilityIcon />,
+      icon: <Link to="/itemPage" style={{ color: 'lightgreen'}}><VisibilityIcon /></Link>,
       icon2: <ShoppingCartIcon />,
       icon3: <GradeIcon/>
     },
@@ -125,7 +128,7 @@ export const sliderItems = [
       desc: "GET 10% OFF FIRST TIME PURCHASE",
       cost:"1,000",
       bg: "fFFFF",
-      icon: <VisibilityIcon />,
+      icon: <Link to="/itemPage"><VisibilityIcon /></Link>,
       icon2: <ShoppingCartIcon />,
       icon3: <GradeIcon/>
     },

@@ -11,6 +11,8 @@ const Container = styled.div`
   overflow: hidden;
   margin: auto;
   border: 2px solid #444;
+  display: flex;
+  align-items: center;
 `;
 
 const ImgContainer = styled.div`
@@ -29,7 +31,7 @@ const Image = styled.img`
 
 const InfoContainer = styled.div`
   flex: 1;
-  padding: 50px;
+  padding: 0 50px;
 `;
 
 const Title = styled.h1`
