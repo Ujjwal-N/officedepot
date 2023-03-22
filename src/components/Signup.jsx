@@ -23,10 +23,18 @@ export const Signup = ({ userData, setUserData }) => {
     event.preventDefault();
     if (!showLogin) {
       const { name, email, password, address, city, state, zip, ccNumber } =
-        this.userData;
+        userData;
       const [firstname, lastname] = name.split(" ");
       const shippingaddress = address + "\n" + city + "\n" + state + "\n" + zip;
       //{ firstname, lastname, email, password, shippingaddress, creditcard }
+      console.log({
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        password: password,
+        shippingaddress: shippingaddress,
+        creditcard: ccNumber,
+      });
       axios
         .post("http://3.133.128.233:5001/register", {
           firstname: firstname,

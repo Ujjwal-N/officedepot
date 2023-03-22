@@ -62,7 +62,12 @@ const NavbarComp = ({ userData, setUserData }) => {
             <Route path="/about" element={<About />} />
             <Route path="/home" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={
+                <Profile userData={userData} setUserData={setUserData} />
+              }
+            />
             <Route
               path="/signup"
               element={<Signup userData={userData} setUserData={setUserData} />}
