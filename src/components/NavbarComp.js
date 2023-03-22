@@ -5,12 +5,13 @@ import { BrowserRouter, Navigate, Routes, Route, Link } from "react-router-dom";
 import { About } from "./About";
 import { Home } from "./Home";
 import { Profile } from "./Profile";
-import { Cart } from "./Cart";
+import Cart from "./Cart";
 import { Signup } from "./Signup";
 import { Products } from "./Products";
 import { Chairs } from "./Chairs";
 import ItemDescription from "./ItemDescription";
 import userEvent from "@testing-library/user-event";
+import CheckoutPage from "./Checkout";
 
 const NavbarComp = ({ userData, setUserData }) => {
   return (
@@ -70,6 +71,7 @@ const NavbarComp = ({ userData, setUserData }) => {
             <Route path="/products" element={<Products />} />
             <Route path="/chairs" element={<Chairs />} />
             <Route path="/hammerPage" element={<ItemDescription />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
         </div>
       </div>
