@@ -1,4 +1,3 @@
-import { Search } from '@mui/icons-material';
 import React from 'react';
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,27 +16,12 @@ import kitchenCollection from "../Images/kitchenCollection.jpg"
 import indoorCollection from "../Images/indoorCollection.jpg"
 import bathroomCollection from "../Images/bathroomCollection.jpg"
 
-import { BrowserRouter, Navigate, Routes, Route,Link,IndexRedirect } from 'react-router-dom';
-import { Chairs } from './Chairs';
-
-const SearchContainer = styled.div`
-  border: 1px solid #444;
-  width: 50%;
-  display: flex;
-  padding: 5px;
-  margin: 0 auto;
-  justify-content: space-between; 
-`;
+import {Link} from 'react-router-dom';
 
 const StyledContainer = styled(Container)`
   width: 100%;
   max-width: 3000px;
   margin-bottom:20px;
-`;
-
-const Input = styled.input`
-  border: none;
-  flex: 1;
 `;
 
 const ImgContainer = styled.div`
@@ -73,10 +57,6 @@ export const Products = () => {
   return (
     <div>
       <h1> All Collections </h1>
-      <SearchContainer>
-        <Input />
-        <Search />
-      </SearchContainer>
 
       <StyledContainer>
         <ImgContainer>
@@ -181,11 +161,6 @@ export const Products = () => {
       <Footer/>
 
 
-      <div>
-        <Routes>
-            <Route path="/chairs" element={<Chairs/>}/>
-        </Routes>
-      </div>
 
     </div>
 

@@ -1,7 +1,10 @@
 import chair from '../Images/chair.jpg';
 import screw from '../Images/screw.jpg';
 import hammer from '../Images/hammer.jpg';
-
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import GradeIcon from '@mui/icons-material/Grade';
+import { Link } from "react-router-dom";
 
 export const sliderItems = [
     {
@@ -35,6 +38,8 @@ export const sliderItems = [
       title: "#1 CHAIR IN THE MARKET",
       desc: "GET 10% OFF FIRST TIME PURCHASE",
       bg: "fFFFF",
+      icon: <VisibilityIcon />,
+      icon2: <ShoppingCartIcon />
     },
     {
       id: 2,
@@ -42,6 +47,8 @@ export const sliderItems = [
       title: "BUY THIS SCREWDRIVER",
       desc: "TO SCREW YOUR HEAD STRAIGHT",
       bg: "fffff",
+      icon: <VisibilityIcon />,
+      icon2: <ShoppingCartIcon />
     },
     {
       id: 3,
@@ -49,6 +56,8 @@ export const sliderItems = [
       title: "HAMMER TIME",
       desc: "GUARANTEE TO LAST A LIFETIME",
       bg: "fffff",
+      icon: <VisibilityIcon />,
+      icon2: <ShoppingCartIcon />
     },
     
      {
@@ -57,6 +66,8 @@ export const sliderItems = [
       title: "HAMMER TIME",
       desc: "GUARANTEE TO LAST A LIFETIME",
       bg: "fffff",
+      icon: <VisibilityIcon />,
+      icon2: <ShoppingCartIcon />
     },
 
      {
@@ -65,6 +76,8 @@ export const sliderItems = [
       title: "HAMMER TIME",
       desc: "GUARANTEE TO LAST A LIFETIME",
       bg: "fffff",
+      icon: <VisibilityIcon />,
+      icon2: <ShoppingCartIcon />
     },
 
     
@@ -79,6 +92,9 @@ export const sliderItems = [
       desc: "GET 10% OFF FIRST TIME PURCHASE",
       cost:"5,000",
       bg: "fFFFF",
+      icon:  <Link to="/itemPage"><VisibilityIcon /></Link>,
+      icon2: <ShoppingCartIcon />,
+      icon3: <GradeIcon/>
     },
     {
       id: 2,
@@ -86,6 +102,9 @@ export const sliderItems = [
       title: "Chair 2",
       cost:"10,000",
       bg: "fFFFF",
+      icon: <VisibilityIcon />,
+      icon2: <ShoppingCartIcon />,
+      icon3: <GradeIcon/>
     },
     {
       id: 3,
@@ -94,15 +113,21 @@ export const sliderItems = [
       desc: "GET 10% OFF FIRST TIME PURCHASE",
       cost:"2,000",
       bg: "fFFFF",
+      icon: <VisibilityIcon />,
+      icon2: <ShoppingCartIcon />,
+      icon3: <GradeIcon/>
     },
     
      {
       id: 4,
       img: chair,
-       title: "Chair 4",
+      title: "Chair 4",
       desc: "GET 10% OFF FIRST TIME PURCHASE",
       cost:"1,000",
       bg: "fFFFF",
+      icon: <VisibilityIcon />,
+      icon2: <ShoppingCartIcon />,
+      icon3: <GradeIcon/>
     },
 
   ];

@@ -19,6 +19,15 @@ const leftAlign = {
     margin: "30px"
 };
 
+const Button = styled.button`
+
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  color: #fff;
+  background-color: #13755ece;
+`;
+
 function ItemDescription({ item }) {
     return (
         <div style={leftAlign}>
@@ -41,7 +50,7 @@ function ItemDescription({ item }) {
                 <h2>$19.99</h2>
                 <p>
                     Quantity:
-                    <select name="quantity" id="quantity-select">
+                    <select name="quantity" id="quantity-select"  style={{ marginLeft: '10px' }}>
                         <option value={1}>1</option>
                         <option value={2}>2</option>
                         <option value={3}>3</option>
@@ -52,7 +61,7 @@ function ItemDescription({ item }) {
                         <option value={8}>8</option>
                     </select>
                 </p>
-                <button>Add to Cart</button>
+                <Button>Add to Cart</Button>
             </div>
         </div>
     );

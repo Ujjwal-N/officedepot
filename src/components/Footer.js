@@ -81,17 +81,22 @@ const ContactItem = styled.div`
   text-align: center;
 `;
 
+const Spacer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Footer = () => {
   return (
     <Container>
       <LeftSide>
         <Logo>OfficeDepot</Logo>
+
         <Desc>
           OfficeDepot is dedicated to selling the best items in the market. We take pride in offering our customers 
           the best products in the market, and we never compromise on the quality of the items we sell. Our vast list of products is 
           carefully curated to ensure that every item meets our high standards of excellence.
         </Desc>
-
       </LeftSide>
       <Middle>
         <Title>Links</Title>
@@ -106,15 +111,20 @@ export const Footer = () => {
       </Middle>
       <RightSide>
         <Title>Contact</Title>
+
+        <Spacer>
         <ContactItem>
           <RoomIcon style={{marginRight:"10px"}}/> 1 Washington Sq, San Jose, CA 95192
         </ContactItem>
+  
         <ContactItem>
           <PhoneIphoneIcon style={{marginRight:"10px"}}/> +1(800)-Office-Depot 
         </ContactItem>
+   
         <ContactItem>
           <MailOutlineIcon style={{marginRight:"10px"}} /> officedepot@gmail.com
         </ContactItem>
+      
         <SocialContainer>
           <MediaIcon color="3B5999">
             <FacebookIcon />
@@ -132,7 +142,7 @@ export const Footer = () => {
             < PinterestIcon />
           </MediaIcon>
         </SocialContainer>
-
+        </Spacer>
       </RightSide>
     </Container>
   );

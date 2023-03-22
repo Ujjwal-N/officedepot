@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from "styled-components";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Info = styled.div`
   opacity: 0;
@@ -63,10 +61,10 @@ const Homeproduct = ({ item }) => {
       <Image src={item.img} />
       <Info>
         <Icon>
-          <VisibilityIcon/>
+          {item.icon}
         </Icon>
         <Icon>
-           <ShoppingCartIcon/>
+           {item.icon2}
         </Icon>
       </Info>
     </Container>

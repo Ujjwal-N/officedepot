@@ -11,14 +11,20 @@ const Container = styled.div`
 `;
 
 
+
+
 export const Chairproducts = () => {
   return (
     
     <Container>
+
     {chairItems.map((item) => (
         <Chairproduct item={item} key={item.id} />
       ))}
+
     </Container>
+
+    
 
   )
 }

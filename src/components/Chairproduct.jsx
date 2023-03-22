@@ -1,10 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import GradeIcon from '@mui/icons-material/Grade';
 
 const Info = styled.div`
   opacity: 0;
@@ -24,8 +19,8 @@ const Info = styled.div`
 
 const Container = styled.div`
   flex: 1;
-  margin: 5px;
-  min-width: 280px;
+  margin: 10px;
+  min-width: 400px;
   height: 350px;
   display: flex;
   flex-direction: column;
@@ -73,13 +68,13 @@ const Productproduct = ({ item }) => {
       <Text>${item.cost}</Text>
       <Info>
         <Icon>
-          <VisibilityIcon/>
+           {item.icon}
         </Icon>
         <Icon>
-          <ShoppingCartIcon/>
+           {item.icon2}
         </Icon>
         <Icon>
-          <GradeIcon/>
+           {item.icon3}
         </Icon>
       </Info>
     </Container>

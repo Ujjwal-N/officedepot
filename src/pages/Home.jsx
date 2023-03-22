@@ -11,8 +11,8 @@ export const Home = () => {
     <div>
          <Slider/>
          <Deliveryinfo/>
-         <p style={{ margin: '100px' }}></p>
-         <h1 style={{ marginTop: '20px' }}>PREVIEW OUR ITEMS</h1>
+         <p style={{ margin: '80px' }}></p>
+         <h1 style={{ marginTop: '10px' }}>BEST SELLING ITEMS</h1>
          <Homeproducts/>
          <Footer/>
 

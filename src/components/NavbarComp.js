@@ -48,8 +48,12 @@ const NavbarComp = ({name, setName}) => {
           <Route path="/signup" element={<Signup setName={setName}/>}/>
           <Route path="/products" element={<Products/>}/>
           <Route path="/chairs" element={<Chairs/>}/>
-          <Route path="/hammerPage" element={<ItemDescription/>}/>
+          <Route path="/itemPage" element={<ItemDescription/>}/>
           <Route path="/admin" element={<Admin/>}/>
+          <Route path="/employee" element={<Employee/>}/>
+          <Route path="/inventory" element={<Inventory/>}/>
+          <Route path="/orders" element={<Order/>}/>
+          <Route path="/customers" element={<Customers/>}/>
         </Routes>
 
       </div>

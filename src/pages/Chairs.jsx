@@ -1,69 +1,27 @@
 import React from 'react'
 import styled from "styled-components";
-import {Search } from '@mui/icons-material';
 import { Chairproducts } from '../components/Chairproducts';
 import { Footer } from '../components/Footer';
+import SearchBarComp from '../components/SearchBarComp';
 
-const SearchContainer = styled.div`
-  border: 1px solid lightgray;
-  width: 50%;
-  display: flex;
-  padding: 5px;
-  margin: 0 auto;
-  justify-content: space-between; 
-  margin-top:40px;
-`;
-
-const Input = styled.input`
-  border: none;
-  flex: 1;
-`;
 
 const Title = styled.h1`
-  margin:20px;
-`;
-
-const FilterContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  margin-top:20px;
 `;
 
 
-const Filter = styled.div`
-  margin:20px;
+const Container = styled.div`
+  margin-top:-30px;
 `;
-
-const FilterText = styled.div`
-  font-size:20px;
-  font-weight:600;
-`;
-
-
-const Container = styled.div``;
 
 export const Chairs = () => {
   return (
+  <div>
+
+    <Title> Chairs </Title>
+
     <Container>
-
-      <Title> Chairs </Title>
-
-
-      <SearchContainer>
-        <Input placeholder="Search items..."/>
-        <Search />
-      </SearchContainer>
-      <FilterContainer>
-        <Filter>
-          <FilterText>Filter Chairs: </FilterText>
-          <select>
-            <option value="">All</option>
-            <option value="50">$50 and under</option>
-            <option value="100">$100 and under</option>
-            <option value="150">$150 and under</option>
-          </select>
-        </Filter>
-      </FilterContainer>
-
+      <SearchBarComp/>
       
 
       <Chairproducts>
@@ -80,5 +38,6 @@ export const Chairs = () => {
       <Footer/>
 
     </Container>
+  </div>
   )
 }
