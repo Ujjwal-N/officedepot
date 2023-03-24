@@ -5,13 +5,12 @@ import orderTemplate from "../Images/orderTemplate.jpeg"
 import inventoryTemplate from "../Images/inventoryTemplate.jpeg"
 import customersTemplate from "../Images/customersTemplate.jpeg"
 import employeesTemplate from "../Images/employeesTemplate.jpeg"
-
+import {Link} from 'react-router-dom';
 
 const RedContainer = styled.div`
   
 
 `;
-
 
 const OrangeContainer = styled.div`
   display: flex;
@@ -27,7 +26,7 @@ const GreenContainer = styled.div`
 `;
 
 const AdminNameItem = styled.div`
-  padding: 8px 8px 8px; /*goes top, right-left, bottom */
+  padding: 10px 30px 5px; /*goes top, right-left, bottom */
   border: 2px solid #333;
   background-color: lightgrey;
 `;
@@ -50,7 +49,6 @@ const Image = styled.img`
   width: 325px;
   height: 325px;
 
-
   transition: transform 0.2s ease-out;
   cursor: pointer;
   
@@ -60,23 +58,21 @@ const Image = styled.img`
   }
 `;
 
-
 export const admin = () => {
   return (
     <div>
 
         <RedContainer> 
 
-
             <OrangeContainer> {/* Admin Name */}
-              <AdminNameItem> {/* The spacing here is pissing me off */}
+              <AdminNameItem> 
                 <h6> Jane Doe  </h6>
               </AdminNameItem>
             </OrangeContainer>
 
-            <GreenContainer> {/* The four components */}
+            <GreenContainer> {/* The four categories */}
               <CategoryContainer>
-                <ImgWrapper>
+                <ImgWrapper as={Link} to={"/orders"}>
                   <figure className="position-relative">
                     <Image src={orderTemplate} alt="orderTemplate" />
 
@@ -90,7 +86,7 @@ export const admin = () => {
               </CategoryContainer>
                 
               <CategoryContainer>
-                <ImgWrapper>
+                <ImgWrapper as={Link} to={"/inventory"}>
                   <figure className="position-relative">
                     <Image src={inventoryTemplate} alt="inventoryTemplate" />
 
@@ -104,7 +100,7 @@ export const admin = () => {
               </CategoryContainer>
                 
               <CategoryContainer>
-                <ImgWrapper>
+                <ImgWrapper as={Link} to={"/customers"}>
                   <figure className="position-relative">
                     <Image src={customersTemplate} alt="customersTemplate" />
 
@@ -118,7 +114,7 @@ export const admin = () => {
               </CategoryContainer>
 
               <CategoryContainer>
-                <ImgWrapper>
+                <ImgWrapper as={Link} to={"/employee"}>
                     <figure className="position-relative">
                       <Image src={employeesTemplate} alt="employeesTemplate" />
 
@@ -130,13 +126,10 @@ export const admin = () => {
       
                   </ImgWrapper>
               </CategoryContainer>
-
             </GreenContainer>
 
         </RedContainer>
         
-
-
     </div>
   )
 }
