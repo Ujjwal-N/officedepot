@@ -1,6 +1,10 @@
 import chair from "../Images/chair.jpg";
 import screw from "../Images/screw.jpg";
 import hammer from "../Images/hammer.jpg";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import GradeIcon from "@mui/icons-material/Grade";
+import { Link } from "react-router-dom";
 
 export const sliderItems = [
   {
@@ -9,6 +13,11 @@ export const sliderItems = [
     title: "#1 CHAIR IN THE MARKET",
     desc: "GET 10% OFF FIRST TIME PURCHASE",
     bg: "fFFFF",
+    shop: (
+      <Link to="/itemPage" style={{ color: "white", textDecoration: "none" }}>
+        SHOP NOW
+      </Link>
+    ),
   },
   {
     id: 2,
@@ -16,6 +25,11 @@ export const sliderItems = [
     title: "BUY THIS SCREWDRIVER",
     desc: "TO SCREW YOUR HEAD STRAIGHT",
     bg: "fffff",
+    shop: (
+      <Link to="/itemPage" style={{ color: "white", textDecoration: "none" }}>
+        SHOP NOW
+      </Link>
+    ),
   },
   {
     id: 3,
@@ -23,6 +37,11 @@ export const sliderItems = [
     title: "HAMMER TIME",
     desc: "GUARANTEE TO LAST A LIFETIME",
     bg: "fffff",
+    shop: (
+      <Link to="/itemPage" style={{ color: "white", textDecoration: "none" }}>
+        SHOP NOW
+      </Link>
+    ),
   },
 ];
 
@@ -33,6 +52,12 @@ export const productItems = [
     title: "#1 CHAIR IN THE MARKET",
     desc: "GET 10% OFF FIRST TIME PURCHASE",
     bg: "fFFFF",
+    icon: (
+      <Link to="/itemPage" style={{ color: "red" }}>
+        <VisibilityIcon />
+      </Link>
+    ),
+    icon2: <ShoppingCartIcon />,
   },
   {
     id: 2,
@@ -40,6 +65,12 @@ export const productItems = [
     title: "BUY THIS SCREWDRIVER",
     desc: "TO SCREW YOUR HEAD STRAIGHT",
     bg: "fffff",
+    icon: (
+      <Link to="/itemPage" style={{ color: "blue" }}>
+        <VisibilityIcon />
+      </Link>
+    ),
+    icon2: <ShoppingCartIcon />,
   },
   {
     id: 3,
@@ -47,6 +78,12 @@ export const productItems = [
     title: "HAMMER TIME",
     desc: "GUARANTEE TO LAST A LIFETIME",
     bg: "fffff",
+    icon: (
+      <Link to="/itemPage" style={{ color: "green" }}>
+        <VisibilityIcon />
+      </Link>
+    ),
+    icon2: <ShoppingCartIcon />,
   },
 
   {
@@ -55,6 +92,12 @@ export const productItems = [
     title: "HAMMER TIME",
     desc: "GUARANTEE TO LAST A LIFETIME",
     bg: "fffff",
+    icon: (
+      <Link to="/itemPage" style={{ color: "lightblue" }}>
+        <VisibilityIcon />
+      </Link>
+    ),
+    icon2: <ShoppingCartIcon />,
   },
 
   {
@@ -63,6 +106,12 @@ export const productItems = [
     title: "HAMMER TIME",
     desc: "GUARANTEE TO LAST A LIFETIME",
     bg: "fffff",
+    icon: (
+      <Link to="/itemPage" style={{ color: "pink" }}>
+        <VisibilityIcon />
+      </Link>
+    ),
+    icon2: <ShoppingCartIcon />,
   },
 ];
 
@@ -74,6 +123,13 @@ export const chairItems = [
     desc: "GET 10% OFF FIRST TIME PURCHASE",
     cost: "5,000",
     bg: "fFFFF",
+    icon: (
+      <Link to="/itemPage" style={{ color: "pink" }}>
+        <VisibilityIcon />
+      </Link>
+    ),
+    icon2: <ShoppingCartIcon />,
+    icon3: <GradeIcon />,
   },
   {
     id: 2,
@@ -81,6 +137,13 @@ export const chairItems = [
     title: "Chair 2",
     cost: "10,000",
     bg: "fFFFF",
+    icon: (
+      <Link to="/itemPage" style={{ color: "lightblue" }}>
+        <VisibilityIcon />
+      </Link>
+    ),
+    icon2: <ShoppingCartIcon />,
+    icon3: <GradeIcon />,
   },
   {
     id: 3,
@@ -89,6 +152,13 @@ export const chairItems = [
     desc: "GET 10% OFF FIRST TIME PURCHASE",
     cost: "2,000",
     bg: "fFFFF",
+    icon: (
+      <Link to="/itemPage" style={{ color: "lightgreen" }}>
+        <VisibilityIcon />
+      </Link>
+    ),
+    icon2: <ShoppingCartIcon />,
+    icon3: <GradeIcon />,
   },
 
   {
@@ -98,5 +168,12 @@ export const chairItems = [
     desc: "GET 10% OFF FIRST TIME PURCHASE",
     cost: "1,000",
     bg: "fFFFF",
+    icon: (
+      <Link to="/itemPage">
+        <VisibilityIcon />
+      </Link>
+    ),
+    icon2: <ShoppingCartIcon />,
+    icon3: <GradeIcon />,
   },
 ];
