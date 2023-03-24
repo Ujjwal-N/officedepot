@@ -86,6 +86,7 @@ const NavbarComp = ({ userData, setUserData }) => {
             <Route path="/products" element={<Products />} />
             <Route path="/chairs" element={<Chairs />} />
             <Route path="/hammerPage" element={<ItemDescription />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
         </div>
       </div>
