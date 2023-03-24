@@ -1,17 +1,27 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Navbar, Nav, Button, NavbarBrand } from "react-bootstrap";
-import { BrowserRouter, Navigate, Routes, Route, Link } from "react-router-dom";
-import { About } from "./About";
-import { Home } from "./Home";
-import { Profile } from "./Profile";
-import Cart from "./Cart";
-import { Signup } from "./Signup";
-import { Products } from "./Products";
-import { Chairs } from "./Chairs";
-import ItemDescription from "./ItemDescription";
-import userEvent from "@testing-library/user-event";
-import CheckoutPage from "./Checkout";
+import {
+  BrowserRouter,
+  Navigate,
+  Routes,
+  Route,
+  Link,
+  IndexRedirect,
+} from "react-router-dom";
+import { About } from "../pages/About";
+import { Home } from "../pages/Home";
+import { Profile } from "../pages/Profile";
+import { Cart } from "../pages/Cart";
+import { Signup } from "../pages/Signup";
+import { Products } from "../pages/Products";
+import { Chairs } from "../pages/Chairs";
+import ItemDescription from "../pages/ItemDescription";
+import Admin from "../pages/Admin";
+import Employee from "../pages/Employee";
+import Inventory from "../pages/Inventory";
+import Order from "../pages/Order";
+import Customers from "../pages/Customers";
 
 const NavbarComp = ({ userData, setUserData }) => {
   return (
@@ -63,7 +73,12 @@ const NavbarComp = ({ userData, setUserData }) => {
             <Route path="/about" element={<About />} />
             <Route path="/home" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={
+                <Profile userData={userData} setUserData={setUserData} />
+              }
+            />
             <Route
               path="/signup"
               element={<Signup userData={userData} setUserData={setUserData} />}
