@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import UserTextBoxes from "./UserTextBoxes";
+import UserTextBoxes from "../components/UserTextBoxes";
 export const Profile = ({ userData, setUserData }) => {
   const orderData = [
     {
