@@ -12,7 +12,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter name"
+              placeholder="Enter full name"
               onChange={handleChange}
               value={formData.username}
             />
