@@ -1,27 +1,27 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/productCollection.css';
-import { Footer } from '../components/Footer';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../css/productCollection.css";
+import { Footer } from "../components/Footer";
 
-import {Container} from "react-bootstrap"
+import { Container } from "react-bootstrap";
 
-import chairCollection from "../Images/chairCollection.jpg"
-import hammerCollection from "../Images/hammerCollection.jpg"
-import screwCollection from "../Images/screwCollection.jpg"
-import tableCollection from "../Images/tableCollection.jpg"
-import fridgeCollection from "../Images/fridgeCollection.jpg"
-import outdoorCollection from "../Images/outdoorCollection.jpg"
-import kitchenCollection from "../Images/kitchenCollection.jpg"
-import indoorCollection from "../Images/indoorCollection.jpg"
-import bathroomCollection from "../Images/bathroomCollection.jpg"
+import chairCollection from "../Images/chairCollection.jpg";
+import hammerCollection from "../Images/hammerCollection.jpg";
+import screwCollection from "../Images/screwCollection.jpg";
+import tableCollection from "../Images/tableCollection.jpg";
+import fridgeCollection from "../Images/fridgeCollection.jpg";
+import outdoorCollection from "../Images/outdoorCollection.jpg";
+import kitchenCollection from "../Images/kitchenCollection.jpg";
+import indoorCollection from "../Images/indoorCollection.jpg";
+import bathroomCollection from "../Images/bathroomCollection.jpg";
 
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const StyledContainer = styled(Container)`
   width: 100%;
   max-width: 3000px;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 `;
 
 const ImgContainer = styled.div`
@@ -34,7 +34,7 @@ const ImgContainer = styled.div`
 
 const ImgWrapper = styled.div`
   margin-top: 20px;
-  margin-right:40px;
+  margin-right: 40px;
   height: 400px;
   width: 600px;
 `;
@@ -42,11 +42,11 @@ const ImgWrapper = styled.div`
 const Image = styled.img`
   width: 550px;
   height: 400px;
-  border:  2px solid #444;
+  border: 2px solid #444;
   width: 100%;
   transition: transform 0.2s ease-out;
   cursor: pointer;
-  
+
   &:hover {
     transform: scale(1.1);
     filter: brightness(80%);
@@ -64,106 +64,68 @@ export const Products = () => {
             <figure className="position-relative">
               <Image src={chairCollection} alt="chairCollection" />
 
-              <figcaption >
-                 NUMBER #1 CHAIRS IN MARKET
-              </figcaption>
-
+              <figcaption>NUMBER #1 CHAIRS IN MARKET</figcaption>
             </figure>
-      
           </ImgWrapper>
           <ImgWrapper as={Link} to={"/chairs"}>
             <figure className="position-relative">
               <Image src={hammerCollection} alt="hammerCollection" />
-               <figcaption>
-                  NUMBER #1 HAMMERS IN MARKET
-              </figcaption>
-
+              <figcaption>NUMBER #1 HAMMERS IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
           <ImgWrapper as={Link} to={"/chairs"}>
-           <figure className="position-relative">
-            <Image src={tableCollection } alt="tableCollection" />
-            <figcaption>
-                  NUMBER #1 TABLES IN MARKET
-            </figcaption>
-           </figure>
+            <figure className="position-relative">
+              <Image src={tableCollection} alt="tableCollection" />
+              <figcaption>NUMBER #1 TABLES IN MARKET</figcaption>
+            </figure>
           </ImgWrapper>
-          </ImgContainer>
+        </ImgContainer>
 
         <ImgContainer>
           <ImgWrapper as={Link} to={"/chairs"}>
             <figure className="position-relative">
               <Image src={screwCollection} alt="screwCollection" />
 
-              <figcaption>
-                  NUMBER #1 SCREWS IN MARKET
-              </figcaption>
-
+              <figcaption>NUMBER #1 SCREWS IN MARKET</figcaption>
             </figure>
-      
           </ImgWrapper>
           <ImgWrapper as={Link} to={"/chairs"}>
             <figure className="position-relative">
               <Image src={fridgeCollection} alt="fridgeCollection" />
-               <figcaption>
-                  NUMBER #1 FRIDGES IN MARKET
-              </figcaption>
-
+              <figcaption>NUMBER #1 FRIDGES IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
           <ImgWrapper as={Link} to={"/chairs"}>
-           <figure className="position-relative">
-            <Image src={ outdoorCollection } alt="outdoorCollection" />
-            <figcaption>
-                  NUMBER #1 OURDOOR FURNITURE
-            </figcaption>
-           </figure>
+            <figure className="position-relative">
+              <Image src={outdoorCollection} alt="outdoorCollection" />
+              <figcaption>NUMBER #1 OURDOOR FURNITURE</figcaption>
+            </figure>
           </ImgWrapper>
-
-          
         </ImgContainer>
- 
-        
+
         <ImgContainer>
           <ImgWrapper as={Link} to={"/chairs"}>
             <figure className="position-relative">
               <Image src={kitchenCollection} alt="kitchenCollection" />
 
-              <figcaption>
-                  NUMBER #1 KITCHEN STUFF
-              </figcaption>
-
+              <figcaption>NUMBER #1 KITCHEN STUFF</figcaption>
             </figure>
-      
           </ImgWrapper>
           <ImgWrapper as={Link} to={"/chairs"}>
             <figure className="position-relative">
               <Image src={indoorCollection} alt="indoorCollection" />
-               <figcaption>
-                  NUMBER #1 INDOOR FURNITURE
-              </figcaption>
-
+              <figcaption>NUMBER #1 INDOOR FURNITURE</figcaption>
             </figure>
           </ImgWrapper>
           <ImgWrapper as={Link} to={"/chairs"}>
-           <figure className="position-relative">
-            <Image src={ bathroomCollection } alt="bathroomCollection" />
-            <figcaption>
-                  NUMBER #1 BATHROOM FURNITURE
-            </figcaption>
-           </figure>
+            <figure className="position-relative">
+              <Image src={bathroomCollection} alt="bathroomCollection" />
+              <figcaption>NUMBER #1 BATHROOM FURNITURE</figcaption>
+            </figure>
           </ImgWrapper>
-
-          
         </ImgContainer>
-          
       </StyledContainer>
-      <Footer/>
-
-
-
+      <Footer />
     </div>
-
-    
-  ) 
-}
+  );
+};

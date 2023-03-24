@@ -1,14 +1,13 @@
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import RoomIcon from '@mui/icons-material/Room';
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import RoomIcon from "@mui/icons-material/Room";
 import styled from "styled-components";
-import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import PinterestIcon from '@mui/icons-material/Pinterest';
+import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import PinterestIcon from "@mui/icons-material/Pinterest";
 import { Link } from "react-router-dom";
-
 
 const Container = styled.div`
   display: flex;
@@ -30,8 +29,8 @@ const Desc = styled.p`
 
 const SocialContainer = styled.div`
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
 `;
 
 const MediaIcon = styled.div`
@@ -49,7 +48,7 @@ const MediaIcon = styled.div`
 const Middle = styled.div`
   flex: 1;
   padding: 5px;
-  margin-top:10px;
+  margin-top: 10px;
 `;
 
 const Title = styled.h3`
@@ -95,53 +94,66 @@ export const Footer = () => {
         <Logo>OfficeDepot</Logo>
 
         <Desc>
-          OfficeDepot is dedicated to selling the best items in the market. We take pride in offering our customers 
-          the best products in the market, and we never compromise on the quality of the items we sell. Our vast list of products is 
-          carefully curated to ensure that every item meets our high standards of excellence.
+          OfficeDepot is dedicated to selling the best items in the market. We
+          take pride in offering our customers the best products in the market,
+          and we never compromise on the quality of the items we sell. Our vast
+          list of products is carefully curated to ensure that every item meets
+          our high standards of excellence.
         </Desc>
       </LeftSide>
       <Middle>
         <Title>Links</Title>
         <List>
-          <ListItem><Link to="/cart">Cart</Link></ListItem>
-          <ListItem><Link to="/products">Collections</Link></ListItem>
-          <ListItem><Link to="/profile">My Account</Link></ListItem>
-           <ListItem><Link to="/about">About</Link></ListItem>
+          <ListItem>
+            <Link to="/cart">Cart</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/products">Collections</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/profile">My Account</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/about">About</Link>
+          </ListItem>
         </List>
       </Middle>
       <RightSide>
         <Title>Contact</Title>
 
         <Spacer>
-        <ContactItem>
-          <RoomIcon style={{marginRight:"10px"}}/> 1 Washington Sq, San Jose, CA 95192
-        </ContactItem>
-  
-        <ContactItem>
-          <PhoneIphoneIcon style={{marginRight:"10px"}}/> +1(800)-Office-Depot 
-        </ContactItem>
-   
-        <ContactItem>
-          <MailOutlineIcon style={{marginRight:"10px"}} /> officedepot@gmail.com
-        </ContactItem>
-      
-        <SocialContainer>
-          <MediaIcon color="3B5999">
-            <FacebookIcon />
-          </MediaIcon>
-          <MediaIcon color="55ACEE">
-            <TwitterIcon />
-          </MediaIcon>
-          <MediaIcon color="E4405F">
-            <InstagramIcon />
-          </MediaIcon>
-          <MediaIcon color="FF0000">
-            <YouTubeIcon />
-          </MediaIcon>
-          <MediaIcon color="BD081C">
-            < PinterestIcon />
-          </MediaIcon>
-        </SocialContainer>
+          <ContactItem>
+            <RoomIcon style={{ marginRight: "10px" }} /> 1 Washington Sq, San
+            Jose, CA 95192
+          </ContactItem>
+
+          <ContactItem>
+            <PhoneIphoneIcon style={{ marginRight: "10px" }} />{" "}
+            +1(800)-Office-Depot
+          </ContactItem>
+
+          <ContactItem>
+            <MailOutlineIcon style={{ marginRight: "10px" }} />{" "}
+            officedepot@gmail.com
+          </ContactItem>
+
+          <SocialContainer>
+            <MediaIcon color="3B5999">
+              <FacebookIcon />
+            </MediaIcon>
+            <MediaIcon color="55ACEE">
+              <TwitterIcon />
+            </MediaIcon>
+            <MediaIcon color="E4405F">
+              <InstagramIcon />
+            </MediaIcon>
+            <MediaIcon color="FF0000">
+              <YouTubeIcon />
+            </MediaIcon>
+            <MediaIcon color="BD081C">
+              <PinterestIcon />
+            </MediaIcon>
+          </SocialContainer>
         </Spacer>
       </RightSide>
     </Container>

@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import '../css/slider.css';
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import "../css/slider.css";
 import { useState } from "react";
-import {sliderItems} from "./imageData"
+import { sliderItems } from "./imageData";
 
 const Container = styled.div`
   width: 100%;
@@ -93,7 +93,6 @@ const Button = styled.button`
 `;
 
 export const Slider = () => {
-
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
@@ -104,36 +103,32 @@ export const Slider = () => {
   };
 
   return (
+    <div className="scaleDown">
+      <Container>
+        <Arrow direction="left" onClick={() => handleClick("left")}>
+          <ArrowBackIosNewIcon />
+        </Arrow>
 
-    <div class = "scaleDown">
-    <Container>
-      <Arrow direction="left" onClick={() => handleClick("left")}>
-        <ArrowBackIosNewIcon/>
-      </Arrow>
+        <Wrapper slideIndex={slideIndex}>
+          {sliderItems.map((item) => (
+            <Slide bg="#fff7f7">
+              <ImgContainer>
+                <Image src={item.img} />
+              </ImgContainer>
 
-      <Wrapper slideIndex = {slideIndex}>
-        {sliderItems.map(item => (
-      <Slide bg = "#fff7f7">
-        <ImgContainer>
-            <Image src={item.img} />
-        </ImgContainer>
+              <InfoContainer>
+                <Title>{item.title}</Title>
+                <Desc>{item.desc}</Desc>
+                <Button>SHOP NOW</Button>
+              </InfoContainer>
+            </Slide>
+          ))}
+        </Wrapper>
 
-        <InfoContainer>
-              <Title>{item.title}</Title>
-              <Desc>{item.desc}</Desc>
-              <Button>{item.shop}</Button>
-        </InfoContainer>
-
-      </Slide >
-
-        ))}
-
-      </Wrapper>
-
-      <Arrow direction="right" onClick={() => handleClick("right")}>
-        <ArrowForwardIosIcon/>
-      </Arrow>
-    </Container>
+        <Arrow direction="right" onClick={() => handleClick("right")}>
+          <ArrowForwardIosIcon />
+        </Arrow>
+      </Container>
     </div>
-  )
-}
+  );
+};
