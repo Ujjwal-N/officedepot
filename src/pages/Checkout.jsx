@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserTextBoxes from "./UserTextBoxes";
+import UserTextBoxes from "../components/UserTextBoxes";
 import { Card } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import hammer from "../Images/hammer.jpg";

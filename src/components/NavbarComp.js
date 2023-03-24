@@ -12,12 +12,13 @@ import {
 import { About } from "../pages/About";
 import { Home } from "../pages/Home";
 import { Profile } from "../pages/Profile";
-import { Cart } from "../pages/Cart";
 import { Signup } from "../pages/Signup";
 import { Products } from "../pages/Products";
 import { Chairs } from "../pages/Chairs";
 import ItemDescription from "../pages/ItemDescription";
 import Admin from "../pages/Admin";
+import Cart from "../pages/Cart";
+import CheckoutPage from "../pages/Checkout";
 import Employee from "../pages/Employee";
 import Inventory from "../pages/Inventory";
 import Order from "../pages/Order";
