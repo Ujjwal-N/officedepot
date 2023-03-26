@@ -1,8 +1,5 @@
-import React from "react";
+import React from 'react';
 import styled from "styled-components";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import GradeIcon from "@mui/icons-material/Grade";
 
 const Info = styled.div`
   opacity: 0;
@@ -31,7 +28,7 @@ const Container = styled.div`
   justify-content: center;
   background-color: #f5fbfd;
   position: relative;
-  &:hover ${Info} {
+  &:hover ${Info}{
     opacity: 1;
   }
 `;
@@ -71,13 +68,13 @@ const Productproduct = ({ item }) => {
       <Text>${item.cost}</Text>
       <Info>
         <Icon>
-          <VisibilityIcon />
+           {item.icon}
         </Icon>
         <Icon>
-          <ShoppingCartIcon />
+           {item.icon2}
         </Icon>
         <Icon>
-          <GradeIcon />
+           {item.icon3}
         </Icon>
       </Info>
     </Container>
