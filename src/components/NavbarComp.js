@@ -16,13 +16,8 @@ import { Signup } from "../pages/Signup";
 import { Products } from "../pages/Products";
 import { Chairs } from "../pages/Chairs";
 import ItemDescription from "../pages/ItemDescription";
-import Admin from "../pages/Admin";
 import Cart from "../pages/Cart";
 import CheckoutPage from "../pages/Checkout";
-import Employee from "../pages/Employee";
-import Inventory from "../pages/Inventory";
-import Order from "../pages/Order";
-import Customers from "../pages/Customers";
 
 const NavbarComp = ({ userData, setUserData }) => {
   return (
@@ -84,14 +79,9 @@ const NavbarComp = ({ userData, setUserData }) => {
               path="/signup"
               element={<Signup userData={userData} setUserData={setUserData} />}
             />
-            <Route path="/products" element={<Products/>}/>
-            <Route path="/chairs" element={<Chairs/>}/>
-            <Route path="/itemPage" element={<ItemDescription/>}/>
-            <Route path="/admin" element={<Admin/>}/>
-            <Route path="/employee" element={<Employee/>}/>
-            <Route path="/inventory" element={<Inventory/>}/>
-            <Route path="/orders" element={<Order/>}/>
-            <Route path="/customers" element={<Customers/>}/>
+            <Route path="/products" element={<Products />} />
+            <Route path="/chairs" element={<Chairs />} />
+            <Route path="/itemPage" element={<ItemDescription />} />
             <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
         </div>

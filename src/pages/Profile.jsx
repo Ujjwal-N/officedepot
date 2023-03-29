@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, ListGroup, Badge } from "react-bootstrap";
 import UserTextBoxes from "../components/UserTextBoxes";
 export const Profile = ({ userData, setUserData }) => {
   const orderData = [
@@ -30,7 +30,7 @@ export const Profile = ({ userData, setUserData }) => {
   return (
     <div>
       <Row style={{ marginTop: "3em", marginLeft: "2rem" }}>
-        <Col md={6}>
+        <Col md={7}>
           <h2> Edit User Data</h2>
           <UserTextBoxes
             formData={userData}
@@ -39,22 +39,35 @@ export const Profile = ({ userData, setUserData }) => {
             handleSubmit={handleSubmit}
           />
         </Col>
-        <Col md={6}>
+        <Col md={5}>
           <h2> Past Orders</h2>
-          <ul>
+          <ListGroup as="ol" style={{ marginRight: "5px" }}>
             {orderData.map((item) => (
               <>
-                <li>Order #{item.number}</li>
-
-                {item.items.map((orderItem) => {
-                  return <li>{orderItem}</li>;
-                })}
-                <li>Status: {item.status}</li>
-                <li>Total: {item.total}</li>
-                <br></br>
+                <ListGroup.Item
+                  as="li"
+                  className="d-flex justify-content-between align-items-start"
+                >
+                  <div className="ms-2 me-auto" style={{ textAlign: "left" }}>
+                    <div className="fw-bold">Order #{item.number}</div>
+                    <div>
+                      <ul>
+                        {item.items.map((orderItem) => {
+                          return <li>{orderItem}</li>;
+                        })}
+                      </ul>
+                      Status: {item.status}
+                      <br></br>
+                      Total: {item.total}
+                    </div>
+                  </div>
+                  <Badge bg="primary" pill>
+                    {item.items.length}
+                  </Badge>
+                </ListGroup.Item>
               </>
             ))}
-          </ul>
+          </ListGroup>
         </Col>
       </Row>
     </div>
