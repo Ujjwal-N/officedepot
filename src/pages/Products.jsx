@@ -125,7 +125,6 @@ export const Products = () => {
           </ImgWrapper>
         </ImgContainer>
       </StyledContainer>
-      <Footer />
     </div>
   );
 };

@@ -28,8 +28,10 @@ export const Profile = ({ userData, setUserData }) => {
   };
 
   return (
-    <div>
-      <Row style={{ marginTop: "3em", marginLeft: "2rem" }}>
+    <div style={{ minHeight: "73vh" }}>
+      <Row
+        style={{ marginTop: "3em", marginLeft: "2rem", marginBottom: "3em" }}
+      >
         <Col md={7}>
           <h2> Edit User Data</h2>
           <UserTextBoxes

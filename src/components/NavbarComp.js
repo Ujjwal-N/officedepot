@@ -18,6 +18,7 @@ import { Chairs } from "../pages/Chairs";
 import ItemDescription from "../pages/ItemDescription";
 import Cart from "../pages/Cart";
 import CheckoutPage from "../pages/Checkout";
+import { Footer } from "./Footer";
 
 const NavbarComp = ({ userData, setUserData }) => {
   return (
@@ -86,6 +87,7 @@ const NavbarComp = ({ userData, setUserData }) => {
           </Routes>
         </div>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 };

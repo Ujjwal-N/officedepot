@@ -61,8 +61,16 @@ export const Signup = ({ userData, setUserData }) => {
           password: loginPassword,
         })
         .then((response) => {
-          console.log(response.data);
-          //setName(loginUsername); should be setUserData
+          setUserData({
+            ...userData,
+            ccNumber: response.data["user"]["creditcard"],
+            email: response.data["user"]["email"],
+            name:
+              response.data["user"]["firstname"] +
+              " " +
+              response.data["user"]["lastname"],
+            password: response.data["user"]["password"],
+          });
           navigate("/home", { replace: true });
         })
         .catch((error) => {

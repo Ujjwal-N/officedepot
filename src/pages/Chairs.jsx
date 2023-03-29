@@ -1,43 +1,31 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
-import { Chairproducts } from '../components/Chairproducts';
-import { Footer } from '../components/Footer';
-import SearchBarComp from '../components/SearchBarComp';
-
+import { Chairproducts } from "../components/Chairproducts";
+import { Footer } from "../components/Footer";
+import SearchBarComp from "../components/SearchBarComp";
 
 const Title = styled.h1`
-  margin-top:20px;
+  margin-top: 20px;
 `;
 
-
 const Container = styled.div`
-  margin-top:-30px;
+  margin-top: -30px;
 `;
 
 export const Chairs = () => {
   return (
-  <div>
+    <div>
+      <Title> Chairs </Title>
 
-    <Title> Chairs </Title>
+      <Container>
+        <SearchBarComp />
 
-    <Container>
-      <SearchBarComp/>
-      
+        <Chairproducts></Chairproducts>
 
-      <Chairproducts>
+        <Chairproducts></Chairproducts>
 
-      </Chairproducts>
-
-      <Chairproducts>
-
-      </Chairproducts>
-
-      <Chairproducts>
-
-      </Chairproducts>
-      <Footer/>
-
-    </Container>
-  </div>
-  )
-}
+        <Chairproducts></Chairproducts>
+      </Container>
+    </div>
+  );
+};

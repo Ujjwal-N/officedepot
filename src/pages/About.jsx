@@ -6,7 +6,6 @@ export const About = () => {
   return (
     <div>
       <Aboutinfo />
-      <Footer />
     </div>
   );
 };

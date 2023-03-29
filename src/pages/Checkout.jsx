@@ -8,7 +8,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 
 function CheckoutPage() {
   return (
-    <div style={{ padding: "10px" }}>
+    <div style={{ padding: "10px", minHeight: "78vh" }}>
       <h1>Checkout</h1>
       <h3 style={{ textAlign: "left" }}>Order Summary</h3>
       <div
@@ -40,7 +40,7 @@ function CheckoutPage() {
         }}
       >
         <p>
-            <strong>Total Items:</strong> 2
+          <strong>Total Items:</strong> 2
         </p>
         <p>
           <strong>Subtotal:</strong> $19.99

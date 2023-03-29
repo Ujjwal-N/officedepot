@@ -14,7 +14,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
               type="text"
               placeholder="Enter full name"
               onChange={handleChange}
-              value={formData.username}
+              value={formData.name}
             />
           </Form.Group>
 

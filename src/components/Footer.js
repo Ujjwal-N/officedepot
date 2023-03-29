@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 const Container = styled.div`
   display: flex;
   border-top: 1px solid #ccc;
+  bottom: 0;
+  position: relative;
 `;
 
 const LeftSide = styled.div`

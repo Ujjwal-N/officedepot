@@ -6,7 +6,7 @@ import chair from "../Images/chair.jpg";
 
 function Cart() {
   return (
-    <div style={{ padding: "10px " }}>
+    <div style={{ padding: "10px ", minHeight: "77vh" }}>
       <h1>Cart</h1>
 
       <div

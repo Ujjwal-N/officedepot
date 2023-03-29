@@ -12,7 +12,6 @@ export const Home = () => {
       <p style={{ margin: "100px" }}></p>
       <h1 style={{ marginTop: "20px" }}>PREVIEW OUR ITEMS</h1>
       <Homeproducts />
-      <Footer />
     </div>
   );
 };
