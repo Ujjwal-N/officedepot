@@ -29,6 +29,8 @@ const Button = styled.button`
 `;
 
 function ItemDescription({ item }) {
+  //item group
+  //stock
   return (
     <div style={leftAlign}>
       {/* <h1>{item.title}</h1>
@@ -74,6 +76,8 @@ function ItemDescription({ item }) {
             <option value={8}>8</option>
           </select>
         </p>
+        <p> Item Group: Hammers </p>
+        <p> Quantity In Stock: 8 </p>
         <Button>Add to Cart</Button>
       </div>
     </div>

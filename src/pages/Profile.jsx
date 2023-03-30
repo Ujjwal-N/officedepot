@@ -1,7 +1,9 @@
 import { React, useState } from "react";
-import { Row, Col, ListGroup, Badge } from "react-bootstrap";
+import { Row, Col, ListGroup, Badge, Alert } from "react-bootstrap";
 import UserTextBoxes from "../components/UserTextBoxes";
+import axios from "axios";
 export const Profile = ({ userData, setUserData }) => {
+  const [showSuccessAlert, setShowAlert] = useState(false);
   const orderData = [
     {
       number: "1",
@@ -18,7 +20,31 @@ export const Profile = ({ userData, setUserData }) => {
   ];
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(userData);
+    const { name, email, address, city, state, zip, ccNumber } = userData;
+    const [firstname, lastname] = name.split(" ");
+    const shippingaddress = address + "\n" + city + "\n" + state + "\n" + zip;
+    //{ firstname, lastname, email, password, shippingaddress, creditcard }
+    console.log({
+      firstname: firstname,
+      lastname: lastname,
+      shippingaddress: shippingaddress,
+      creditcard: ccNumber,
+    });
+    axios
+      .put("http://3.133.128.233:5001/updateCustomer/" + email, {
+        firstname: firstname,
+        lastname: lastname,
+        shippingaddress: shippingaddress,
+        creditcard: ccNumber,
+      })
+      .then((response) => {
+        console.log(response.status);
+        console.log(response.data);
+        setShowAlert(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   const handleChange = (event) => {
     setUserData({
@@ -40,6 +66,14 @@ export const Profile = ({ userData, setUserData }) => {
             signup={false}
             handleSubmit={handleSubmit}
           />
+          <Alert
+            variant="success"
+            onClose={() => setShowAlert(false)}
+            dismissible
+            show={showSuccessAlert}
+          >
+            User profile successfully updated!
+          </Alert>
         </Col>
         <Col md={5}>
           <h2> Past Orders</h2>

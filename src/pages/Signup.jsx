@@ -61,6 +61,8 @@ export const Signup = ({ userData, setUserData }) => {
           password: loginPassword,
         })
         .then((response) => {
+          const addressStr =
+            response.data["user"]["shippingaddress"].split("\n");
           setUserData({
             ...userData,
             ccNumber: response.data["user"]["creditcard"],
@@ -70,6 +72,10 @@ export const Signup = ({ userData, setUserData }) => {
               " " +
               response.data["user"]["lastname"],
             password: response.data["user"]["password"],
+            address: addressStr[0],
+            city: addressStr[1],
+            state: addressStr[2],
+            zip: addressStr[3],
           });
           navigate("/home", { replace: true });
         })
