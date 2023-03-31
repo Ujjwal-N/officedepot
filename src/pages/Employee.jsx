@@ -18,7 +18,6 @@ const Employee = () => {
 
   const saveRow = () => {
     setData([...data, { name: newRowData.name, email: newRowData.email }]);
-    //firstname, lastname, email, password
     const [firstname, lastname] = newRowData.name.split(" ");
     axios
       .post("http://3.133.128.233:5001/employeeCreate", {
