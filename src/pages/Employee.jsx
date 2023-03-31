@@ -1,13 +1,105 @@
-import React from 'react'
+import React, { useState } from "react";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import axios from "axios";
+const Employee = () => {
+  const [data, setData] = useState([]);
+  const [addingRow, setAddingRow] = useState(false);
+  const [newRowData, setNewRowData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-export const Employee = () => {
+  const addRow = () => {
+    setAddingRow(true);
+  };
+
+  const saveRow = () => {
+    setData([...data, { name: newRowData.name, email: newRowData.email }]);
+    //firstname, lastname, email, password
+    const [firstname, lastname] = newRowData.name.split(" ");
+    axios
+      .post("http://3.133.128.233:5001/employeeCreate", {
+        firstname: firstname,
+        lastname: lastname,
+        email: newRowData.email,
+        password: newRowData.password,
+      })
+      .then((response) => {
+        console.log(response.status);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setNewRowData({ name: "", email: "", password: "" });
+    setAddingRow(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewRowData({ ...newRowData, [name]: value });
+  };
+
   return (
-    <div>
+    <>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Employee Email</th>
+            {addingRow && <th>Password</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((row, index) => (
+            <tr key={index}>
+              <td>{row.name}</td>
+              <td>{row.email}</td>
+            </tr>
+          ))}
+          {addingRow && (
+            <tr>
+              <td>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  placeholder="Employee Name"
+                  value={newRowData.name}
+                  onChange={handleInputChange}
+                />
+              </td>
+              <td>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="Employee Email"
+                  value={newRowData.email}
+                  onChange={handleInputChange}
+                />
+              </td>
+              <td>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Set Password"
+                  value={newRowData.password}
+                  onChange={handleInputChange}
+                />
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </Table>
+      {!addingRow ? (
+        <Button onClick={addRow}>Add New Employee</Button>
+      ) : (
+        <Button onClick={saveRow}>Save</Button>
+      )}
+    </>
+  );
+};
 
-    <h1>Employee</h1>
-
-    </div>
-  )
-}
-
-export default Employee
+export default Employee;

@@ -39,8 +39,8 @@ const AdminNavbarComp = () => {
                 <Nav.Link as={Link} to={"/customers"}>
                   Customers
                 </Nav.Link>
-                <Nav.Link as={Link} to={"/employees"}>
-                  Employee
+                <Nav.Link as={Link} to={"/employee"}>
+                  Employees
                 </Nav.Link>
                 {/* {userData.name ? (
                   <Navbar.Text>Hi {userData.name}!</Navbar.Text>
