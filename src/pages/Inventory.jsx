@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import ImageSelector from "../components/ImageSelector";
 import axios from "axios";
 const Inventory = () => {
   const [data, setData] = useState([]);
@@ -14,34 +16,51 @@ const Inventory = () => {
     price: "",
     itemgroup: "",
     stock: "",
+    image: "",
   });
-
+  const [showModal, setModalShow] = useState(false);
+  const [rowBeingEdited, setRowBeingEdited] = useState(0);
+  const columnKeys = [
+    "id",
+    "name",
+    "description",
+    "itemgroup",
+    "weight",
+    "price",
+    "stock",
+    "image",
+  ];
   const addRow = () => {
     setAddingRow(true);
+    setRowBeingEdited(-1);
   };
 
   const saveRow = () => {
-    setData([...data, newRowData]);
-    const { id, ...dataToPass } = newRowData;
+    const { id, image, ...dataToPass } = newRowData;
     axios
       .post("http://3.133.128.233:5001/createInventory", dataToPass)
       .then((response) => {
-        console.log(response.status);
-        console.log(response.data);
+        const newRowWithId = {
+          ...newRowData,
+          id: response.data["inventory_id"],
+        };
+        setData([...data, newRowWithId]);
+        setNewRowData({
+          id: "",
+          name: "",
+          description: "",
+          weight: "",
+          price: "",
+          itemgroup: "",
+          stock: "",
+          image: "",
+        });
+        setAddingRow(false);
+        setRowBeingEdited(0);
       })
       .catch((error) => {
         console.log(error);
       });
-    console.log(newRowData);
-    setNewRowData({
-      name: "",
-      description: "",
-      weight: "",
-      price: "",
-      itemgroup: "",
-      stock: "",
-    });
-    setAddingRow(false);
   };
 
   const handleInputChange = (e) => {
@@ -62,8 +81,19 @@ const Inventory = () => {
 
   const toggleEdit = (index) => {
     if (data[index].editing) {
-      //make call to server
-      const { id, editing, ...dataToPass } = data[index];
+      setRowBeingEdited(0);
+      const { id, editing, image, ...dataToPass } = data[index];
+      axios
+        .put("http://3.133.128.233:5001/updateInventory/" + id, dataToPass)
+        .then((response) => {
+          console.log(response.status);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      setRowBeingEdited(index);
     }
     setData(
       data.map((row, i) =>
@@ -72,34 +102,80 @@ const Inventory = () => {
     );
   };
 
+  const handleDelete = (indexToDelete) => {
+    axios
+      .delete(
+        "http://3.133.128.233:5001/removeInventoryItem/" +
+          data[indexToDelete].id
+      )
+      .then((response) => {
+        console.log(response.status);
+        console.log(response.data);
+        setData((prevData) =>
+          prevData.filter((_, index) => index !== indexToDelete)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleModalClose = () => setModalShow(false);
+  const handleModalShow = () => setModalShow(true);
+
+  const handleImageChange = (image) => {
+    // Handle the selected image here
+    if (rowBeingEdited == -1) {
+      setNewRowData({ ...newRowData, image: image.name });
+    } else {
+      const updatedData = data.map((row, i) => {
+        if (i === rowBeingEdited) {
+          return { ...row, image: image.name };
+        }
+        return row;
+      });
+      setData(updatedData);
+    }
+    console.log(image);
+  };
+
   return (
     <>
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th style={{ width: "5%" }}>ID</th>
+            <th style={{ width: "3%" }}>ID</th>
             <th style={{ width: "15%" }}>Name</th>
             <th style={{ width: "30%" }}>Description</th>
             <th style={{ width: "15%" }}>Item Group</th>
-            <th style={{ width: "10%" }}>Weight</th>
-            <th style={{ width: "10%" }}>Price</th>
-            <th style={{ width: "10%" }}>Stock</th>
+            <th style={{ width: "7%" }}>Weight</th>
+            <th style={{ width: "7%" }}>Price</th>
+            <th style={{ width: "7%" }}>Stock</th>
+            <th style={{ width: "10%" }}>Image</th>
           </tr>
         </thead>
         <tbody>
           {data.map((row, index) => (
             <tr key={index}>
-              {Object.entries(row).map(([key, value]) => {
+              {columnKeys.map((key) => {
                 if (key === "editing") return null;
+                const value = row[key];
                 return (
                   <td key={key}>
                     {row.editing ? (
-                      <Form.Control
-                        type="text"
-                        name={key}
-                        value={value}
-                        onChange={(e) => handleEditInputChange(e, index)}
-                      />
+                      key === "image" ? (
+                        <Button onClick={handleModalShow}>
+                          {data[index].image}
+                        </Button>
+                      ) : (
+                        <Form.Control
+                          type={key === "id" ? "number" : "text"}
+                          disabled={key === "id"}
+                          name={key}
+                          value={value}
+                          onChange={(e) => handleEditInputChange(e, index)}
+                        />
+                      )
                     ) : (
                       value
                     )}
@@ -111,75 +187,33 @@ const Inventory = () => {
                   {row.editing ? "Save" : "Edit"}
                 </Button>
               </td>
+              <td>
+                <Button variant="danger" onClick={() => handleDelete(index)}>
+                  Delete
+                </Button>
+              </td>
             </tr>
           ))}
-
           {addingRow && (
             <tr>
-              <td className="id">
-                <Form.Control
-                  disabled
-                  type="number"
-                  name="id"
-                  placeholder="ID"
-                  value={newRowData.id}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td className="name">
-                <Form.Control
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={newRowData.name}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td className="description">
-                <Form.Control
-                  type="text"
-                  name="description"
-                  placeholder="Description"
-                  value={newRowData.description}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td className="itemgroup">
-                <Form.Control
-                  type="text"
-                  name="itemgroup"
-                  placeholder="Item Group"
-                  value={newRowData.itemgroup}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td className="weight">
-                <Form.Control
-                  type="number"
-                  name="weight"
-                  placeholder="Weight"
-                  value={newRowData.weight}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td className="price">
-                <Form.Control
-                  type="number"
-                  name="price"
-                  placeholder="Price"
-                  value={newRowData.price}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td className="stock">
-                <Form.Control
-                  type="number"
-                  name="stock"
-                  placeholder="Stock"
-                  value={newRowData.stock}
-                  onChange={handleInputChange}
-                />
-              </td>
+              {columnKeys.map((key) => (
+                <td key={key} className={key}>
+                  {key === "image" ? (
+                    <Button onClick={handleModalShow}>
+                      {newRowData.image ? newRowData.image : "Select"}
+                    </Button>
+                  ) : (
+                    <Form.Control
+                      type={key === "id" ? "number" : "text"}
+                      disabled={key === "id"}
+                      name={key}
+                      placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
+                      value={newRowData[key]}
+                      onChange={handleInputChange}
+                    />
+                  )}
+                </td>
+              ))}
             </tr>
           )}
         </tbody>
@@ -189,6 +223,19 @@ const Inventory = () => {
       ) : (
         <Button onClick={saveRow}>Save Row</Button>
       )}
+      <Modal show={showModal} onHide={handleModalClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Select Image</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ImageSelector onImageChange={handleImageChange} />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleModalClose}>
+            Save
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
