@@ -12,7 +12,6 @@ export const sliderItems = [
     img: chair,
     title: "#1 CHAIR IN THE MARKET",
     desc: "GET 10% OFF FIRST TIME PURCHASE",
-    bg: "fFFFF",
     shop: (
       <Link to="/itemPage" style={{ color: "white", textDecoration: "none" }}>
         SHOP NOW
@@ -24,7 +23,6 @@ export const sliderItems = [
     img: screw,
     title: "BUY THIS SCREWDRIVER",
     desc: "TO SCREW YOUR HEAD STRAIGHT",
-    bg: "fffff",
     shop: (
       <Link to="/itemPage" style={{ color: "white", textDecoration: "none" }}>
         SHOP NOW
@@ -36,7 +34,6 @@ export const sliderItems = [
     img: hammer,
     title: "HAMMER TIME",
     desc: "GUARANTEE TO LAST A LIFETIME",
-    bg: "fffff",
     shop: (
       <Link to="/itemPage" style={{ color: "white", textDecoration: "none" }}>
         SHOP NOW
@@ -51,7 +48,6 @@ export const productItems = [
     img: chair,
     title: "#1 CHAIR IN THE MARKET",
     desc: "GET 10% OFF FIRST TIME PURCHASE",
-    bg: "fFFFF",
     icon: (
       <Link to="/itemPage" style={{ color: "red" }}>
         <VisibilityIcon />
@@ -64,7 +60,6 @@ export const productItems = [
     img: screw,
     title: "BUY THIS SCREWDRIVER",
     desc: "TO SCREW YOUR HEAD STRAIGHT",
-    bg: "fffff",
     icon: (
       <Link to="/itemPage" style={{ color: "blue" }}>
         <VisibilityIcon />
@@ -77,7 +72,6 @@ export const productItems = [
     img: hammer,
     title: "HAMMER TIME",
     desc: "GUARANTEE TO LAST A LIFETIME",
-    bg: "fffff",
     icon: (
       <Link to="/itemPage" style={{ color: "green" }}>
         <VisibilityIcon />
@@ -91,7 +85,6 @@ export const productItems = [
     img: hammer,
     title: "HAMMER TIME",
     desc: "GUARANTEE TO LAST A LIFETIME",
-    bg: "fffff",
     icon: (
       <Link to="/itemPage" style={{ color: "lightblue" }}>
         <VisibilityIcon />
@@ -105,7 +98,6 @@ export const productItems = [
     img: hammer,
     title: "HAMMER TIME",
     desc: "GUARANTEE TO LAST A LIFETIME",
-    bg: "fffff",
     icon: (
       <Link to="/itemPage" style={{ color: "pink" }}>
         <VisibilityIcon />
@@ -115,14 +107,16 @@ export const productItems = [
   },
 ];
 
-export const chairItems = [
+export const inventoryItems = [
   {
     id: 1,
     img: chair,
-    title: "Chair 1",
-    desc: "GET 10% OFF FIRST TIME PURCHASE",
-    cost: "5,000",
-    bg: "fFFFF",
+    name: "Chair 1",
+    description: "Testing 1",
+    weight: "weight 1 pound",
+    price: "5,000",
+    itemgroup:"chair",
+    stock:"10",
     icon: (
       <Link to="/itemPage" style={{ color: "pink" }}>
         <VisibilityIcon />
@@ -134,9 +128,12 @@ export const chairItems = [
   {
     id: 2,
     img: chair,
-    title: "Chair 2",
-    cost: "10,000",
-    bg: "fFFFF",
+    name: "Chair 2",
+    description: "Testing 2",
+    weight: "weight 2 pound",
+    price: "6,000",
+    itemgroup:"chair",
+    stock:"9",
     icon: (
       <Link to="/itemPage" style={{ color: "lightblue" }}>
         <VisibilityIcon />
@@ -148,10 +145,12 @@ export const chairItems = [
   {
     id: 3,
     img: chair,
-    title: "Chair 3",
-    desc: "GET 10% OFF FIRST TIME PURCHASE",
-    cost: "2,000",
-    bg: "fFFFF",
+    name: "Chair 3",
+    description: "Testing 3",
+    weight: "weight 3 pound",
+    price: "3,000",
+    itemgroup:"chair",
+    stock:"10",
     icon: (
       <Link to="/itemPage" style={{ color: "lightgreen" }}>
         <VisibilityIcon />
@@ -164,10 +163,12 @@ export const chairItems = [
   {
     id: 4,
     img: chair,
-    title: "Chair 4",
-    desc: "GET 10% OFF FIRST TIME PURCHASE",
-    cost: "1,000",
-    bg: "fFFFF",
+    name: "Chair 4",
+    description: "Testing 4",
+    weight: "weight 4 pound",
+    price: "4,000",
+    itemgroup:"chair",
+    stock:"10",
     icon: (
       <Link to="/itemPage">
         <VisibilityIcon />
@@ -176,4 +177,42 @@ export const chairItems = [
     icon2: <ShoppingCartIcon />,
     icon3: <GradeIcon />,
   },
+
+    {
+    id: 5,
+    img: hammer,
+    name: "Hammer 1",
+    description: "Testing 1",
+    weight: "weight 4 pound",
+    price: "4,000",
+    itemgroup:"hammer",
+    stock:"10",
+    icon: (
+      <Link to="/itemPage">
+        <VisibilityIcon />
+      </Link>
+    ),
+    icon2: <ShoppingCartIcon />,
+    icon3: <GradeIcon />,
+  },
+
+  {
+    id: 2823,
+    img: screw,
+    name: "Screw 1",
+    description: "Testing 1",
+    weight: "weight 4 pound",
+    price: "0,000",
+    itemgroup:"screw",
+    stock:"10",
+    icon: (
+      <Link to="/itemPage">
+        <VisibilityIcon />
+      </Link>
+    ),
+    icon2: <ShoppingCartIcon />,
+    icon3: <GradeIcon />,
+  },
+
+
 ];

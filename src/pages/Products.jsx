@@ -60,20 +60,20 @@ export const Products = () => {
 
       <StyledContainer>
         <ImgContainer>
-          <ImgWrapper as={Link} to={"/chairs"}>
+          <ImgWrapper as={Link} to={"/product?itemgroup=chair"} name="chair">
             <figure className="position-relative">
               <Image src={chairCollection} alt="chairCollection" />
 
               <figcaption>NUMBER #1 CHAIRS IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
-          <ImgWrapper as={Link} to={"/chairs"}>
+          <ImgWrapper as={Link} to={"/product?itemgroup=hammer"} name="hammer">
             <figure className="position-relative">
               <Image src={hammerCollection} alt="hammerCollection" />
               <figcaption>NUMBER #1 HAMMERS IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
-          <ImgWrapper as={Link} to={"/chairs"}>
+          <ImgWrapper as={Link} to={"/product?itemgroup=table"} name="table">
             <figure className="position-relative">
               <Image src={tableCollection} alt="tableCollection" />
               <figcaption>NUMBER #1 TABLES IN MARKET</figcaption>
@@ -82,20 +82,20 @@ export const Products = () => {
         </ImgContainer>
 
         <ImgContainer>
-          <ImgWrapper as={Link} to={"/chairs"}>
+          <ImgWrapper as={Link} to={"/product?itemgroup=screw"} name="screw">
             <figure className="position-relative">
               <Image src={screwCollection} alt="screwCollection" />
 
               <figcaption>NUMBER #1 SCREWS IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
-          <ImgWrapper as={Link} to={"/chairs"}>
+          <ImgWrapper as={Link} to={"/product?itemgroup=fridge"} name="fridge">
             <figure className="position-relative">
               <Image src={fridgeCollection} alt="fridgeCollection" />
               <figcaption>NUMBER #1 FRIDGES IN MARKET</figcaption>
             </figure>
           </ImgWrapper>
-          <ImgWrapper as={Link} to={"/chairs"}>
+          <ImgWrapper as={Link} to={"/product?itemgroup=outdoor"} name="outdoor">
             <figure className="position-relative">
               <Image src={outdoorCollection} alt="outdoorCollection" />
               <figcaption>NUMBER #1 OURDOOR FURNITURE</figcaption>
@@ -104,20 +104,20 @@ export const Products = () => {
         </ImgContainer>
 
         <ImgContainer>
-          <ImgWrapper as={Link} to={"/chairs"}>
+          <ImgWrapper as={Link} to={"/product?itemgroup=kitchen"} name="kitchen">
             <figure className="position-relative">
               <Image src={kitchenCollection} alt="kitchenCollection" />
 
               <figcaption>NUMBER #1 KITCHEN STUFF</figcaption>
             </figure>
           </ImgWrapper>
-          <ImgWrapper as={Link} to={"/chairs"}>
+          <ImgWrapper as={Link} to={"/product?itemgroup=indoor"} name="indoor">
             <figure className="position-relative">
               <Image src={indoorCollection} alt="indoorCollection" />
               <figcaption>NUMBER #1 INDOOR FURNITURE</figcaption>
             </figure>
           </ImgWrapper>
-          <ImgWrapper as={Link} to={"/chairs"}>
+          <ImgWrapper as={Link} to={"/product?itemgroup=bathroom"} name="bathroom">
             <figure className="position-relative">
               <Image src={bathroomCollection} alt="bathroomCollection" />
               <figcaption>NUMBER #1 BATHROOM FURNITURE</figcaption>

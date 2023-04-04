@@ -14,7 +14,7 @@ import { Home } from "../pages/Home";
 import { Profile } from "../pages/Profile";
 import { Signup } from "../pages/Signup";
 import { Products } from "../pages/Products";
-import { Chairs } from "../pages/Chairs";
+import { Product } from "../pages/Collections/Product";
 import ItemDescription from "../pages/ItemDescription";
 import Cart from "../pages/Cart";
 import CheckoutPage from "../pages/Checkout";
@@ -81,7 +81,7 @@ const NavbarComp = ({ userData, setUserData }) => {
               element={<Signup userData={userData} setUserData={setUserData} />}
             />
             <Route path="/products" element={<Products />} />
-            <Route path="/chairs" element={<Chairs />} />
+            <Route path="/product" element={<Product />} />
             <Route path="/itemPage" element={<ItemDescription />} />
             <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
