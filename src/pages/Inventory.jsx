@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import ImageSelector from "../components/ImageSelector";
 import axios from "axios";
+import { CREATE_INVENTORY_ENDPOINT, DELETE_INVENTORY_ENDPOINT, UPDATE_INVENTORY_ENDPOINT } from "../constants";
 const Inventory = () => {
   const [data, setData] = useState([]);
   const [addingRow, setAddingRow] = useState(false);
@@ -38,7 +39,7 @@ const Inventory = () => {
   const saveRow = () => {
     const { id, image, ...dataToPass } = newRowData;
     axios
-      .post("http://3.133.128.233:5001/createInventory", dataToPass)
+      .post(CREATE_INVENTORY_ENDPOINT, dataToPass)
       .then((response) => {
         const newRowWithId = {
           ...newRowData,
@@ -84,7 +85,7 @@ const Inventory = () => {
       setRowBeingEdited(0);
       const { id, editing, image, ...dataToPass } = data[index];
       axios
-        .put("http://3.133.128.233:5001/updateInventory/" + id, dataToPass)
+        .put(UPDATE_INVENTORY_ENDPOINT + id, dataToPass)
         .then((response) => {
           console.log(response.status);
           console.log(response.data);
@@ -105,7 +106,7 @@ const Inventory = () => {
   const handleDelete = (indexToDelete) => {
     axios
       .delete(
-        "http://3.133.128.233:5001/removeInventoryItem/" +
+        DELETE_INVENTORY_ENDPOINT +
           data[indexToDelete].id
       )
       .then((response) => {

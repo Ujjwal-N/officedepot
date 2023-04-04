@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { Row, Col, ListGroup, Badge, Alert } from "react-bootstrap";
 import UserTextBoxes from "../components/UserTextBoxes";
 import axios from "axios";
+import { UPDATE_CUSTOMER_ENDPOINT } from "../constants";
 export const Profile = ({ userData, setUserData }) => {
   const [showSuccessAlert, setShowAlert] = useState(false);
   const orderData = [
@@ -31,7 +32,7 @@ export const Profile = ({ userData, setUserData }) => {
       creditcard: ccNumber,
     });
     axios
-      .put("http://3.133.128.233:5001/updateCustomer/" + email, {
+      .put(UPDATE_CUSTOMER_ENDPOINT + email, {
         firstname: firstname,
         lastname: lastname,
         shippingaddress: shippingaddress,

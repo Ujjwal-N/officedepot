@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
+import { CREATE_EMPLOYEE_ENDPOINT } from "../constants";
 const Employee = () => {
   const [data, setData] = useState([]);
   const [addingRow, setAddingRow] = useState(false);
@@ -20,7 +21,7 @@ const Employee = () => {
     setData([...data, { name: newRowData.name, email: newRowData.email }]);
     const [firstname, lastname] = newRowData.name.split(" ");
     axios
-      .post("http://3.133.128.233:5001/employeeCreate", {
+      .post(CREATE_EMPLOYEE_ENDPOINT, {
         firstname: firstname,
         lastname: lastname,
         email: newRowData.email,

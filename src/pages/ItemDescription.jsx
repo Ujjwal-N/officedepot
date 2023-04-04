@@ -1,6 +1,6 @@
-import { React, useState } from "react";
+import { React } from "react";
 import styled from "styled-components";
-import hammer from "../Images/hammer.jpg";
+import { useLocation } from "react-router-dom";
 
 const ItemImage = styled.img`
   max-width: 50%;
@@ -28,37 +28,21 @@ const Button = styled.button`
   background-color: #13755ece;
 `;
 
-function ItemDescription({ item }) {
+function ItemDescription() {
+  const location = useLocation();
+  const itemInfo = location.state?.itemInfo;
+
   //item group
   //stock
   return (
     <div style={leftAlign}>
-      {/* <h1>{item.title}</h1>
-            <img src={item.image} alt={item.title} />
-            <p>{item.description}</p>
-            <h2>{item.price}</h2>
-            <button>Add to Cart</button> */}
-      <ItemImage src={hammer} alt={"Item"} />
+      <ItemImage src={itemInfo.img} alt={`${itemInfo.name} image placeholder`} />
       <div style={leftAlign}>
-        <h1>Hammer</h1>
+        <h1>{itemInfo.name}</h1>
         <hr />
         <h2>Description</h2>
-        <ul>
-          <li>
-            This thing will nail it! You know cause, it will help you smack down
-            nails.
-          </li>
-          <li>
-            It's a pretty... handy tool. Cause you use it with your hand and
-            stuff.
-          </li>
-          <li>
-            Anyways, this is a great purchase because it's an absolute...
-            banger!
-          </li>
-          <li>Personally recommended by Bob the Builder.</li>
-        </ul>
-        <h2>$19.99</h2>
+        <p>{itemInfo.description}</p>
+        <h2>${itemInfo.price}</h2>
         <p>
           Quantity:
           <select
@@ -76,8 +60,8 @@ function ItemDescription({ item }) {
             <option value={8}>8</option>
           </select>
         </p>
-        <p> Item Group: Hammers </p>
-        <p> Quantity In Stock: 8 </p>
+        <p> Item Group: {itemInfo.itemgroup} </p>
+        <p> Stock: {itemInfo.stock ? itemInfo.stock : '0 (add stock to DB)'} </p>
         <Button>Add to Cart</Button>
       </div>
     </div>

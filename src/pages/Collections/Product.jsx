@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { Inventoryproducts } from "../../components/Inventoryproducts";
-import { Footer } from "../../components/Footer";
 import SearchBarComp from "../../components/SearchBarComp";
 
 const Title = styled.h1`
@@ -18,6 +17,7 @@ export const Product = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const itemgroup = searchParams.get("itemgroup");
+  const itemProps = location.state?.itemProps;
 
   return (
     <div>
@@ -25,11 +25,8 @@ export const Product = () => {
 
       <Container>
         <SearchBarComp />
-
-        <Inventoryproducts />
-
+        <Inventoryproducts itemProps={itemProps}/>
       </Container>
-      
     </div>
   );
 };
