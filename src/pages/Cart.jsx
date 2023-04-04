@@ -8,10 +8,9 @@ function Cart() {
   return (
     <div style={{ padding: "10px ", minHeight: "77vh" }}>
       <h1>Cart</h1>
-
+      <h4 style={{ textAlign: "left" }}>Item(s)</h4>
       <div>
         <CartTotal />
-        <h4 style={{ textAlign: "left" }}>Item(s)</h4>
         <CheckoutListItem
           item={{
             name: "Hammer",
