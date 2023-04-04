@@ -1,5 +1,9 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import GradeIcon from "@mui/icons-material/Grade";
 
 const Info = styled.div`
   opacity: 0;
@@ -63,18 +67,27 @@ const Icon = styled.div`
 const Inventoryproduct = ({ item }) => {
   return (
     <Container>
-      <Image src={item.img} />
+      <Image src={item.img} alt={item.name + ' image'}/>
       <Text>{item.name}</Text>
       <Text>${item.price}</Text>
       <Info>
-        <Icon>
-           {item.icon}
+        <Icon
+          as={Link}
+          to={{
+            pathname: "/itemPage",
+            search: `?itemID=${item.inventory_id}`
+          }}
+          state={{
+            itemInfo: item ? item : undefined
+          }}
+        >
+          <VisibilityIcon />
         </Icon>
         <Icon>
-           {item.icon2}
+           {<ShoppingCartIcon />}
         </Icon>
         <Icon>
-           {item.icon3}
+           {<GradeIcon />}
         </Icon>
       </Info>
     </Container>

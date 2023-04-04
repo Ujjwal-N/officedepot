@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/signup.css";
 import axios from "axios";
 import UserTextBoxes from "../components/UserTextBoxes";
+import { CREATE_CUSTOMER_ENDPOINT, USER_LOGIN_ENDPOINT } from "../constants";
 
 export const Signup = ({ userData, setUserData }) => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ export const Signup = ({ userData, setUserData }) => {
         creditcard: ccNumber,
       });
       axios
-        .post("http://3.133.128.233:5001/register", {
+        .post(CREATE_CUSTOMER_ENDPOINT, {
           firstname: firstname,
           lastname: lastname,
           email: email,
@@ -56,7 +57,7 @@ export const Signup = ({ userData, setUserData }) => {
       const { loginEmail, loginPassword } = userData;
       console.log(loginEmail, loginPassword);
       axios
-        .post("http://3.133.128.233:5001/login", {
+        .post(USER_LOGIN_ENDPOINT, {
           email: loginEmail,
           password: loginPassword,
         })
