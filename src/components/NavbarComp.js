@@ -20,6 +20,8 @@ import Cart from "../pages/Cart";
 import CheckoutPage from "../pages/Checkout";
 import { Footer } from "./Footer";
 
+import { inventoryItems } from "../components/imageData";
+
 const NavbarComp = ({ userData, setUserData }) => {
   return (
     <BrowserRouter>
@@ -84,6 +86,8 @@ const NavbarComp = ({ userData, setUserData }) => {
             <Route path="/product" element={<Product />} />
             <Route path="/itemPage" element={<ItemDescription />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+
+
           </Routes>
         </div>
       </div>
