@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import GradeIcon from "@mui/icons-material/Grade";
-
+import { images } from "../productImageNames.js";
 const Info = styled.div`
   opacity: 0;
   width: 100%;
@@ -33,7 +33,7 @@ const Container = styled.div`
   justify-content: center;
   background-color: #f5fbfd;
   position: relative;
-  &:hover ${Info}{
+  &:hover ${Info} {
     opacity: 1;
   }
 `;
@@ -66,9 +66,10 @@ const Icon = styled.div`
 `;
 
 const Inventoryproduct = ({ item }) => {
+  const imageItem = images.find((element) => element.name === item.image);
   return (
     <Container>
-      <Image src={item.img} alt={item.name + ' image'}/>
+      <Image src={imageItem ? imageItem.src : ""} alt={item.name + " image"} />
       <Text>{item.name}</Text>
       <Text>${item.price}</Text>
       <Info>
@@ -76,20 +77,16 @@ const Inventoryproduct = ({ item }) => {
           as={Link}
           to={{
             pathname: "/itemPage",
-            search: `?itemID=${item.inventory_id}`
+            search: `?itemID=${item.inventory_id}`,
           }}
           state={{
-            itemInfo: item ? item : undefined
+            itemInfo: item ? item : undefined,
           }}
         >
           <VisibilityIcon />
         </Icon>
-        <Icon>
-           {<ShoppingCartIcon />}
-        </Icon>
-        <Icon>
-           {<GradeIcon />}
-        </Icon>
+        <Icon>{<ShoppingCartIcon />}</Icon>
+        <Icon>{<GradeIcon />}</Icon>
       </Info>
     </Container>
   );

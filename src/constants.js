@@ -10,7 +10,7 @@ export const USER_LOGIN_ENDPOINT = `${NODE_SERVER}/login`;
 export const GET_ALL_CUSTOMERS_ENDPOINT = `${NODE_SERVER}/displayCustomers`;
 // '/updateCustomer/${email}'
 export const UPDATE_CUSTOMER_ENDPOINT = `${NODE_SERVER}/updateCustomer/`;
-export const DELETE_CUSTOMER_ENDPOINT = `${NODE_SERVER}/removeCustomer`;
+export const DELETE_CUSTOMER_ENDPOINT = `${NODE_SERVER}/removeCustomer/`;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EMPLOYEES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export const CREATE_EMPLOYEE_ENDPOINT = `${NODE_SERVER}/employeeCreate`;
@@ -30,7 +30,7 @@ export const UPDATE_EMPLOYEE_ADDRESS_ENDPOINT = `${NODE_SERVER}/updateEmployAddr
 export const CREATE_INVENTORY_ENDPOINT = `${NODE_SERVER}/createInventory`;
 // '/updateInventory/${inventory_id}'
 export const UPDATE_INVENTORY_ENDPOINT = `${NODE_SERVER}/updateInventory/`;
-export const DELETE_INVENTORY_ENDPOINT = `${NODE_SERVER}/removeInventoryItem`;
+export const DELETE_INVENTORY_ENDPOINT = `${NODE_SERVER}/removeInventoryItem/`;
 
 export const GET_ALL_INVENTORY_ENDPOINT = `${NODE_SERVER}/displayInventory`;
 export const GET_INVENTORY_NAME_ENDPOINT = `${NODE_SERVER}/getInventoryName`;
@@ -49,7 +49,7 @@ export const UPDATE_INVENTORY_ITEM_GROUP_ENDPOINT = `${NODE_SERVER}/updateItemGr
 export const CREATE_ORDER_ENDPOINT = `${NODE_SERVER}/createOrder`;
 // '/updateOrder/${order_id}
 export const UPDATE_ORDER_ENDPOINT = `${NODE_SERVER}/updateOrder/`;
-export const DELETE_ORDER_ENDPOINT = `${NODE_SERVER}/removeOrder`;
+export const DELETE_ORDER_ENDPOINT = `${NODE_SERVER}/removeOrder/`;
 
 export const GET_ALL_ORDERS_ENDPOINT = `${NODE_SERVER}/displayOrders`;
 export const GET_ORDER_STATUS_ENDPOINT = `${NODE_SERVER}/getOrderStatus`;
@@ -60,4 +60,14 @@ export const UPDATE_ORDER_STATUS_ENDPOINT = `${NODE_SERVER}/updateOrderStatus`;
 export const UPDATE_ORDER_DELIVERY_DATE_ENDPOINT = `${NODE_SERVER}/updateOrderDeliveryDate`;
 
 // consider removing outdoor and indoor, add bed (are some of these office depot supplies??)
-export const STANDARD_ITEM_GROUPS = ['chair', 'hammer', 'table', 'screws', 'fridge', 'outdoor', 'kitchen', 'indoor', 'bathroom'];
+export const STANDARD_ITEM_GROUPS = [
+  "chair",
+  "hammer",
+  "table",
+  "screws",
+  "fridge",
+  "outdoor",
+  "kitchen",
+  "indoor",
+  "bathroom",
+];

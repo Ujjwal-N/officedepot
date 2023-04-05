@@ -1,21 +1,9 @@
 import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
-
-// Import images statically
-import chair from "../Images/chair.jpg";
-import chairCollection from "../Images/chairCollection.jpg";
-import fridgeCollection from "../Images/fridgeCollection.jpg";
-
+import { images } from "../productImageNames.js";
 const ImageSelector = ({ onImageChange }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-
-  // List of images
-  const images = [
-    { name: "Chair", src: chair },
-    { name: "Chairs", src: chairCollection },
-    { name: "Fridges", src: fridgeCollection },
-  ];
 
   const handleImageSelect = (image) => {
     setSelectedImage(image);

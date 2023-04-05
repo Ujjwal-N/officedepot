@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import ImageSelector from "../components/ImageSelector";
 import axios from "axios";
-import { CREATE_INVENTORY_ENDPOINT, DELETE_INVENTORY_ENDPOINT, UPDATE_INVENTORY_ENDPOINT } from "../constants";
+import {
+  CREATE_INVENTORY_ENDPOINT,
+  DELETE_INVENTORY_ENDPOINT,
+  UPDATE_INVENTORY_ENDPOINT,
+  GET_ALL_INVENTORY_ENDPOINT,
+} from "../constants";
 const Inventory = () => {
   const [data, setData] = useState([]);
   const [addingRow, setAddingRow] = useState(false);
@@ -31,13 +36,35 @@ const Inventory = () => {
     "stock",
     "image",
   ];
+
+  useEffect(() => {
+    async function getAllInventory() {
+      axios
+        .get(GET_ALL_INVENTORY_ENDPOINT)
+        .then((response) => {
+          let itemObjects = response.data;
+          const newArray = itemObjects.map((item) => {
+            return {
+              ...item,
+              id: item.inventory_id,
+              inventory_id: undefined,
+            };
+          });
+          setData(newArray);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    getAllInventory();
+  }, []);
   const addRow = () => {
     setAddingRow(true);
     setRowBeingEdited(-1);
   };
 
   const saveRow = () => {
-    const { id, image, ...dataToPass } = newRowData;
+    const { id, ...dataToPass } = newRowData;
     axios
       .post(CREATE_INVENTORY_ENDPOINT, dataToPass)
       .then((response) => {
@@ -83,7 +110,7 @@ const Inventory = () => {
   const toggleEdit = (index) => {
     if (data[index].editing) {
       setRowBeingEdited(0);
-      const { id, editing, image, ...dataToPass } = data[index];
+      const { id, editing, ...dataToPass } = data[index];
       axios
         .put(UPDATE_INVENTORY_ENDPOINT + id, dataToPass)
         .then((response) => {
@@ -105,10 +132,7 @@ const Inventory = () => {
 
   const handleDelete = (indexToDelete) => {
     axios
-      .delete(
-        DELETE_INVENTORY_ENDPOINT +
-          data[indexToDelete].id
-      )
+      .delete(DELETE_INVENTORY_ENDPOINT + data[indexToDelete].id)
       .then((response) => {
         console.log(response.status);
         console.log(response.data);

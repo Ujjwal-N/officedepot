@@ -40,7 +40,7 @@ export const Inventoryproducts = ({ itemProps }) => {
           {chunkedRows.map((chunk, index) => (
             <Row key={`row-${index}`}>
               {chunk.map((item) => (
-                <Inventoryproduct item={item} key={item.id} />
+                <Inventoryproduct item={item} key={item.inventory_id} />
               ))}
             </Row>
           ))}

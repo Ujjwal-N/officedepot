@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-
+import { images } from "../productImageNames.js";
 const ItemImage = styled.img`
   max-width: 50%;
   max-height: 50%;
@@ -31,12 +31,15 @@ const Button = styled.button`
 function ItemDescription() {
   const location = useLocation();
   const itemInfo = location.state?.itemInfo;
-
+  const imageItem = images.find((element) => element.name === itemInfo.image);
   //item group
   //stock
   return (
     <div style={leftAlign}>
-      <ItemImage src={itemInfo.img} alt={`${itemInfo.name} image placeholder`} />
+      <ItemImage
+        src={imageItem ? imageItem.src : ""}
+        alt={`${itemInfo.name} image placeholder`}
+      />
       <div style={leftAlign}>
         <h1>{itemInfo.name}</h1>
         <hr />
@@ -61,7 +64,10 @@ function ItemDescription() {
           </select>
         </p>
         <p> Item Group: {itemInfo.itemgroup} </p>
-        <p> Stock: {itemInfo.stock ? itemInfo.stock : '0 (add stock to DB)'} </p>
+        <p>
+          {" "}
+          Stock: {itemInfo.stock ? itemInfo.stock : "0 (add stock to DB)"}{" "}
+        </p>
         <Button>Add to Cart</Button>
       </div>
     </div>
