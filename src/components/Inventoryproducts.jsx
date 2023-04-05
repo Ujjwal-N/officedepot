@@ -21,12 +21,28 @@ export const Inventoryproducts = ({ itemProps }) => {
     });
   }
 
+  const chunkedRows = useMemo(() => {
+    const chunkSize = 4;
+    const chunkedRows = [];
+
+    for (let i = 0; i < rows.length; i += chunkSize) {
+      const chunk = rows.slice(i, i + chunkSize);
+      chunkedRows.push(chunk);
+    }
+
+    return chunkedRows;
+  }, [rows]);
+
   return (
     <div>
       {rows.length > 0 ? (
         <Container>
-          {rows.map((item) => (
-            <Inventoryproduct item={item} key={item.id} />
+          {chunkedRows.map((chunk, index) => (
+            <Row key={`row-${index}`}>
+              {chunk.map((item) => (
+                <Inventoryproduct item={item} key={item.id} />
+              ))}
+            </Row>
           ))}
         </Container>
       ) : (

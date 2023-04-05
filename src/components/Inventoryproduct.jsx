@@ -24,7 +24,8 @@ const Info = styled.div`
 const Container = styled.div`
   flex: 1;
   margin: 10px;
-  min-width: 400px;
+  min-width: 450px;
+  max-width: 450px;
   height: 350px;
   display: flex;
   flex-direction: column;
