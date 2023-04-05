@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { CREATE_EMPLOYEE_ENDPOINT } from "../constants";
+import {
+  CREATE_EMPLOYEE_ENDPOINT,
+  DISPLAY_EMPLOYEE_ENDPOINT,
+} from "../constants";
 const Employee = () => {
   const [data, setData] = useState([]);
   const [addingRow, setAddingRow] = useState(false);
@@ -11,7 +14,31 @@ const Employee = () => {
     name: "",
     email: "",
     password: "",
+    employee_id: "",
   });
+
+  useEffect(() => {
+    async function getAllEmployees() {
+      axios
+        .get(DISPLAY_EMPLOYEE_ENDPOINT)
+        .then((response) => {
+          let employeeObjects = response.data;
+          const newArray = employeeObjects.map((item) => {
+            return {
+              ...item,
+              name: item.firstname + " " + item.lastname,
+              firstname: undefined,
+              lastname: undefined,
+            };
+          });
+          setData(newArray);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    getAllEmployees();
+  }, []);
 
   const addRow = () => {
     setAddingRow(true);
@@ -34,7 +61,7 @@ const Employee = () => {
       .catch((error) => {
         console.log(error);
       });
-    setNewRowData({ name: "", email: "", password: "" });
+    setNewRowData({ name: "", email: "", password: "", employee_id: "" });
     setAddingRow(false);
   };
 

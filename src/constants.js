@@ -15,6 +15,7 @@ export const DELETE_CUSTOMER_ENDPOINT = `${NODE_SERVER}/removeCustomer/`;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EMPLOYEES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export const CREATE_EMPLOYEE_ENDPOINT = `${NODE_SERVER}/employeeCreate`;
 export const EMPLOYEE_LOGIN_ENDPOINT = `${NODE_SERVER}/employeeLogin`;
+export const DISPLAY_EMPLOYEE_ENDPOINT = `${NODE_SERVER}/displayEmployees`;
 // '/updateEmployee/${email}'
 export const UPDATE_EMPLOYEE_ENDPOINT = `${NODE_SERVER}/updateEmployee/`;
 export const DELETE_EMPLOYEE_ENDPOINT = `${NODE_SERVER}/removeEmployee`;
