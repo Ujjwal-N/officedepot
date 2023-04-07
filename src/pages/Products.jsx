@@ -55,7 +55,7 @@ const Image = styled.img`
   }
 `;
 
-export const Products = () => {
+export const Products = ({ cart, setCart }) => {
   const [inventoryItems, setInventoryItems] = useState(null);
 
   useEffect(() => {

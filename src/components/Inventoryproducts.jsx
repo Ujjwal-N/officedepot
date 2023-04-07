@@ -13,7 +13,7 @@ const Row = styled.div`
   margin-bottom: 20px;
 `;
 
-export const Inventoryproducts = ({ itemProps }) => {
+export const Inventoryproducts = ({ itemProps, cart, setCart }) => {
   const rows = [];
   if (itemProps) {
     itemProps.forEach((item) => {
@@ -40,7 +40,12 @@ export const Inventoryproducts = ({ itemProps }) => {
           {chunkedRows.map((chunk, index) => (
             <Row key={`row-${index}`}>
               {chunk.map((item) => (
-                <Inventoryproduct item={item} key={item.inventory_id} />
+                <Inventoryproduct
+                  item={item}
+                  key={item.inventory_id}
+                  cart={cart}
+                  setCart={setCart}
+                />
               ))}
             </Row>
           ))}

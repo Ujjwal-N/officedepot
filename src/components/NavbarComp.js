@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
-import { Navbar, Nav, Button, NavbarBrand } from "react-bootstrap";
+import { Navbar, Nav, Button, Badge } from "react-bootstrap";
 import {
   BrowserRouter,
   Navigate,
@@ -22,7 +22,7 @@ import { Footer } from "./Footer";
 
 import { inventoryItems } from "../components/imageData";
 
-const NavbarComp = ({ userData, setUserData }) => {
+const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
   return (
     <BrowserRouter>
       <div>
@@ -44,7 +44,12 @@ const NavbarComp = ({ userData, setUserData }) => {
                   Products
                 </Nav.Link>
                 <Nav.Link as={Link} to={"/cart"}>
-                  View Cart
+                  View Cart{" "}
+                  <Badge bg="secondary" text="light" className="badge-circle">
+                    {cart.reduce((sum, currentItem) => {
+                      return sum + currentItem.quantity;
+                    }, 0)}
+                  </Badge>
                 </Nav.Link>
                 <Nav.Link as={Link} to={"/profile"}>
                   Profile
@@ -71,7 +76,10 @@ const NavbarComp = ({ userData, setUserData }) => {
             <Route path="/" element={<Navigate to="/home" replace={true} />} />
             <Route path="/about" element={<About />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route
+              path="/cart"
+              element={<Cart cart={cart} setCart={setCart} />}
+            />
             <Route
               path="/profile"
               element={
@@ -82,12 +90,19 @@ const NavbarComp = ({ userData, setUserData }) => {
               path="/signup"
               element={<Signup userData={userData} setUserData={setUserData} />}
             />
-            <Route path="/products" element={<Products />} />
-            <Route path="/product" element={<Product />} />
-            <Route path="/itemPage" element={<ItemDescription />} />
+            <Route
+              path="/products"
+              element={<Products cart={cart} setCart={setCart} />}
+            />
+            <Route
+              path="/product"
+              element={<Product cart={cart} setCart={setCart} />}
+            />
+            <Route
+              path="/itemPage"
+              element={<ItemDescription cart={cart} setCart={setCart} />}
+            />
             <Route path="/checkout" element={<CheckoutPage />} />
-
-
           </Routes>
         </div>
       </div>

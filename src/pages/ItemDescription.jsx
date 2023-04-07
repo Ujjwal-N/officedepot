@@ -28,12 +28,23 @@ const Button = styled.button`
   background-color: #13755ece;
 `;
 
-function ItemDescription() {
+function ItemDescription({ cart, setCart }) {
   const location = useLocation();
   const itemInfo = location.state?.itemInfo;
   const imageItem = images.find((element) => element.name === itemInfo.image);
+  const [cartValue, setCartValue] = useState(1);
+
+  const handleSelectChange = (event) => {
+    setCartValue(event.target.value);
+  };
+  const options = Array.from({ length: itemInfo.stock }, (_, index) => (
+    <option key={index + 1} value={index + 1}>
+      {index + 1}
+    </option>
+  ));
   //item group
   //stock
+  console.log(itemInfo.stock);
   return (
     <div style={leftAlign}>
       <ItemImage
@@ -52,15 +63,11 @@ function ItemDescription() {
             name="quantity"
             id="quantity-select"
             style={{ marginLeft: "10px" }}
+            value={cartValue}
+            onChange={handleSelectChange}
+            disabled={itemInfo.stock === 0}
           >
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
-            <option value={4}>4</option>
-            <option value={5}>5</option>
-            <option value={6}>6</option>
-            <option value={7}>7</option>
-            <option value={8}>8</option>
+            {options}
           </select>
         </p>
         <p> Item Group: {itemInfo.itemgroup} </p>
@@ -68,7 +75,31 @@ function ItemDescription() {
           {" "}
           Stock: {itemInfo.stock ? itemInfo.stock : "0 (add stock to DB)"}{" "}
         </p>
-        <Button>Add to Cart</Button>
+        <Button
+          onClick={() => {
+            let found = false;
+            const updatedCart = cart.map((currentItem) => {
+              if (currentItem.inventory_id === itemInfo.inventory_id) {
+                found = true;
+                return {
+                  ...currentItem,
+                  quantity:
+                    parseInt(currentItem.quantity) + parseInt(cartValue),
+                };
+              }
+              return currentItem;
+            });
+            if (!found) {
+              const cartItem = { ...itemInfo, quantity: cartValue };
+              setCart((prevState) => [...prevState, cartItem]);
+            } else {
+              setCart(updatedCart);
+            }
+          }}
+          disabled={itemInfo.stock == 0}
+        >
+          Add to Cart
+        </Button>
       </div>
     </div>
   );

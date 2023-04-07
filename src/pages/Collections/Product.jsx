@@ -13,19 +13,28 @@ const Container = styled.div`
   margin-top: -30px;
 `;
 
-export const Product = () => {
+export const Product = ({ cart, setCart }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const itemgroup = searchParams.get("itemgroup");
   const itemProps = location.state?.itemProps;
+  console.log(itemProps);
 
   return (
     <div>
-      <Title>{itemgroup ? itemgroup.charAt(0).toUpperCase() + itemgroup.slice(1).toLowerCase() : "Chairs"}</Title>
+      <Title>
+        {itemgroup
+          ? itemgroup.charAt(0).toUpperCase() + itemgroup.slice(1).toLowerCase()
+          : "Chairs"}
+      </Title>
 
       <Container>
         <SearchBarComp />
-        <Inventoryproducts itemProps={itemProps}/>
+        <Inventoryproducts
+          itemProps={itemProps}
+          cart={cart}
+          setCart={setCart}
+        />
       </Container>
     </div>
   );

@@ -23,13 +23,19 @@ function App() {
     loginEmail: "",
     loginPassword: "",
   });
+  const [cart, setCart] = useState([]);
   const domains = window.location.hostname.split(".");
   return (
     <div className="App">
       {domains[0] == "admin" ? (
         <AdminNavbarComp />
       ) : (
-        <NavbarComp userData={userData} setUserData={setUserData} />
+        <NavbarComp
+          userData={userData}
+          setUserData={setUserData}
+          cart={cart}
+          setCart={setCart}
+        />
       )}
     </div>
   );

@@ -1,9 +1,8 @@
-import React from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import GradeIcon from "@mui/icons-material/Grade";
 import { images } from "../productImageNames.js";
 const Info = styled.div`
   opacity: 0;
@@ -65,8 +64,9 @@ const Icon = styled.div`
   }
 `;
 
-const Inventoryproduct = ({ item }) => {
+const Inventoryproduct = ({ item, cart, setCart }) => {
   const imageItem = images.find((element) => element.name === item.image);
+  const [inventoryRemaining, setInventoryRemaining] = useState(item.stock);
   return (
     <Container>
       <Image src={imageItem ? imageItem.src : ""} alt={item.name + " image"} />
@@ -85,8 +85,32 @@ const Inventoryproduct = ({ item }) => {
         >
           <VisibilityIcon />
         </Icon>
-        <Icon>{<ShoppingCartIcon />}</Icon>
-        <Icon>{<GradeIcon />}</Icon>
+        <Icon hidden={inventoryRemaining <= 0}>
+          {
+            <ShoppingCartIcon
+              onClick={() => {
+                let found = false;
+                const updatedCart = cart.map((currentItem) => {
+                  if (currentItem.inventory_id === item.inventory_id) {
+                    found = true;
+                    return {
+                      ...currentItem,
+                      quantity: currentItem.quantity + 1,
+                    };
+                  }
+                  return currentItem;
+                });
+                if (!found) {
+                  const cartItem = { ...item, quantity: 1 };
+                  setCart((prevState) => [...prevState, cartItem]);
+                } else {
+                  setCart(updatedCart);
+                }
+                setInventoryRemaining(inventoryRemaining - 1);
+              }}
+            />
+          }
+        </Icon>
       </Info>
     </Container>
   );
