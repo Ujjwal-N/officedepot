@@ -1,6 +1,13 @@
 import React from "react";
 
-function CartTotal({ cartItems }) {
+function CartTotal({ cart }) {
+  const subtotal = cart
+    ? cart.reduce((sum, currentItem) => {
+        return sum + currentItem.quantity * currentItem.price;
+      }, 0)
+    : 0;
+  const taxes = 0.09 * subtotal;
+  const total = subtotal + taxes;
   return (
     <div
       style={{
@@ -13,23 +20,25 @@ function CartTotal({ cartItems }) {
       }}
     >
       <p>
-        <strong>Total Items:</strong> 2
+        <strong>Total Items:</strong>{" "}
+        {cart
+          ? cart.reduce((sum, currentItem) => {
+              return sum + currentItem.quantity;
+            }, 0)
+          : 0}
       </p>
       <p>
-        <strong>Subtotal:</strong> $19.99
+        <strong>Subtotal:</strong> ${subtotal.toFixed(2)}
       </p>
       <p>
-        <strong>Shipping and handling:</strong> $0.00 (Drone Delivery)
+        <strong>Shipping and handling:</strong> on next screen
       </p>
       <p>
-        <strong>Total before tax:</strong> $19.99
-      </p>
-      <p>
-        <strong>Tax:</strong> $1.80
+        <strong>Tax:</strong> ${taxes.toFixed(2)}
       </p>
       <hr />
       <h5>
-        <strong>Total:</strong> $21.79
+        <strong>Total(without shipping):</strong> ${total.toFixed(2)}
       </h5>
     </div>
   );

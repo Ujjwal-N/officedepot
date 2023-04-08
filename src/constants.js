@@ -31,7 +31,7 @@ export const UPDATE_EMPLOYEE_ADDRESS_ENDPOINT = `${NODE_SERVER}/updateEmployAddr
 export const CREATE_INVENTORY_ENDPOINT = `${NODE_SERVER}/createInventory`;
 // '/updateInventory/${inventory_id}'
 export const UPDATE_INVENTORY_ENDPOINT = `${NODE_SERVER}/updateInventory/`;
-export const DELETE_INVENTORY_ENDPOINT = `${NODE_SERVER}/removeInventoryItem/`;
+export const DELETE_INVENTORY_ENDPOINT = `${NODE_SERVER}/removeInventoryItem`;
 
 export const GET_ALL_INVENTORY_ENDPOINT = `${NODE_SERVER}/displayInventory`;
 export const GET_INVENTORY_NAME_ENDPOINT = `${NODE_SERVER}/getInventoryName`;

@@ -3,7 +3,7 @@ import hammer from "../Images/hammer.jpg";
 import chair from "../Images/chair.jpg";
 import { images } from "../productImageNames.js";
 import { Button } from "react-bootstrap";
-function CheckoutListItem({ item, cart, setCart }) {
+function CheckoutListItem({ item, cart, setCart, canEdit }) {
   const imageItem = images.find((element) => element.name === item.image);
   const options = Array.from({ length: item.stock }, (_, index) => (
     <option key={index + 1} value={index + 1}>
@@ -64,12 +64,13 @@ function CheckoutListItem({ item, cart, setCart }) {
             style={{ marginLeft: "10px" }}
             value={item.quantity}
             onChange={handleSelectChange}
+            disabled={!canEdit}
           >
             {options}
           </select>
         </p>
         <p>Price: ${item.price}</p>
-        <Button variant="danger" onClick={handleDelete}>
+        <Button variant="danger" onClick={handleDelete} hidden={!canEdit}>
           {" "}
           Remove{" "}
         </Button>

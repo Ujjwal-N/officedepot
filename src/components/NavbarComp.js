@@ -26,7 +26,12 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
   return (
     <BrowserRouter>
       <div>
-        <Navbar bg="dark" variant={"dark"} expand="lg">
+        <Navbar
+          bg="dark"
+          variant={"dark"}
+          expand="lg"
+          style={{ position: "sticky", top: 0, zIndex: 2 }}
+        >
           <Container fluid>
             <Navbar.Brand as={Link} to={"/home"}>
               OfficeDepot
@@ -78,7 +83,9 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
             <Route path="/home" element={<Home />} />
             <Route
               path="/cart"
-              element={<Cart cart={cart} setCart={setCart} />}
+              element={
+                <Cart cart={cart} setCart={setCart} userData={userData} />
+              }
             />
             <Route
               path="/profile"
@@ -102,7 +109,16 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
               path="/itemPage"
               element={<ItemDescription cart={cart} setCart={setCart} />}
             />
-            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route
+              path="/checkout"
+              element={
+                <CheckoutPage
+                  cart={cart}
+                  setCart={setCart}
+                  userData={userData}
+                />
+              }
+            />
           </Routes>
         </div>
       </div>

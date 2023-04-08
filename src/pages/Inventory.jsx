@@ -132,7 +132,9 @@ const Inventory = () => {
 
   const handleDelete = (indexToDelete) => {
     axios
-      .delete(DELETE_INVENTORY_ENDPOINT + data[indexToDelete].id)
+      .delete(
+        DELETE_INVENTORY_ENDPOINT + "?inventory_id=" + data[indexToDelete].id
+      )
       .then((response) => {
         console.log(response.status);
         console.log(response.data);

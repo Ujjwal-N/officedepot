@@ -8,19 +8,22 @@ import ListGroup from "react-bootstrap/ListGroup";
 import CheckoutListItem from "../components/CheckoutListItem";
 import CartTotal from "../components/CartTotal";
 
-function CheckoutPage() {
+function CheckoutPage({ cart, setCart, userData }) {
   return (
     <div style={{ padding: "10px", minHeight: "78vh" }}>
       <h1>Checkout</h1>
       <h3 style={{ textAlign: "left" }}>Order Summary</h3>
       <div>
-        <CartTotal />
-        <CheckoutListItem
-          item={{
-            name: "Hammer",
-            price: "19.99",
-          }}
-        />
+        <CartTotal cart={cart} />
+        {cart.map((cartItem, index) => (
+          <CheckoutListItem
+            key={index}
+            item={cartItem}
+            cart={cart}
+            setCart={setCart}
+            canEdit={false}
+          />
+        ))}
       </div>
 
       <div style={{ clear: "both" }}>
@@ -33,8 +36,9 @@ function CheckoutPage() {
           >
             <div className="ms-2 me-auto" style={{ textAlign: "left" }}>
               <div className="fw-bold">Shipping Address</div>
-              FirstName LastName <br />
-              21 Jump Street, City, State, ZIP, Country
+              {userData.name} <br />
+              {userData.address}, {userData.city}, {userData.state},{" "}
+              {userData.zip}
             </div>
           </ListGroup.Item>
 
@@ -44,7 +48,7 @@ function CheckoutPage() {
           >
             <div className="ms-2 me-auto" style={{ textAlign: "left" }}>
               <div className="fw-bold">Payment Method</div>
-              VISA ending in 1234
+              Credit card ending in {parseInt(userData.ccNumber) % 10000}
             </div>
           </ListGroup.Item>
 
@@ -54,7 +58,8 @@ function CheckoutPage() {
           >
             <div className="ms-2 me-auto" style={{ textAlign: "left" }}>
               <div className="fw-bold">Billing Address</div>
-              Same as shipping
+              {userData.billingAddress}, {userData.billingCity},{" "}
+              {userData.billingState}, {userData.billingZip}
             </div>
           </ListGroup.Item>
         </ListGroup>
