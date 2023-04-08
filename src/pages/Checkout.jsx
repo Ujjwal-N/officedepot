@@ -74,4 +74,46 @@ function CheckoutPage() {
   );
 }
 
+
+function totalFee(orderFee, orderWeight, droneRequest, truckRequest) {
+  let surchargeFee = 0
+  let shippingDuration = 2;
+  let droneDelivery = false; 
+  let truckDelivery = false;
+  let feeWithShipping;
+  let totalAmount;
+ 
+
+  if(orderFee >= 100) {
+    
+    if(orderWeight < 15) {
+      droneDelivery = true;
+      shippingDuration = 1;
+    } 
+    else {
+      truckDelivery = true;
+
+      if(truckRequest) {  //same day truck delivery request
+        shippingDuration = 1;
+        surchargeFee += 25;
+      }
+    }
+  } 
+  else {  //if orderFee < 100
+    truckDelivery = true;
+
+    if(truckRequest || droneRequest) {
+      shippingDuration = 1;
+      surchargeFee += 20;
+    }
+  }
+
+    feeWithShipping = orderFee + surchargeFee;
+    let tax = 0.09 * feeWithShipping;
+    totalAmount = feeWithShipping + tax;
+    totalAmount = totalAmount.toFixed(2);
+    
+    return totalAmount 
+  }
+
 export default CheckoutPage;
