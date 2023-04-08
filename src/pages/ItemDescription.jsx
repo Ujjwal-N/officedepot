@@ -33,11 +33,18 @@ function ItemDescription({ cart, setCart }) {
   const itemInfo = location.state?.itemInfo;
   const imageItem = images.find((element) => element.name === itemInfo.image);
   const [cartValue, setCartValue] = useState(1);
+  const inCart = cart.find(
+    (element) => element.inventory_id === itemInfo.inventory_id
+  );
+  const earlierQuantity = inCart ? inCart.quantity : 0;
+  const [inventoryRemaining, setInventoryRemaining] = useState(
+    itemInfo.stock - earlierQuantity
+  );
 
   const handleSelectChange = (event) => {
     setCartValue(event.target.value);
   };
-  const options = Array.from({ length: itemInfo.stock }, (_, index) => (
+  const options = Array.from({ length: inventoryRemaining }, (_, index) => (
     <option key={index + 1} value={index + 1}>
       {index + 1}
     </option>
@@ -75,6 +82,11 @@ function ItemDescription({ cart, setCart }) {
           {" "}
           Stock: {itemInfo.stock ? itemInfo.stock : "0 (add stock to DB)"}{" "}
         </p>
+        <p>
+          {inventoryRemaining
+            ? ""
+            : "Based on your current order and our current stock, there is no inventory remaining."}
+        </p>
         <Button
           onClick={() => {
             let found = false;
@@ -90,13 +102,14 @@ function ItemDescription({ cart, setCart }) {
               return currentItem;
             });
             if (!found) {
-              const cartItem = { ...itemInfo, quantity: cartValue };
+              const cartItem = { ...itemInfo, quantity: parseInt(cartValue) };
               setCart((prevState) => [...prevState, cartItem]);
             } else {
               setCart(updatedCart);
             }
+            setInventoryRemaining(inventoryRemaining - cartValue);
           }}
-          disabled={itemInfo.stock == 0}
+          hidden={inventoryRemaining == 0}
         >
           Add to Cart
         </Button>

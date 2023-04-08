@@ -66,7 +66,13 @@ const Icon = styled.div`
 
 const Inventoryproduct = ({ item, cart, setCart }) => {
   const imageItem = images.find((element) => element.name === item.image);
-  const [inventoryRemaining, setInventoryRemaining] = useState(item.stock);
+  const inCart = cart.find(
+    (element) => element.inventory_id === item.inventory_id
+  );
+  const earlierQuantity = inCart ? inCart.quantity : 0;
+  const [inventoryRemaining, setInventoryRemaining] = useState(
+    item.stock - earlierQuantity
+  );
   return (
     <Container>
       <Image src={imageItem ? imageItem.src : ""} alt={item.name + " image"} />
