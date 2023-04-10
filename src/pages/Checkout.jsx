@@ -1,29 +1,18 @@
 import React, { useState } from "react";
-import UserTextBoxes from "../components/UserTextBoxes";
-import { Card } from "react-bootstrap";
-import { Row, Col } from "react-bootstrap";
-import hammer from "../Images/hammer.jpg";
 import { Button } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
-import CheckoutListItem from "../components/CheckoutListItem";
-import CartTotal from "../components/CartTotal";
+import CartSummary from "../components/CartSummary";
 
 function CheckoutPage({ cart, setCart, userData }) {
   return (
     <div style={{ padding: "10px", minHeight: "78vh" }}>
       <h1>Checkout</h1>
-      <h3 style={{ textAlign: "left" }}>Order Summary</h3>
       <div>
-        <CartTotal cart={cart} />
-        {cart.map((cartItem, index) => (
-          <CheckoutListItem
-            key={index}
-            item={cartItem}
-            cart={cart}
-            setCart={setCart}
-            canEdit={false}
-          />
-        ))}
+        <CartSummary
+          cart={cart}
+          setCart={setCart}
+          isCart={false}
+        ></CartSummary>
       </div>
 
       <div style={{ clear: "both" }}>

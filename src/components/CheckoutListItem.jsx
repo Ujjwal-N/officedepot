@@ -3,6 +3,7 @@ import hammer from "../Images/hammer.jpg";
 import chair from "../Images/chair.jpg";
 import { images } from "../productImageNames.js";
 import { Button } from "react-bootstrap";
+
 function CheckoutListItem({ item, cart, setCart, canEdit }) {
   const imageItem = images.find((element) => element.name === item.image);
   const options = Array.from({ length: item.stock }, (_, index) => (
@@ -37,6 +38,7 @@ function CheckoutListItem({ item, cart, setCart, canEdit }) {
         height: "25vh",
         overflow: "hidden",
         textAlign: "right",
+        marginBottom: "15px",
       }}
     >
       <img
