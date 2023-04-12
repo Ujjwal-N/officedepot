@@ -46,7 +46,11 @@ export const UPDATE_INVENTORY_WEIGHT_ENDPOINT = `${NODE_SERVER}/updateWeight`;
 export const UPDATE_INVENTORY_PRICE_ENDPOINT = `${NODE_SERVER}/updatePrice`;
 export const UPDATE_INVENTORY_ITEM_GROUP_ENDPOINT = `${NODE_SERVER}/updateItemGroup`;
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ORDERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ORDERS & CART ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+export const ADD_ITEM_TO_CART_ENDPOINT = `${NODE_SERVER}/addItemToCart`;
+export const REMOVE_CART_ITEM_ENDPOINT = `${NODE_SERVER}/removeCartItem`;
+export const UPDATE_CART_ITEM_QUANTITY_ENDPOINT = `${NODE_SERVER}/updateCartItemQuantity`;
+export const CHECKOUT_ENDPOINT = `${NODE_SERVER}/checkout`;
 export const CREATE_ORDER_ENDPOINT = `${NODE_SERVER}/createOrder`;
 // '/updateOrder/${order_id}
 export const UPDATE_ORDER_ENDPOINT = `${NODE_SERVER}/updateOrder/`;

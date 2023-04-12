@@ -115,6 +115,7 @@ const Inventoryproduct = ({ item, cart, setCart }) => {
             />
           }
         </Icon>
+        <div>{inventoryRemaining <= 0 ? <p style={{ color: "red", fontSize: "20px" }}><strong>Out of Stock</strong></p> : <p />}</div>
       </Info>
     </Container>
   );

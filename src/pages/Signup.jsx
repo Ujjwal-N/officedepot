@@ -55,13 +55,13 @@ export const Signup = ({ userData, setUserData }) => {
         });
     } else {
       const { loginEmail, loginPassword } = userData;
-      console.log(loginEmail, loginPassword);
       axios
         .post(USER_LOGIN_ENDPOINT, {
           email: loginEmail,
           password: loginPassword,
         })
         .then((response) => {
+          console.log(response.data["user"]);
           const addressStr =
             response.data["user"]["shippingaddress"].split("\n");
           setUserData({
@@ -77,6 +77,7 @@ export const Signup = ({ userData, setUserData }) => {
             city: addressStr[1],
             state: addressStr[2],
             zip: addressStr[3],
+            customer_id: response.data["user"]["customer_id"],
           });
           navigate("/home", { replace: true });
         })

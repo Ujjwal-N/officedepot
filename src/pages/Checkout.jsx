@@ -10,8 +10,21 @@ function CheckoutPage({ cart, setCart, userData }) {
     return sum + parseInt(currentItem.weight);
   }, 0);
 
+  const subtotal = cart
+    ? cart.reduce((sum, currentItem) => {
+        return sum + currentItem.quantity * currentItem.price;
+      }, 0)
+    : 0;
+
   const handleSelect = (index) => {
     setSelected(index);
+  };
+
+  const calculateShippingCost = () => {
+    if (selected == 0 || subtotal > 100) {
+      return 0.0;
+    }
+    return 25.0;
   };
 
   const circleStyle = (isSelected) => ({
@@ -29,7 +42,12 @@ function CheckoutPage({ cart, setCart, userData }) {
     <div style={{ padding: "10px", minHeight: "78vh" }}>
       <h1>Checkout</h1>
       <div>
-        <CartSummary cart={cart} setCart={setCart} isCart={false}></CartSummary>
+        <CartSummary
+          cart={cart}
+          setCart={setCart}
+          isCart={false}
+          shippingCost={selected !== null ? calculateShippingCost() : null}
+        ></CartSummary>
       </div>
 
       <div style={{ clear: "both" }}>
@@ -78,6 +96,16 @@ function CheckoutPage({ cart, setCart, userData }) {
             <h4 className="mb-0">Pickup</h4>
           </div>
           <p>Policy: Free for all orders!</p>
+          <p>See our warehouse location below:</p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25379.353862093725!2d-121.88057599999999!3d37.3325824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fccd4f21df13d%3A0x45d9bee310def4b8!2sWalmart%20Supercenter!5e0!3m2!1sen!2sus!4v1681338387840!5m2!1sen!2sus"
+            width="600"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </ListGroup.Item>
         <ListGroup.Item
           action
@@ -88,7 +116,10 @@ function CheckoutPage({ cart, setCart, userData }) {
             <span style={circleStyle(selected === 1)}></span>
             <h4 className="mb-0">Drone Delivery</h4>
           </div>
-          <p>Policy: Applicable for orders that weigh less than 15lbs.</p>
+          <p>
+            Policy: Applicable for orders that weigh less than 15lbs. For orders
+            under $100, there is a $25 surcharge.
+          </p>
           <p>
             Total weight for this order: {(totalWeight * 1.0).toFixed(2)} lbs
           </p>
