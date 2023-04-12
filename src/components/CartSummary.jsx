@@ -30,13 +30,13 @@ function CartSummary({ cart, setCart, isCart }) {
                 item={cartItem}
                 cart={cart}
                 setCart={setCart}
-                canEdit={true}
+                canEdit={isCart}
               />
             ))}
           </div>
         </Col>
         <Col md="4">
-          <CartTotal cart={cart} isCart={isCart}/>
+          <CartTotal cart={cart} isCart={isCart} />
         </Col>
       </Row>
     </div>
