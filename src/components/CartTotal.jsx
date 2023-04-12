@@ -11,6 +11,7 @@ function CartTotal({ cart, isCart }) {
   return (
     <div
       style={{
+        width: "90%",
         boxSizing: "50px",
         border: "2px solid rgba(0, 0, 0, 0.05)",
         padding: "50px",

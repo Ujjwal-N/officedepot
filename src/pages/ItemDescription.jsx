@@ -80,7 +80,7 @@ function ItemDescription({ cart, setCart }) {
         <p> Item Group: {itemInfo.itemgroup} </p>
         <p>
           {" "}
-          Stock: {itemInfo.stock ? itemInfo.stock : "0 (add stock to DB)"}{" "}
+          Stock: {itemInfo.stock}{" "}
         </p>
         <p>
           {inventoryRemaining
