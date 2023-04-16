@@ -1,11 +1,47 @@
-@media (max-width:600px){
-    
+/*Common Breakpoints for resolutions*/
+
+@media only screen and (max-width: 768px){
+
+.container{
+    min-width: 100px;
+    height: 100px;
 }
 
-@media only screen and (min-width: 992px) {
- 
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 768px) and (max-width: 1366px) {
+
+    .container {
+        min-width: 130px;
+        height: 170px;
+    }
 
 }
+
+@media only screen and (min-width: 1024px) and (max-width:1920px) {
+    .container {
+        min-width: 170px;
+        height: 260px;
+    }
+}
+
+
+@media only screen and (min-width: 1440px) and (max-width:2560px) {
+
+    .container {
+        min-width: 230px;
+        height: 310px;
+    }
+
+}
+
+@media only screen and (min-width: 2160px) and (max-width:3840px) {
+
+    .container {
+        min-width: 270px;
+        height: 350px;
+    }
+
+}
+
+

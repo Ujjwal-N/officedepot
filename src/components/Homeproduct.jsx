@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
+import '../css/responsive.css'; //used to make pages responsive
 
 const Info = styled.div`
   opacity: 0;
@@ -57,7 +58,7 @@ const Icon = styled.div`
 
 const Homeproduct = ({ item }) => {
   return (
-    <Container>
+    <Container className = "container">
       <Image src={item.img} />
       <Info>
         <Icon>
