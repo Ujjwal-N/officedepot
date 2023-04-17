@@ -46,9 +46,6 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
                 <Nav.Link as={Link} to={"/about"}>
                   About
                 </Nav.Link>
-                <Nav.Link as={Link} to={"/map"}>
-                  Map
-                </Nav.Link>
                 <Nav.Link as={Link} to={"/products"}>
                   Products
                 </Nav.Link>
