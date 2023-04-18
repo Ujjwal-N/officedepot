@@ -2,15 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { Inventoryproducts } from "../../components/Inventoryproducts";
-import SearchBarComp from "../../components/SearchBarComp";
 
 const Title = styled.h1`
   margin-top: 20px;
   text-transform: capitalize;
-`;
-
-const Container = styled.div`
-  margin-top: -30px;
 `;
 
 export const Product = ({ cart, setCart, userData }) => {
@@ -28,15 +23,14 @@ export const Product = ({ cart, setCart, userData }) => {
           : "Chairs"}
       </Title>
 
-      <Container>
-        <SearchBarComp />
+      <div>
         <Inventoryproducts
           itemProps={itemProps}
           cart={cart}
           setCart={setCart}
           userData={userData}
         />
-      </Container>
+      </div>
     </div>
   );
 };

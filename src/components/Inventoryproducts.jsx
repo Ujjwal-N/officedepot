@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import Inventoryproduct from "./Inventoryproduct";
 
@@ -13,13 +13,31 @@ const Row = styled.div`
   margin-bottom: 20px;
 `;
 
+const SearchContainer = styled.div`
+  margin-bottom: 20px;
+`;
+
+const SearchInput = styled.input`
+  width: 100%;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid lightgray;
+`;
+
 export const Inventoryproducts = ({ itemProps, cart, setCart, userData }) => {
-  const rows = [];
-  if (itemProps) {
-    itemProps.forEach((item) => {
-      rows.push(item);
-    });
-  }
+  const [searchWord, setSearchWord] = useState("");
+  const [filteredRows, setFilteredRows] = useState([]);
+
+  useMemo(() => {
+    if (itemProps) {
+      const filtered = itemProps.filter((item) =>
+        item.name.toLowerCase().includes(searchWord.toLowerCase())
+      );
+      setFilteredRows(filtered);
+    }
+  }, [itemProps, searchWord]);
+
+  const rows = filteredRows.length > 0 ? filteredRows : itemProps || [];
 
   const chunkedRows = useMemo(() => {
     const chunkSize = 4;
@@ -37,6 +55,14 @@ export const Inventoryproducts = ({ itemProps, cart, setCart, userData }) => {
     <div>
       {rows.length > 0 ? (
         <Container>
+          <SearchContainer>
+            <SearchInput
+              type="text"
+              placeholder="Search"
+              value={searchWord}
+              onChange={(e) => setSearchWord(e.target.value)}
+            />
+          </SearchContainer>
           {chunkedRows.map((chunk, index) => (
             <Row key={`row-${index}`}>
               {chunk.map((item) => (
@@ -52,7 +78,9 @@ export const Inventoryproducts = ({ itemProps, cart, setCart, userData }) => {
           ))}
         </Container>
       ) : (
-        <p>No inventory in this section</p>
+        <div style={{ "padding" : "100px" }}>
+          <p>No inventory in this section</p>
+        </div>
       )}
     </div>
   );
