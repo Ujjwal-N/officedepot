@@ -29,33 +29,24 @@ export const UPDATE_EMPLOYEE_ADDRESS_ENDPOINT = `${NODE_SERVER}/updateEmployAddr
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INVENTORY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export const CREATE_INVENTORY_ENDPOINT = `${NODE_SERVER}/createInventory`;
-// '/updateInventory/${inventory_id}'
+export const FIND_ITEM_BY_ID_ENDPOINT = `${NODE_SERVER}/findItemById/`;
 export const UPDATE_INVENTORY_ENDPOINT = `${NODE_SERVER}/updateInventory/`;
 export const DELETE_INVENTORY_ENDPOINT = `${NODE_SERVER}/removeInventoryItem`;
 
 export const GET_ALL_INVENTORY_ENDPOINT = `${NODE_SERVER}/displayInventory`;
-export const GET_INVENTORY_NAME_ENDPOINT = `${NODE_SERVER}/getInventoryName`;
-export const GET_INVENTORY_DESCRIPTION_ENDPOINT = `${NODE_SERVER}/getInventoryDescription`;
-export const GET_INVENTORY_WEIGHT_ENDPOINT = `${NODE_SERVER}/getInventoryWeight`;
-export const GET_INVENTORY_PRICE_ENDPOINT = `${NODE_SERVER}/getInventoryPrice`;
-export const GET_INVENTORY_ITEM_GROUP_ENDPOINT = `${NODE_SERVER}/getInventoryItemGroup`;
-export const GET_INVENTORY_STOCK_ENDPOINT = `${NODE_SERVER}/getInventoryStock`;
-export const UPDATE_INVENTORY_NAME_ENDPOINT = `${NODE_SERVER}/updateName`;
-export const UPDATE_INVENTORY_DESCRIPTION_ENDPOINT = `${NODE_SERVER}/updateDescription`;
-export const UPDATE_INVENTORY_WEIGHT_ENDPOINT = `${NODE_SERVER}/updateWeight`;
-export const UPDATE_INVENTORY_PRICE_ENDPOINT = `${NODE_SERVER}/updatePrice`;
-export const UPDATE_INVENTORY_ITEM_GROUP_ENDPOINT = `${NODE_SERVER}/updateItemGroup`;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ORDERS & CART ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export const ADD_ITEM_TO_CART_ENDPOINT = `${NODE_SERVER}/addItemToCart`;
+export const BULK_ADD_ITEMS_TO_CART_ENDPOINT = `${NODE_SERVER}/bulkAddItemsToCart`;
 export const REMOVE_CART_ITEM_ENDPOINT = `${NODE_SERVER}/removeCartItem`;
 export const UPDATE_CART_ITEM_QUANTITY_ENDPOINT = `${NODE_SERVER}/updateCartItemQuantity`;
+export const GET_ITEMS_BY_CART_ID_ENDPOINT = `${NODE_SERVER}/getItemsByCartId/`;
 export const CHECKOUT_ENDPOINT = `${NODE_SERVER}/checkout`;
 export const CREATE_ORDER_ENDPOINT = `${NODE_SERVER}/createOrder`;
 // '/updateOrder/${order_id}
 export const UPDATE_ORDER_ENDPOINT = `${NODE_SERVER}/updateOrder/`;
 export const DELETE_ORDER_ENDPOINT = `${NODE_SERVER}/removeOrder/`;
-
+export const GET_ORDERS_BY_CUSTOMER_ENDPOINT = `${NODE_SERVER}/getOrdersAndItemsByCustomerId/`;
 export const GET_ALL_ORDERS_ENDPOINT = `${NODE_SERVER}/displayOrders`;
 export const GET_ORDER_STATUS_ENDPOINT = `${NODE_SERVER}/getOrderStatus`;
 export const GET_ORDER_CREATION_DATE_ENDPOINT = `${NODE_SERVER}/getOrderCreationDate`;

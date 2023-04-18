@@ -2,6 +2,11 @@ import { React, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { images } from "../productImageNames.js";
+import axios from "axios";
+import {
+  ADD_ITEM_TO_CART_ENDPOINT,
+  UPDATE_CART_ITEM_QUANTITY_ENDPOINT,
+} from "../constants";
 const ItemImage = styled.img`
   max-width: 50%;
   max-height: 50%;
@@ -87,9 +92,11 @@ function ItemDescription({ cart, setCart, userData }) {
         <Button
           onClick={() => {
             let found = false;
+            let oldQuantity = 0;
             const updatedCart = cart.map((currentItem) => {
               if (currentItem.inventory_id === itemInfo.inventory_id) {
                 found = true;
+                oldQuantity = parseInt(currentItem.quantity);
                 return {
                   ...currentItem,
                   quantity:
@@ -101,8 +108,38 @@ function ItemDescription({ cart, setCart, userData }) {
             if (!found) {
               const cartItem = { ...itemInfo, quantity: parseInt(cartValue) };
               setCart((prevState) => [...prevState, cartItem]);
+              if (userData.customer_id) {
+                axios
+                  .post(ADD_ITEM_TO_CART_ENDPOINT, {
+                    customer_id: userData.customer_id,
+                    inventory_id: itemInfo.inventory_id,
+                    quantity: cartValue,
+                  })
+                  .then((response) => {
+                    console.log(response.status);
+                    console.log(response.data);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              }
             } else {
               setCart(updatedCart);
+              if (userData.customer_id) {
+                axios
+                  .put(UPDATE_CART_ITEM_QUANTITY_ENDPOINT, {
+                    customer_id: userData.customer_id,
+                    inventory_id: itemInfo.inventory_id,
+                    newQuantity: oldQuantity + parseInt(cartValue),
+                  })
+                  .then((response) => {
+                    console.log(response.status);
+                    console.log(response.data);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              }
             }
             setInventoryRemaining(inventoryRemaining - cartValue);
           }}

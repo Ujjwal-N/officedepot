@@ -1,10 +1,12 @@
 import React from "react";
-import hammer from "../Images/hammer.jpg";
-import chair from "../Images/chair.jpg";
 import { images } from "../productImageNames.js";
 import { Button } from "react-bootstrap";
-
-function CheckoutListItem({ item, cart, setCart, canEdit }) {
+import axios from "axios";
+import {
+  REMOVE_CART_ITEM_ENDPOINT,
+  UPDATE_CART_ITEM_QUANTITY_ENDPOINT,
+} from "../constants";
+function CheckoutListItem({ item, cart, setCart, canEdit, userData }) {
   const imageItem = images.find((element) => element.name === item.image);
   const options = Array.from({ length: item.stock }, (_, index) => (
     <option key={index + 1} value={index + 1}>
@@ -21,12 +23,45 @@ function CheckoutListItem({ item, cart, setCart, canEdit }) {
       }
       return currentItem;
     });
+    if (userData.customer_id) {
+      axios
+        .put(UPDATE_CART_ITEM_QUANTITY_ENDPOINT, {
+          customer_id: userData.customer_id,
+          inventory_id: item.inventory_id,
+          newQuantity: parseInt(event.target.value),
+        })
+        .then((response) => {
+          console.log(response.status);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
     setCart(updatedCart);
   };
   const handleDelete = (event) => {
     setCart((prevData) =>
       prevData.filter((cartItem) => cartItem.inventory_id !== item.inventory_id)
     );
+    if (userData.customer_id) {
+      //?customer_id=${customer_id}&inventory_id=${inventory_id}`
+      axios
+        .delete(
+          REMOVE_CART_ITEM_ENDPOINT +
+            "?inventory_id=" +
+            item.inventory_id +
+            "&customer_id=" +
+            userData.customer_id
+        )
+        .then((response) => {
+          console.log(response.status);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   return (
     <div
@@ -72,6 +107,7 @@ function CheckoutListItem({ item, cart, setCart, canEdit }) {
           </select>
         </p>
         <p>Price: ${item.price}</p>
+        {!canEdit && <p>Located in {item.warehouse}</p>}
         <Button variant="danger" onClick={handleDelete} hidden={!canEdit}>
           {" "}
           Remove{" "}

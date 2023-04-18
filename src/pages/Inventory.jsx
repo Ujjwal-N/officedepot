@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Dropdown } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -23,6 +24,7 @@ const Inventory = () => {
     itemgroup: "",
     stock: "",
     image: "",
+    warehouse: "",
   });
   const [showModal, setModalShow] = useState(false);
   const [rowBeingEdited, setRowBeingEdited] = useState(0);
@@ -35,6 +37,7 @@ const Inventory = () => {
     "price",
     "stock",
     "image",
+    "warehouse",
   ];
 
   useEffect(() => {
@@ -94,6 +97,20 @@ const Inventory = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewRowData({ ...newRowData, [name]: value });
+  };
+
+  const handleDropDown = (eventKey) => {
+    setNewRowData({ ...newRowData, warehouse: eventKey });
+  };
+
+  const handleEditDropDown = (eventKey, index) => {
+    const updatedData = data.map((row, i) => {
+      if (i === index) {
+        return { ...row, warehouse: eventKey };
+      }
+      return row;
+    });
+    setData(updatedData);
   };
 
   const handleEditInputChange = (e, index) => {
@@ -179,6 +196,7 @@ const Inventory = () => {
             <th style={{ width: "7%" }}>Price</th>
             <th style={{ width: "7%" }}>Stock</th>
             <th style={{ width: "10%" }}>Image</th>
+            <th style={{ width: "7%" }}>Warehouse</th>
           </tr>
         </thead>
         <tbody>
@@ -194,7 +212,7 @@ const Inventory = () => {
                         <Button onClick={handleModalShow}>
                           {data[index].image}
                         </Button>
-                      ) : (
+                      ) : key !== "warehouse" ? (
                         <Form.Control
                           type={key === "id" ? "number" : "text"}
                           disabled={key === "id"}
@@ -202,6 +220,29 @@ const Inventory = () => {
                           value={value}
                           onChange={(e) => handleEditInputChange(e, index)}
                         />
+                      ) : (
+                        <Dropdown
+                          name={key}
+                          onSelect={(eventKey) =>
+                            handleEditDropDown(eventKey, index)
+                          }
+                        >
+                          <Dropdown.Toggle
+                            variant="primary"
+                            id="warehouse-dropdown"
+                          >
+                            {value}
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu>
+                            <Dropdown.Item eventKey="Warehouse 1">
+                              Warehouse 1
+                            </Dropdown.Item>
+                            <Dropdown.Item eventKey="Warehouse 2">
+                              Warehouse 2
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
                       )
                     ) : (
                       value
@@ -229,7 +270,7 @@ const Inventory = () => {
                     <Button onClick={handleModalShow}>
                       {newRowData.image ? newRowData.image : "Select"}
                     </Button>
-                  ) : (
+                  ) : key !== "warehouse" ? (
                     <Form.Control
                       type={key === "id" ? "number" : "text"}
                       disabled={key === "id"}
@@ -238,6 +279,24 @@ const Inventory = () => {
                       value={newRowData[key]}
                       onChange={handleInputChange}
                     />
+                  ) : (
+                    <Dropdown name={key} onSelect={handleDropDown}>
+                      <Dropdown.Toggle
+                        variant="primary"
+                        id="warehouse-dropdown"
+                      >
+                        {newRowData[key]}
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <Dropdown.Item eventKey="Warehouse 1">
+                          Warehouse 1
+                        </Dropdown.Item>
+                        <Dropdown.Item eventKey="Warehouse 2">
+                          Warehouse 2
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   )}
                 </td>
               ))}

@@ -110,8 +110,8 @@ export const Slider = () => {
         </Arrow>
 
         <Wrapper slideIndex={slideIndex}>
-          {sliderItems.map((item) => (
-            <Slide bg="#fff7f7">
+          {sliderItems.map((item, index) => (
+            <Slide bg="#fff7f7" key={index}>
               <ImgContainer>
                 <Image src={item.img} />
               </ImgContainer>

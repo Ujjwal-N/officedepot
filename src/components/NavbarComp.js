@@ -51,9 +51,10 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
                 <Nav.Link as={Link} to={"/cart"}>
                   View Cart{" "}
                   <Badge bg="secondary" text="light" className="badge-circle">
-                    {cart.reduce((sum, currentItem) => {
-                      return sum + currentItem.quantity;
-                    }, 0)}
+                    {cart &&
+                      cart.reduce((sum, currentItem) => {
+                        return sum + currentItem.quantity;
+                      }, 0)}
                   </Badge>
                 </Nav.Link>
                 <Nav.Link as={Link} to={"/profile"}>
@@ -95,7 +96,14 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
             />
             <Route
               path="/signup"
-              element={<Signup userData={userData} setUserData={setUserData} />}
+              element={
+                <Signup
+                  userData={userData}
+                  setUserData={setUserData}
+                  cart={cart}
+                  setCart={setCart}
+                />
+              }
             />
             <Route
               path="/products"

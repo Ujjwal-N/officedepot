@@ -4,6 +4,11 @@ import styled from "styled-components";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { images } from "../productImageNames.js";
+import axios from "axios";
+import {
+  ADD_ITEM_TO_CART_ENDPOINT,
+  UPDATE_CART_ITEM_QUANTITY_ENDPOINT,
+} from "../constants";
 const Info = styled.div`
   opacity: 0;
   width: 100%;
@@ -62,7 +67,7 @@ const Icon = styled.div`
   }
 `;
 
-const Inventoryproduct = ({ item, cart, setCart }) => {
+const Inventoryproduct = ({ item, cart, setCart, userData }) => {
   const imageItem = images.find((element) => element.name === item.image);
   const inCart = cart.find(
     (element) => element.inventory_id === item.inventory_id
@@ -94,9 +99,11 @@ const Inventoryproduct = ({ item, cart, setCart }) => {
             <ShoppingCartIcon
               onClick={() => {
                 let found = false;
+                let newQuantity = 0;
                 const updatedCart = cart.map((currentItem) => {
                   if (currentItem.inventory_id === item.inventory_id) {
                     found = true;
+                    newQuantity = currentItem.quantity + 1;
                     return {
                       ...currentItem,
                       quantity: currentItem.quantity + 1,
@@ -107,15 +114,53 @@ const Inventoryproduct = ({ item, cart, setCart }) => {
                 if (!found) {
                   const cartItem = { ...item, quantity: 1 };
                   setCart((prevState) => [...prevState, cartItem]);
+                  if (userData.customer_id) {
+                    axios
+                      .post(ADD_ITEM_TO_CART_ENDPOINT, {
+                        customer_id: userData.customer_id,
+                        inventory_id: item.inventory_id,
+                        quantity: 1,
+                      })
+                      .then((response) => {
+                        console.log(response.status);
+                        console.log(response.data);
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                      });
+                  }
                 } else {
                   setCart(updatedCart);
+                  if (userData.customer_id) {
+                    axios
+                      .put(UPDATE_CART_ITEM_QUANTITY_ENDPOINT, {
+                        customer_id: userData.customer_id,
+                        inventory_id: item.inventory_id,
+                        newQuantity: newQuantity,
+                      })
+                      .then((response) => {
+                        console.log(response.status);
+                        console.log(response.data);
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                      });
+                  }
                 }
                 setInventoryRemaining(inventoryRemaining - 1);
               }}
             />
           }
         </Icon>
-        <div>{inventoryRemaining <= 0 ? <p style={{ color: "red", fontSize: "20px" }}><strong>Out of Stock</strong></p> : <p />}</div>
+        <div>
+          {inventoryRemaining <= 0 ? (
+            <p style={{ color: "red", fontSize: "20px" }}>
+              <strong>Out of Stock</strong>
+            </p>
+          ) : (
+            <p />
+          )}
+        </div>
       </Info>
     </Container>
   );

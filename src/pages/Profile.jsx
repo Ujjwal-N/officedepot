@@ -1,11 +1,14 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Row, Col, ListGroup, Badge, Alert } from "react-bootstrap";
 import UserTextBoxes from "../components/UserTextBoxes";
 import axios from "axios";
-import { UPDATE_CUSTOMER_ENDPOINT } from "../constants";
+import {
+  UPDATE_CUSTOMER_ENDPOINT,
+  GET_ORDERS_BY_CUSTOMER_ENDPOINT,
+} from "../constants";
 export const Profile = ({ userData, setUserData }) => {
   const [showSuccessAlert, setShowAlert] = useState(false);
-  const orderData = [
+  const [orderData, setOrderData] = useState([
     {
       number: "1",
       items: ["Chair", "Screw Driver"],
@@ -18,7 +21,45 @@ export const Profile = ({ userData, setUserData }) => {
       status: "Shipped",
       total: "$100.95",
     },
-  ];
+  ]);
+
+  useEffect(() => {
+    if (!userData.customer_id) return;
+    const orderMap = {};
+    axios
+      .get(GET_ORDERS_BY_CUSTOMER_ENDPOINT + userData.customer_id)
+      .then((response) => {
+        console.log(response.data);
+        for (const elemNum in response.data) {
+          const elem = response.data[elemNum];
+          if (elem.order_id in orderMap) {
+            orderMap[elem.order_id].items.push([elem.name, elem.quantity]);
+          } else {
+            orderMap[elem.order_id] = {
+              items: [[elem.name, elem.quantity]],
+              status: elem.status,
+              total: elem.total_price,
+              creationdate: elem.creationdate,
+              deliverydate: elem.deliverydate,
+              shipping_method: elem.shipping_method,
+            };
+          }
+        }
+        let num = 1;
+        console.log(orderMap);
+        const newOrderData = [];
+        for (const key in orderMap) {
+          const currData = orderMap[key];
+          currData.number = num;
+          newOrderData.push(currData);
+          num++;
+        }
+        setOrderData(newOrderData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   const handleSubmit = (event) => {
     event.preventDefault();
     const { name, email, address, city, state, zip, ccNumber } = userData;
@@ -90,7 +131,11 @@ export const Profile = ({ userData, setUserData }) => {
                     <div>
                       <ul>
                         {item.items.map((orderItem) => {
-                          return <li>{orderItem}</li>;
+                          return (
+                            <li>
+                              {orderItem[0]}, quantity: {orderItem[1]}
+                            </li>
+                          );
                         })}
                       </ul>
                       Status: {item.status}

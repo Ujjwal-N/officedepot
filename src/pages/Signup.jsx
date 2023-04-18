@@ -6,9 +6,15 @@ import { useNavigate } from "react-router-dom";
 import "../css/signup.css";
 import axios from "axios";
 import UserTextBoxes from "../components/UserTextBoxes";
-import { CREATE_CUSTOMER_ENDPOINT, USER_LOGIN_ENDPOINT } from "../constants";
+import {
+  CREATE_CUSTOMER_ENDPOINT,
+  USER_LOGIN_ENDPOINT,
+  GET_ITEMS_BY_CART_ID_ENDPOINT,
+  BULK_ADD_ITEMS_TO_CART_ENDPOINT,
+  FIND_ITEM_BY_ID_ENDPOINT,
+} from "../constants";
 
-export const Signup = ({ userData, setUserData }) => {
+export const Signup = ({ userData, setUserData, cart, setCart }) => {
   const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(false); // state to toggle between sign up and log in
   const toggleLogin = () => setShowLogin(!showLogin); // function to toggle between sign up and log in
@@ -21,22 +27,74 @@ export const Signup = ({ userData, setUserData }) => {
     });
   };
 
+  const pullCart = (cartId) => {
+    axios
+      .get(GET_ITEMS_BY_CART_ID_ENDPOINT + cartId)
+      .then((response) => {
+        setCart(response.data);
+        navigate("/home", { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const populateCart = (cartId, customerId) => {
+    if (cart) {
+      const inventoryIds = [];
+      const quantities = [];
+      cart.forEach((item) => {
+        inventoryIds.push(item.inventory_id);
+        quantities.push(item.quantity);
+      });
+      axios
+        .post(BULK_ADD_ITEMS_TO_CART_ENDPOINT, {
+          customer_id: customerId,
+          inventory_ids: inventoryIds,
+          quantities: quantities,
+        })
+        .then((response) => {
+          console.log(response.data);
+          pullCart(cartId);
+        })
+        .catch((error) => {
+          console.log(error);
+          pullCart(cartId);
+        });
+    } else {
+      pullCart(cartId);
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!showLogin) {
-      const { name, email, password, address, city, state, zip, ccNumber } =
-        userData;
+      const {
+        name,
+        email,
+        password,
+        address,
+        city,
+        state,
+        zip,
+        ccNumber,
+        cvv,
+        expirationDate,
+        billingAddress,
+        billingCity,
+        billingState,
+        billingZip,
+      } = userData;
       const [firstname, lastname] = name.split(" ");
       const shippingaddress = address + "\n" + city + "\n" + state + "\n" + zip;
-      //{ firstname, lastname, email, password, shippingaddress, creditcard }
-      console.log({
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        password: password,
-        shippingaddress: shippingaddress,
-        creditcard: ccNumber,
-      });
+      const billingaddress =
+        billingAddress +
+        "\n" +
+        billingCity +
+        "\n" +
+        billingState +
+        "\n" +
+        billingZip;
       axios
         .post(CREATE_CUSTOMER_ENDPOINT, {
           firstname: firstname,
@@ -45,11 +103,22 @@ export const Signup = ({ userData, setUserData }) => {
           password: password,
           shippingaddress: shippingaddress,
           creditcard: ccNumber,
+          cvv: cvv,
+          expirationdate: expirationDate,
+          billingaddress: billingaddress,
         })
         .then((response) => {
           console.log(response.status);
           console.log(response.data);
-          navigate("/home", { replace: true });
+          setUserData({
+            ...userData,
+            customer_id: response.data["customer_id"],
+            cart_id: response.data["shoppingCart"]["id"],
+          });
+          populateCart(
+            response.data["shoppingCart"]["id"],
+            response.data["customer_id"]
+          );
         })
         .catch((error) => {
           setFailedAlert(true);
@@ -63,9 +132,10 @@ export const Signup = ({ userData, setUserData }) => {
           password: loginPassword,
         })
         .then((response) => {
-          console.log(response.data["user"]);
           const addressStr =
             response.data["user"]["shippingaddress"].split("\n");
+          const billingAddressStr =
+            response.data["user"]["billingaddress"].split("\n");
           setUserData({
             ...userData,
             ccNumber: response.data["user"]["creditcard"],
@@ -80,8 +150,18 @@ export const Signup = ({ userData, setUserData }) => {
             state: addressStr[2],
             zip: addressStr[3],
             customer_id: response.data["user"]["customer_id"],
+            cvv: response.data["user"]["cvv"],
+            expirationDate: response.data["user"]["expirationdate"],
+            billingAddress: billingAddressStr[0],
+            billingCity: billingAddressStr[1],
+            billingState: billingAddressStr[2],
+            billingZip: billingAddressStr[3],
+            cart_id: response.data["shoppingCart"]["id"],
           });
-          navigate("/home", { replace: true });
+          populateCart(
+            response.data["shoppingCart"]["id"],
+            response.data["customer_id"]
+          );
         })
         .catch((error) => {
           setFailedAlert(true);
@@ -157,7 +237,8 @@ export const Signup = ({ userData, setUserData }) => {
           show={showFailedAlert}
         >
           Make sure all fields are filled in when signing up, and double check
-          your username and password while logging in
+          your username and password while logging in. Try using a different
+          email address.
         </Alert>
       </div>
     </div>

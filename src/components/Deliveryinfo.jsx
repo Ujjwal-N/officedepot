@@ -47,7 +47,7 @@ const Desc = styled.p`
 
 export const Deliveryinfo = () => {
   return (
-    <div class="deliveryPad">
+    <div className="deliveryPad">
       <Container>
         <ImgContainer>
           <Image src={delivery} />
