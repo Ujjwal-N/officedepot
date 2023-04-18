@@ -31,6 +31,10 @@ const Button = styled.button`
   cursor: pointer;
   color: #fff;
   background-color: #13755ece;
+  padding: 5px 5px;
+  &:hover {
+    background-color: #0e5d8f; 
+  }
 `;
 
 function ItemDescription({ cart, setCart, userData }) {
