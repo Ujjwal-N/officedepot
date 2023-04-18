@@ -19,7 +19,6 @@ import indoorCollection from "../Images/indoorCollection.jpg";
 import bathroomCollection from "../Images/bathroomCollection.jpg";
 
 const StyledContainer = styled(Container)`
-  width: 100%;
   max-width: 3000px;
   margin-bottom: 20px;
 `;

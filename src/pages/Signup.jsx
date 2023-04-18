@@ -47,6 +47,9 @@ export const Signup = ({ userData, setUserData, cart, setCart }) => {
         inventoryIds.push(item.inventory_id);
         quantities.push(item.quantity);
       });
+      console.log(customerId);
+      console.log(inventoryIds);
+      console.log(quantities);
       axios
         .post(BULK_ADD_ITEMS_TO_CART_ENDPOINT, {
           customer_id: customerId,
@@ -160,7 +163,7 @@ export const Signup = ({ userData, setUserData, cart, setCart }) => {
           });
           populateCart(
             response.data["shoppingCart"]["id"],
-            response.data["customer_id"]
+            response.data["user"]["customer_id"]
           );
         })
         .catch((error) => {
