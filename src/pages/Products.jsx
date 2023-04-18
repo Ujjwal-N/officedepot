@@ -87,7 +87,7 @@ export const Products = ({ cart, setCart }) => {
 
   return (
     <div>
-      <h1> All Collections </h1>
+      <h1 style={{ "margin-top": "20px" }}> All Collections </h1>
 
       <StyledContainer>
         <ImgContainer>
@@ -244,12 +244,15 @@ export const Products = ({ cart, setCart }) => {
             }}
             state={{
               itemProps: inventoryItems
-                ? Object.keys(inventoryItems).reduce((items, key) => {
-                    if (!STANDARD_ITEM_GROUPS.includes(key)) {
-                      items[key] = inventoryItems[key];
-                    }
-                    return items;
-                  }, {})
+                ? Object.keys(inventoryItems).reduce(
+                    (items, key) => {
+                      if (!STANDARD_ITEM_GROUPS.includes(key)) {
+                        items["other"] = inventoryItems[key];
+                      }
+                      return items;
+                    },
+                    { other: [] }
+                  ).other
                 : undefined,
             }}
           >
