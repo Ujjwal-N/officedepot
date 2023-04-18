@@ -57,7 +57,7 @@ const Icon = styled.div`
 
 const Homeproduct = ({ item }) => {
   return (
-    <Container className = "container">
+    <Container className = "container1">
       <Image src={item.img} />
       <Info>
         <Icon>{item.icon}</Icon>

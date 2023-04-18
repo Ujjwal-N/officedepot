@@ -31,7 +31,12 @@ const Button = styled.button`
   cursor: pointer;
   color: #fff;
   background-color: #13755ece;
+  padding: 5px 5px;
+  &:hover {
+    background-color: #0e5d8f; 
+  }
 `;
+
 
 function ItemDescription({ cart, setCart, userData }) {
   const location = useLocation();
@@ -65,7 +70,6 @@ function ItemDescription({ cart, setCart, userData }) {
       />
       <div style={leftAlign}>
         <h1>{itemInfo.name}</h1>
-        <hr />
         <h2>Description</h2>
         <p>{itemInfo.description}</p>
         <h2>${itemInfo.price}</h2>
