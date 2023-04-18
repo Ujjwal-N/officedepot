@@ -37,6 +37,7 @@ const Button = styled.button`
   }
 `;
 
+
 function ItemDescription({ cart, setCart, userData }) {
   const location = useLocation();
   const itemInfo = location.state?.itemInfo;
@@ -69,7 +70,6 @@ function ItemDescription({ cart, setCart, userData }) {
       />
       <div style={leftAlign}>
         <h1>{itemInfo.name}</h1>
-        <hr />
         <h2>Description</h2>
         <p>{itemInfo.description}</p>
         <h2>${itemInfo.price}</h2>
