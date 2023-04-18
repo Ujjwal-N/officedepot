@@ -19,6 +19,7 @@ import ItemDescription from "../pages/ItemDescription";
 import Cart from "../pages/Cart";
 import CheckoutPage from "../pages/Checkout";
 import { Footer } from "./Footer";
+import { MapPage } from "../pages/MapPage";
 
 import { inventoryItems } from "../components/imageData";
 
@@ -82,6 +83,7 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
             <Route path="/" element={<Navigate to="/home" replace={true} />} />
             <Route path="/about" element={<About />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/map" element={<MapPage />} />
             <Route
               path="/cart"
               element={
