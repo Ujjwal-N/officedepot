@@ -14,6 +14,7 @@ function Cart({ cart, setCart, userData }) {
           cart={cart}
           setCart={setCart}
           isCart={true}
+          userData={userData}
         ></CartSummary>
         <br />
       </div>

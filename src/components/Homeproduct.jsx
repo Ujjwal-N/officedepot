@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
 
 const Info = styled.div`
@@ -27,14 +27,14 @@ const Container = styled.div`
   justify-content: center;
   background-color: #f5fbfd;
   position: relative;
-  &:hover ${Info}{
+  &:hover ${Info} {
     opacity: 1;
   }
 `;
 
 const Image = styled.img`
   height: 75%;
-  z-index: 2;
+  z-index: 1;
   max-width: 90%;
 `;
 
@@ -54,18 +54,13 @@ const Icon = styled.div`
   }
 `;
 
-
 const Homeproduct = ({ item }) => {
   return (
     <Container>
       <Image src={item.img} />
       <Info>
-        <Icon>
-          {item.icon}
-        </Icon>
-        <Icon>
-           {item.icon2}
-        </Icon>
+        <Icon>{item.icon}</Icon>
+        <Icon>{item.icon2}</Icon>
       </Info>
     </Container>
   );

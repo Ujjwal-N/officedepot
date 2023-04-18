@@ -28,7 +28,7 @@ const Button = styled.button`
   background-color: #13755ece;
 `;
 
-function ItemDescription({ cart, setCart }) {
+function ItemDescription({ cart, setCart, userData }) {
   const location = useLocation();
   const itemInfo = location.state?.itemInfo;
   const imageItem = images.find((element) => element.name === itemInfo.image);
@@ -78,10 +78,7 @@ function ItemDescription({ cart, setCart }) {
           </select>
         </p>
         <p> Item Group: {itemInfo.itemgroup} </p>
-        <p>
-          {" "}
-          Stock: {itemInfo.stock}{" "}
-        </p>
+        <p> Stock: {itemInfo.stock} </p>
         <p>
           {inventoryRemaining
             ? ""

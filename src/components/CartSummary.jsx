@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import CheckoutListItem from "./CheckoutListItem";
 import CartTotal from "./CartTotal";
 
-function CartSummary({ cart, setCart, isCart, shippingCost }) {
+function CartSummary({ cart, setCart, isCart, shippingCost, userData }) {
   return (
     <div>
       <Row
@@ -36,6 +36,7 @@ function CartSummary({ cart, setCart, isCart, shippingCost }) {
                   cart={cart}
                   setCart={setCart}
                   canEdit={isCart}
+                  userData={userData}
                 />
               ))}
             </div>

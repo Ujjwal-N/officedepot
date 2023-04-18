@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Col } from "react-bootstrap";
+import { Col, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../css/signup.css";
 import axios from "axios";
@@ -12,6 +12,7 @@ export const Signup = ({ userData, setUserData }) => {
   const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(false); // state to toggle between sign up and log in
   const toggleLogin = () => setShowLogin(!showLogin); // function to toggle between sign up and log in
+  const [showFailedAlert, setFailedAlert] = useState(false);
 
   const handleChange = (event) => {
     setUserData({
@@ -51,6 +52,7 @@ export const Signup = ({ userData, setUserData }) => {
           navigate("/home", { replace: true });
         })
         .catch((error) => {
+          setFailedAlert(true);
           console.log(error);
         });
     } else {
@@ -82,6 +84,7 @@ export const Signup = ({ userData, setUserData }) => {
           navigate("/home", { replace: true });
         })
         .catch((error) => {
+          setFailedAlert(true);
           console.log(error);
         });
     }
@@ -147,6 +150,15 @@ export const Signup = ({ userData, setUserData }) => {
             )}
           </Col>
         </Form>
+        <Alert
+          variant="danger"
+          onClose={() => setFailedAlert(false)}
+          dismissible
+          show={showFailedAlert}
+        >
+          Make sure all fields are filled in when signing up, and double check
+          your username and password while logging in
+        </Alert>
       </div>
     </div>
   );

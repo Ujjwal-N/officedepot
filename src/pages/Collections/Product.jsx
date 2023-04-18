@@ -13,7 +13,7 @@ const Container = styled.div`
   margin-top: -30px;
 `;
 
-export const Product = ({ cart, setCart }) => {
+export const Product = ({ cart, setCart, userData }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const itemgroup = searchParams.get("itemgroup");
@@ -34,6 +34,7 @@ export const Product = ({ cart, setCart }) => {
           itemProps={itemProps}
           cart={cart}
           setCart={setCart}
+          userData={userData}
         />
       </Container>
     </div>

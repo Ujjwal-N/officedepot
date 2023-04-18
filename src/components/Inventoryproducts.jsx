@@ -13,7 +13,7 @@ const Row = styled.div`
   margin-bottom: 20px;
 `;
 
-export const Inventoryproducts = ({ itemProps, cart, setCart }) => {
+export const Inventoryproducts = ({ itemProps, cart, setCart, userData }) => {
   const rows = [];
   if (itemProps) {
     itemProps.forEach((item) => {
@@ -45,6 +45,7 @@ export const Inventoryproducts = ({ itemProps, cart, setCart }) => {
                   key={item.inventory_id}
                   cart={cart}
                   setCart={setCart}
+                  userData={userData}
                 />
               ))}
             </Row>

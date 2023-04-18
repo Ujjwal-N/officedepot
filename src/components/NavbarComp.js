@@ -103,11 +103,19 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
             />
             <Route
               path="/product"
-              element={<Product cart={cart} setCart={setCart} />}
+              element={
+                <Product cart={cart} setCart={setCart} userData={userData} />
+              }
             />
             <Route
               path="/itemPage"
-              element={<ItemDescription cart={cart} setCart={setCart} />}
+              element={
+                <ItemDescription
+                  cart={cart}
+                  setCart={setCart}
+                  userData={userData}
+                />
+              }
             />
             <Route
               path="/checkout"
