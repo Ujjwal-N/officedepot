@@ -36,8 +36,8 @@ function CartTotal({ cart, isCart, shippingCost }) {
       ) : (
         <div>
           <p>
-            <strong>Shipping and handling:</strong> $
-            {shippingCost !== null ? shippingCost.toFixed(2) : "$$"}
+            <strong>Shipping and handling:</strong> 
+            {shippingCost !== null ? ` $${shippingCost.toFixed(2)}` : " Select delivery method"}
           </p>
           <p>
             <strong>Tax:</strong> ${taxes.toFixed(2)}

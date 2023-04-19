@@ -13,6 +13,7 @@ import {
   BULK_ADD_ITEMS_TO_CART_ENDPOINT,
   FIND_ITEM_BY_ID_ENDPOINT,
 } from "../constants";
+import ResetScrollPos from "../components/ResetScrollPos";
 
 export const Signup = ({ userData, setUserData, cart, setCart }) => {
   const navigate = useNavigate();
@@ -241,6 +242,7 @@ export const Signup = ({ userData, setUserData, cart, setCart }) => {
           email address.
         </Alert>
       </div>
+      <ResetScrollPos />
     </div>
   );
 };

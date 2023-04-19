@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { Inventoryproducts } from "../../components/Inventoryproducts";
+import ResetScrollPos from "../../components/ResetScrollPos";
 
 const Title = styled.h1`
   margin-top: 20px;
@@ -31,6 +32,7 @@ export const Product = ({ cart, setCart, userData }) => {
           userData={userData}
         />
       </div>
+      <ResetScrollPos />
     </div>
   );
 };

@@ -1,3 +1,15 @@
+import chairCollection from "./Images/chairCollection.jpg";
+import hammerCollection from "./Images/hammerCollection.jpg";
+import tableCollection from "./Images/tableCollection.jpg";
+import printerCollection from "./Images/printerCollection.jpg";
+import writingCollection from "./Images/writingCollection.jpg";
+import notebookCollection from "./Images/notebookCollection.jpg";
+import backpackCollection from "./Images/backpackCollection.jpg";
+import organizationCollection from "./Images/organizationCollection.jpg";
+import shippingCollection from "./Images/shippingCollection.jpg";
+import breakroomCollection from "./Images/breakroomCollection.jpg";
+import otherCollection from "./Images/otherCollection.jpg";
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ API ENDPOINTS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,13 +69,49 @@ export const UPDATE_ORDER_DELIVERY_DATE_ENDPOINT = `${NODE_SERVER}/updateOrderDe
 
 // consider removing outdoor and indoor, add bed (are some of these office depot supplies??)
 export const STANDARD_ITEM_GROUPS = [
-  "chair",
-  "hammer",
-  "table",
-  "screws",
-  "fridge",
-  "outdoor",
-  "kitchen",
-  "indoor",
-  "bathroom",
+  {
+    itemGroup: "chair",
+    imageSrc: chairCollection,
+    caption: "Chairs",
+  },
+  {
+    itemGroup: "table",
+    imageSrc: tableCollection,
+    caption: "Tables and Desks",
+  },
+  {
+    itemGroup: "writing",
+    imageSrc: writingCollection,
+    caption: "Writing Accessories",
+  },
+  {
+    itemGroup: "paper-notebooks",
+    imageSrc: notebookCollection,
+    caption: "Paper and Notebooks"
+  },
+  {
+    itemGroup: "backpack",
+    imageSrc: backpackCollection,
+    caption: "Backpacks",
+  },
+  {
+    itemGroup: "printing",
+    imageSrc: printerCollection,
+    caption: "Printing"
+  },
+  {
+    itemGroup: "organizing",
+    imageSrc: organizationCollection,
+    caption: "Organizing",
+  },
+  {
+    itemGroup: "shipping",
+    imageSrc: shippingCollection,
+    caption: "Shipping Supplies"
+  },
+  {
+    itemGroup: "breakroom",
+    imageSrc: breakroomCollection,
+    caption: "Breakroom Supplies"
+  },
 ];

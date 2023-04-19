@@ -1,4 +1,5 @@
 import React from "react";
+import ResetScrollPos from "../components/ResetScrollPos";
 
 export const About = () => {
   const containerStyle = {
@@ -79,6 +80,7 @@ export const About = () => {
         Thank you for choosing OSD as your go-to online office retailer. We look
         forward to serving you and meeting all your office supply needs!
       </p>
+      <ResetScrollPos />
     </div>
   );
 };

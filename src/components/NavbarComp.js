@@ -21,8 +21,6 @@ import CheckoutPage from "../pages/Checkout";
 import { Footer } from "./Footer";
 import { MapPage } from "../pages/MapPage";
 
-import { inventoryItems } from "../components/imageData";
-
 const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
   return (
     <BrowserRouter>
@@ -31,7 +29,7 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
           bg="dark"
           variant={"dark"}
           expand="lg"
-          style={{ position: "sticky", top: 0, zIndex: 2 }}
+          style={{ position: "sticky", top: 0, zIndex: 2, marginBottom: "20px" }}
         >
           <Container fluid>
             <Navbar.Brand as={Link} to={"/home"}>

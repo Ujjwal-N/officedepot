@@ -2,9 +2,11 @@ import React from "react";
 import "../css/slider.css";
 import styled from "styled-components";
 import delivery from "../Images/delivery1.jpg";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  width: 60%;
+  width: 80%;
   height: 100%;
   display: flex;
   position: relative;
@@ -54,8 +56,12 @@ export const Deliveryinfo = () => {
         </ImgContainer>
 
         <InfoContainer>
-          <Title>GET FREE DELIVERY</Title>
-          <Desc>FOR ANY ORDER UNDER SOMETHING POUND</Desc>
+          <Title>FREE DELIVERY</Title>
+          <Desc>For Orders That Apply!</Desc>
+          <Button
+            as={Link}
+            to={"/about"}
+          >Learn More</Button>
         </InfoContainer>
       </Container>
     </div>
