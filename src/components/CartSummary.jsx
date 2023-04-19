@@ -41,7 +41,7 @@ function CartSummary({ cart, setCart, isCart, shippingCost, userData }) {
               ))}
             </div>
           ) : (
-            <p style={{ textAlign: "center" }}>Your Cart is empty</p>
+            <p style={{ textAlign: "center", padding: "50px" }}>Your Cart is empty</p>
           )}
         </Col>
         <Col md="4">

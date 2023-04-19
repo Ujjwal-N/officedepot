@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import CheckoutListItem from "../components/CheckoutListItem";
 import CartTotal from "../components/CartTotal";
 import CartSummary from "../components/CartSummary";
+import ResetScrollPos from "../components/ResetScrollPos";
 
 function Cart({ cart, setCart, userData }) {
   return (
@@ -31,6 +32,7 @@ function Cart({ cart, setCart, userData }) {
       ) : (
         "You must be signed in to place an order"
       )}
+      <ResetScrollPos />
     </div>
   );
 }

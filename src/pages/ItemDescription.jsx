@@ -7,6 +7,7 @@ import {
   ADD_ITEM_TO_CART_ENDPOINT,
   UPDATE_CART_ITEM_QUANTITY_ENDPOINT,
 } from "../constants";
+import ResetScrollPos from "../components/ResetScrollPos.jsx";
 const ItemImage = styled.img`
   max-width: 50%;
   max-height: 50%;
@@ -152,6 +153,7 @@ function ItemDescription({ cart, setCart, userData }) {
           Add to Cart
         </Button>
       </div>
+      <ResetScrollPos />
     </div>
   );
 }

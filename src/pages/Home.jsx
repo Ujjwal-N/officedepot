@@ -1,8 +1,7 @@
 import React from "react";
 import { Slider } from "../components/Slider";
 import { Deliveryinfo } from "../components/Deliveryinfo";
-import { Homeproducts } from "../components/Homeproducts";
-import { Footer } from "../components/Footer";
+import ResetScrollPos from "../components/ResetScrollPos";
 
 export const Home = () => {
   return (
@@ -10,8 +9,7 @@ export const Home = () => {
       <Slider />
       <Deliveryinfo />
       <p style={{ margin: "80px" }}></p>
-      <h1 style={{ marginTop: "10px" }}>BEST SELLING ITEMS</h1>
-      <Homeproducts />
+      <ResetScrollPos />
     </div>
   );
 };

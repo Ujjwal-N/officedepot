@@ -6,6 +6,7 @@ import {
   UPDATE_CUSTOMER_ENDPOINT,
   GET_ORDERS_BY_CUSTOMER_ENDPOINT,
 } from "../constants";
+import ResetScrollPos from "../components/ResetScrollPos";
 export const Profile = ({ userData, setUserData }) => {
   const [showSuccessAlert, setShowAlert] = useState(false);
   const [orderData, setOrderData] = useState([
@@ -152,6 +153,7 @@ export const Profile = ({ userData, setUserData }) => {
           </ListGroup>
         </Col>
       </Row>
+      <ResetScrollPos />
     </div>
   );
 };
