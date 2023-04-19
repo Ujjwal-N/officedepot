@@ -57,7 +57,7 @@ export const CHECKOUT_ENDPOINT = `${NODE_SERVER}/checkout`;
 export const CREATE_ORDER_ENDPOINT = `${NODE_SERVER}/createOrder`;
 // '/updateOrder/${order_id}
 export const UPDATE_ORDER_ENDPOINT = `${NODE_SERVER}/updateOrder/`;
-export const DELETE_ORDER_ENDPOINT = `${NODE_SERVER}/removeOrder/`;
+export const DELETE_ORDER_ENDPOINT = `${NODE_SERVER}/removeOrder`;
 export const GET_ORDERS_BY_CUSTOMER_ENDPOINT = `${NODE_SERVER}/getOrdersAndItemsByCustomerId/`;
 export const GET_ALL_ORDERS_ENDPOINT = `${NODE_SERVER}/displayOrders`;
 export const GET_ORDER_STATUS_ENDPOINT = `${NODE_SERVER}/getOrderStatus`;
@@ -87,7 +87,7 @@ export const STANDARD_ITEM_GROUPS = [
   {
     itemGroup: "paper-notebooks",
     imageSrc: notebookCollection,
-    caption: "Paper and Notebooks"
+    caption: "Paper and Notebooks",
   },
   {
     itemGroup: "backpack",
@@ -97,7 +97,7 @@ export const STANDARD_ITEM_GROUPS = [
   {
     itemGroup: "printing",
     imageSrc: printerCollection,
-    caption: "Printing"
+    caption: "Printing",
   },
   {
     itemGroup: "organizing",
@@ -107,11 +107,11 @@ export const STANDARD_ITEM_GROUPS = [
   {
     itemGroup: "shipping",
     imageSrc: shippingCollection,
-    caption: "Shipping Supplies"
+    caption: "Shipping Supplies",
   },
   {
     itemGroup: "breakroom",
     imageSrc: breakroomCollection,
-    caption: "Breakroom Supplies"
+    caption: "Breakroom Supplies",
   },
 ];

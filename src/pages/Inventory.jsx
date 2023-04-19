@@ -201,7 +201,7 @@ const Inventory = () => {
         </thead>
         <tbody>
           {data.map((row, index) => (
-            <tr key={index}>
+            <tr key={index} className={row.stock ? "" : "table-warning"}>
               {columnKeys.map((key) => {
                 if (key === "editing") return null;
                 const value = row[key];
