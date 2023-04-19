@@ -2,7 +2,6 @@ import React from "react";
 import "../css/slider.css";
 import styled from "styled-components";
 import delivery from "../Images/delivery1.jpg";
-import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -45,6 +44,15 @@ const Desc = styled.p`
   font-size: 30px;
   font-weight: 500;
   letter-spacing: 3px;
+`;
+
+const Button = styled.button`
+  padding: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  color: #fff;
+  background-color: #13755ece;
 `;
 
 export const Deliveryinfo = () => {
