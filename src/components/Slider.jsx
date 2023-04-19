@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { Link } from "react-router-dom";
 import "../css/slider.css";
 import { useState } from "react";
 import { sliderItems } from "./imageData";
@@ -64,6 +65,7 @@ const ImgContainer = styled.div`
 const Image = styled.img`
   height: auto;
   max-width: 100%;
+  padding: 50px;
 `;
 
 const InfoContainer = styled.div`
@@ -104,10 +106,6 @@ export const Slider = () => {
   return (
     <div className="scaleDown">
       <Container>
-        <Arrow direction="left" onClick={() => handleClick("left")}>
-          <ArrowBackIosNewIcon />
-        </Arrow>
-
         <Wrapper slideIndex={slideIndex}>
           {sliderItems.map((item, index) => (
             <Slide bg="#fff7f7" key={index}>
@@ -118,11 +116,17 @@ export const Slider = () => {
               <InfoContainer>
                 <Title>{item.title}</Title>
                 <Desc>{item.desc}</Desc>
-                <Button>SHOP NOW</Button>
+                <Button
+                  as={Link}
+                  to={"/products"}
+                >SHOP NOW</Button>
               </InfoContainer>
             </Slide>
           ))}
         </Wrapper>
+        <Arrow direction="left" onClick={() => handleClick("left")}>
+          <ArrowBackIosNewIcon />
+        </Arrow>
 
         <Arrow direction="right" onClick={() => handleClick("right")}>
           <ArrowForwardIosIcon />

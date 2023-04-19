@@ -7,6 +7,8 @@ import {
   ADD_ITEM_TO_CART_ENDPOINT,
   UPDATE_CART_ITEM_QUANTITY_ENDPOINT,
 } from "../constants";
+import ResetScrollPos from "../components/ResetScrollPos.jsx";
+
 const ItemImage = styled.img`
   max-width: 50%;
   max-height: 50%;
@@ -33,10 +35,9 @@ const Button = styled.button`
   background-color: #13755ece;
   padding: 5px 5px;
   &:hover {
-    background-color: #0e5d8f; 
+    background-color: #0e5d8f;
   }
 `;
-
 
 function ItemDescription({ cart, setCart, userData }) {
   const location = useLocation();
@@ -63,13 +64,31 @@ function ItemDescription({ cart, setCart, userData }) {
   //stock
   console.log(itemInfo.stock);
   return (
-    <div style={leftAlign}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "flex-start",
+        padding: "10px"
+      }}
+    >
       <ItemImage
         src={imageItem ? imageItem.src : ""}
         alt={`${itemInfo.name} image placeholder`}
+        style={{ width: "40%", marginRight: "20px" }}
       />
-      <div style={leftAlign}>
+      <div
+        style={{
+          textAlign: "left",
+          marginLeft: "30px",
+          marginRight: "30px",
+          minHeight: "73vh",
+          width: "60%",
+        }}
+      >
         <h1>{itemInfo.name}</h1>
+        <hr />
         <h2>Description</h2>
         <p>{itemInfo.description}</p>
         <h2>${itemInfo.price}</h2>
@@ -152,6 +171,7 @@ function ItemDescription({ cart, setCart, userData }) {
           Add to Cart
         </Button>
       </div>
+      <ResetScrollPos />
     </div>
   );
 }

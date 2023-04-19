@@ -10,10 +10,9 @@ export const sliderItems = [
   {
     id: 1,
     img: chair,
-    title: "#1 CHAIR IN THE MARKET",
-    desc: "GET 10% OFF FIRST TIME PURCHASE",
+    title: "Get all your Office Supply Needs!",
     shop: (
-      <Link to="/itemPage" style={{ color: "white", textDecoration: "none" }}>
+      <Link to="/product" style={{ color: "white", textDecoration: "none" }}>
         SHOP NOW
       </Link>
     ),

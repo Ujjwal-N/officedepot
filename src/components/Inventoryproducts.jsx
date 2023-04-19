@@ -10,6 +10,7 @@ const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 10px;
   margin-bottom: 20px;
 `;
 
@@ -53,35 +54,41 @@ export const Inventoryproducts = ({ itemProps, cart, setCart, userData }) => {
 
   return (
     <div>
-      {rows.length > 0 ? (
-        <Container>
-          <SearchContainer>
-            <SearchInput
-              type="text"
-              placeholder="Search"
-              value={searchWord}
-              onChange={(e) => setSearchWord(e.target.value)}
-            />
-          </SearchContainer>
-          {chunkedRows.map((chunk, index) => (
-            <Row key={`row-${index}`}>
-              {chunk.map((item) => (
-                <Inventoryproduct
-                  item={item}
-                  key={item.inventory_id}
-                  cart={cart}
-                  setCart={setCart}
-                  userData={userData}
-                />
-              ))}
-            </Row>
-          ))}
-        </Container>
-      ) : (
-        <div style={{ "padding" : "100px" }}>
-          <p>No inventory in this section</p>
-        </div>
-      )}
+      <Container>
+        <SearchContainer>
+          <SearchInput
+            type="text"
+            placeholder="Search"
+            value={searchWord}
+            onChange={(e) => setSearchWord(e.target.value)}
+          />
+        </SearchContainer>
+        {filteredRows.length === 0 && searchWord !== "" ? (
+          <div style={{ padding: "100px" }}>
+            <p>No results matching your search</p>
+          </div>
+        ) : rows.length > 0 ? (
+          <div>
+            {chunkedRows.map((chunk, index) => (
+              <Row key={`row-${index}`}>
+                {chunk.map((item) => (
+                  <Inventoryproduct
+                    item={item}
+                    key={item.inventory_id}
+                    cart={cart}
+                    setCart={setCart}
+                    userData={userData}
+                  />
+                ))}
+              </Row>
+            ))}
+          </div>
+        ) : (
+          <div style={{ padding: "100px" }}>
+            <p>No inventory in this section</p>
+          </div>
+        )}
+      </Container>
     </div>
   );
 };

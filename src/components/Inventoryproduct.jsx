@@ -9,6 +9,7 @@ import {
   ADD_ITEM_TO_CART_ENDPOINT,
   UPDATE_CART_ITEM_QUANTITY_ENDPOINT,
 } from "../constants";
+
 const Info = styled.div`
   opacity: 0;
   width: 100%;
@@ -27,10 +28,10 @@ const Info = styled.div`
 const Container = styled.div`
   flex: 1;
   margin: 10px;
-  min-width: 450px;
   max-width: 450px;
   height: 350px;
   display: flex;
+  flex-basis: 30%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -42,7 +43,7 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  height: 75%;
+  max-width: 70%;
 `;
 
 const Text = styled.p`

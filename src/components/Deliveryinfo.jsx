@@ -2,9 +2,10 @@ import React from "react";
 import "../css/slider.css";
 import styled from "styled-components";
 import delivery from "../Images/delivery1.jpg";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  width: 60%;
+  width: 80%;
   height: 100%;
   display: flex;
   position: relative;
@@ -45,6 +46,15 @@ const Desc = styled.p`
   letter-spacing: 3px;
 `;
 
+const Button = styled.button`
+  padding: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  color: #fff;
+  background-color: #13755ece;
+`;
+
 export const Deliveryinfo = () => {
   return (
     <div className="deliveryPad">
@@ -54,8 +64,12 @@ export const Deliveryinfo = () => {
         </ImgContainer>
 
         <InfoContainer>
-          <Title>GET FREE DELIVERY</Title>
-          <Desc>FOR ANY ORDER UNDER SOMETHING POUND</Desc>
+          <Title>FREE DELIVERY</Title>
+          <Desc>For Orders That Apply!</Desc>
+          <Button
+            as={Link}
+            to={"/about"}
+          >Learn More</Button>
         </InfoContainer>
       </Container>
     </div>
