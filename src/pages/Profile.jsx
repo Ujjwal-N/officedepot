@@ -7,22 +7,10 @@ import {
   GET_ORDERS_BY_CUSTOMER_ENDPOINT,
 } from "../constants";
 import ResetScrollPos from "../components/ResetScrollPos";
+import { Link } from "react-router-dom";
 export const Profile = ({ userData, setUserData }) => {
   const [showSuccessAlert, setShowAlert] = useState(false);
-  const [orderData, setOrderData] = useState([
-    {
-      number: "1",
-      items: ["Chair", "Screw Driver"],
-      status: "Shipped",
-      total: "$150.95",
-    },
-    {
-      number: "2",
-      items: ["Office Desk"],
-      status: "Shipped",
-      total: "$100.95",
-    },
-  ]);
+  const [orderData, setOrderData] = useState([]);
 
   useEffect(() => {
     if (!userData.customer_id) return;
@@ -35,6 +23,13 @@ export const Profile = ({ userData, setUserData }) => {
           const elem = response.data[elemNum];
           if (elem.order_id in orderMap) {
             orderMap[elem.order_id].items.push([elem.name, elem.quantity]);
+            const currWarehouse = elem.warehouse == "Warehouse 1" ? 1 : 2;
+            if (
+              orderMap[elem.order_id].warehouse !== currWarehouse &&
+              orderMap[elem.order_id].warehouse !== 3
+            ) {
+              orderMap[elem.order_id].warehouse = 3;
+            }
           } else {
             orderMap[elem.order_id] = {
               items: [[elem.name, elem.quantity]],
@@ -43,6 +38,7 @@ export const Profile = ({ userData, setUserData }) => {
               creationdate: elem.creationdate,
               deliverydate: elem.deliverydate,
               shipping_method: elem.shipping_method,
+              warehouse: elem.warehouse == "Warehouse 1" ? "1" : "2",
             };
           }
         }
@@ -119,7 +115,7 @@ export const Profile = ({ userData, setUserData }) => {
           </Alert>
         </Col>
         <Col md={5}>
-          <h2> Past Orders</h2>
+          <h2> Orders</h2>
           <ListGroup as="ol" style={{ marginRight: "5px" }}>
             {orderData.map((item) => (
               <>
@@ -141,7 +137,21 @@ export const Profile = ({ userData, setUserData }) => {
                       </ul>
                       Status: {item.status}
                       <br></br>
+                      Shipping Method: {item.shipping_method}
+                      <br></br>
                       Total: {item.total}
+                      <br></br>
+                      <Link
+                        to={{
+                          pathname: "/shipping",
+                        }}
+                        state={{
+                          shippingMethod: item.shipping_method,
+                          warehouse: item.warehouse,
+                        }}
+                      >
+                        <strong style={{ color: "blue" }}>Track Order</strong>
+                      </Link>
                     </div>
                   </div>
                   <Badge bg="primary" pill>

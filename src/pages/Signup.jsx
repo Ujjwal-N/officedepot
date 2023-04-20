@@ -117,10 +117,10 @@ export const Signup = ({ userData, setUserData, cart, setCart }) => {
           setUserData({
             ...userData,
             customer_id: response.data["customer_id"],
-            cart_id: response.data["shoppingCart"]["id"],
+            cart_id: response.data["shopping_cart"]["id"],
           });
           populateCart(
-            response.data["shoppingCart"]["id"],
+            response.data["shopping_cart"]["id"],
             response.data["customer_id"]
           );
         })

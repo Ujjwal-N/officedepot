@@ -20,7 +20,7 @@ import Cart from "../pages/Cart";
 import CheckoutPage from "../pages/Checkout";
 import { Footer } from "./Footer";
 import { MapPage } from "../pages/MapPage";
-
+import { Shipping } from "../pages/Shipping";
 const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
   return (
     <BrowserRouter>
@@ -29,7 +29,12 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
           bg="dark"
           variant={"dark"}
           expand="lg"
-          style={{ position: "sticky", top: 0, zIndex: 2, marginBottom: "20px" }}
+          style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 2,
+            marginBottom: "20px",
+          }}
         >
           <Container fluid>
             <Navbar.Brand as={Link} to={"/home"}>
@@ -82,6 +87,7 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
             <Route path="/about" element={<About />} />
             <Route path="/home" element={<Home />} />
             <Route path="/map" element={<MapPage />} />
+            <Route path="/shipping" element={<Shipping />} />
             <Route
               path="/cart"
               element={
