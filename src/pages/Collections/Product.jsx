@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Inventoryproducts } from "../../components/Inventoryproducts";
 import ResetScrollPos from "../../components/ResetScrollPos";
 
@@ -15,6 +15,14 @@ export const Product = ({ cart, setCart, userData }) => {
   const itemgroup = searchParams.get("itemgroup");
   const itemProps = location.state?.itemProps;
   console.log(itemProps);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (itemProps === null || typeof itemProps === 'undefined') {
+      navigate('/products');
+    }
+  }, [itemProps])
 
   return (
     <div>

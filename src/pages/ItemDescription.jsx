@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { images } from "../productImageNames.js";
 import axios from "axios";
 import {
@@ -41,15 +41,23 @@ const Button = styled.button`
 
 function ItemDescription({ cart, setCart, userData }) {
   const location = useLocation();
-  const itemInfo = location.state?.itemInfo;
-  const imageItem = images.find((element) => element.name === itemInfo.image);
+  const [itemInfo, setItemInfo] = useState(location.state?.itemInfo);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!itemInfo) {
+      navigate('/products');
+    };
+  }, [itemInfo]);
+
+  const imageItem = itemInfo ? images.find((element) => element.name === itemInfo.image) : null;
   const [cartValue, setCartValue] = useState(1);
   const inCart = cart.find(
     (element) => element.inventory_id === itemInfo.inventory_id
   );
   const earlierQuantity = inCart ? inCart.quantity : 0;
   const [inventoryRemaining, setInventoryRemaining] = useState(
-    itemInfo.stock - earlierQuantity
+    itemInfo ? itemInfo.stock - earlierQuantity : null
   );
 
   const handleSelectChange = (event) => {
@@ -60,9 +68,11 @@ function ItemDescription({ cart, setCart, userData }) {
       {index + 1}
     </option>
   ));
-  //item group
-  //stock
-  console.log(itemInfo.stock);
+
+  if (!itemInfo) {
+    return (<p>Redirecting...</p>);
+  }
+
   return (
     <div
       style={{
@@ -75,7 +85,7 @@ function ItemDescription({ cart, setCart, userData }) {
     >
       <ItemImage
         src={imageItem ? imageItem.src : ""}
-        alt={`${itemInfo.name} image placeholder`}
+        alt={`${itemInfo ? itemInfo.name : ''} image placeholder`}
         style={{ width: "40%", marginRight: "20px" }}
       />
       <div
@@ -87,11 +97,11 @@ function ItemDescription({ cart, setCart, userData }) {
           width: "60%",
         }}
       >
-        <h1>{itemInfo.name}</h1>
+        <h1>{itemInfo ? itemInfo.name : 'item'}</h1>
         <hr />
         <h2>Description</h2>
-        <p>{itemInfo.description}</p>
-        <h2>${itemInfo.price}</h2>
+        <p>{itemInfo ? itemInfo.description : 'desc'}</p>
+        <h2>${itemInfo ? itemInfo.price : 'price'}</h2>
         <p>
           Quantity:
           <select
@@ -100,13 +110,13 @@ function ItemDescription({ cart, setCart, userData }) {
             style={{ marginLeft: "10px" }}
             value={cartValue}
             onChange={handleSelectChange}
-            disabled={itemInfo.stock === 0}
+            disabled={itemInfo ? itemInfo.stock === 0 : true}
           >
             {options}
           </select>
         </p>
-        <p> Item Group: {itemInfo.itemgroup} </p>
-        <p> Stock: {itemInfo.stock} </p>
+        <p> Item Group: {itemInfo ? itemInfo.itemgroup : 'group'} </p>
+        <p> Stock: {itemInfo ? itemInfo.stock : 0} </p>
         <p>
           {inventoryRemaining
             ? ""
