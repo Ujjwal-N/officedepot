@@ -14,12 +14,13 @@ export const Product = ({ cart, setCart, userData }) => {
   const searchParams = new URLSearchParams(location.search);
   const itemgroup = searchParams.get("itemgroup");
   const itemProps = location.state?.itemProps;
-  console.log(itemProps);
+  console.log('this is the state', location.state);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (itemProps === null || typeof itemProps === 'undefined') {
+      console.log('sfklojsdoifjsoifjps', itemProps, typeof itemProps)
       navigate('/products');
     }
   }, [itemProps])
