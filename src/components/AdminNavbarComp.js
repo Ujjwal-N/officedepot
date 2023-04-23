@@ -70,7 +70,10 @@ const AdminNavbarComp = () => {
             <Route path="/orders" element={<Order />} />
             <Route path="/customers" element={<Customers />} /> */}
             <Route element={<AdminRoutes />}>
-              <Route path="/" element={<Navigate to="/admin" replace={true} />} />
+              <Route
+                path="/"
+                element={<Navigate to="/admin" replace={true} />}
+              />
               <Route path="/admin" element={<Admin />} />
               <Route path="/employee" element={<Employee />} />
               <Route path="/inventory" element={<Inventory />} />
