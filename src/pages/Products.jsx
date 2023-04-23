@@ -92,7 +92,7 @@ export const Products = ({ cart, setCart }) => {
               }}
               state={{
                 itemProps: inventoryItems
-                  ? inventoryItems[itemGroup]
+                  ? itemGroup in inventoryItems ? inventoryItems[itemGroup] : []
                   : undefined,
               }}
             >
