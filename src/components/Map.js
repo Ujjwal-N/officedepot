@@ -72,7 +72,7 @@ function Map() {
       flexDirection='column'
       alignItems='center'
       h='40vh' //height for map, adjust later for page
-      w='40vw' //width for map, adjust later for page
+      w='100vw' //width for map, adjust later for page
     >
       <Box position='absolute' left={0} top={0} h='100%' w='100%'>
         {/* Google Map Box */}
