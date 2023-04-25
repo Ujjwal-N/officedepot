@@ -7,33 +7,12 @@ import styled from "styled-components";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PinterestIcon from "@mui/icons-material/Pinterest";
-import { Link } from "react-router-dom";
+import {
+  Row,
+  Col,
 
-const Container = styled.div`
-  display: flex;
-  border-top: 1px solid #ccc;
-  bottom: 0;
-  position: relative;
-`;
+} from "react-bootstrap";
 
-const LeftSide = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-`;
-
-const Logo = styled.h1``;
-
-const Desc = styled.p`
-  margin: 20px;
-`;
-
-const SocialContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const MediaIcon = styled.div`
   width: 40px;
@@ -47,117 +26,101 @@ const MediaIcon = styled.div`
   margin-right: 20px;
 `;
 
-const Middle = styled.div`
-  flex: 1;
-  padding: 5px;
-  margin-top: 10px;
-`;
-
-const Title = styled.h3`
-  margin-bottom: 30px;
-`;
-
-const List = styled.ul`
-  margin: 20px;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const ListItem = styled.li`
-  width: 50%;
-  margin-bottom: 15px;
-`;
-
-const RightSide = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ContactItem = styled.div`
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-`;
-
-const Spacer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 export const Footer = () => {
   return (
-    <Container>
-      <LeftSide>
-        <Logo>OfficeDepot</Logo>
-
-        <Desc>
-          OfficeDepot is dedicated to selling the best items in the market. We
-          take pride in offering our customers the best products in the market,
-          and we never compromise on the quality of the items we sell. Our vast
-          list of products is carefully curated to ensure that every item meets
-          our high standards of excellence.
-        </Desc>
-      </LeftSide>
-      <Middle>
-        <Title>Links</Title>
-        <List>
-          <ListItem>
-            <Link to="/cart">Cart</Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/products">Collections</Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/profile">My Account</Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/about">About</Link>
-          </ListItem>
-        </List>
-      </Middle>
-      <RightSide>
-        <Title>Contact</Title>
-
-        <Spacer>
-          <ContactItem>
-            <RoomIcon style={{ marginRight: "10px" }} /> 1 Washington Sq, San
-            Jose, CA 95192
-          </ContactItem>
-
-          <ContactItem>
-            <PhoneIphoneIcon style={{ marginRight: "10px" }} />{" "}
-            +1(800)-Office-Depot
-          </ContactItem>
-
-          <ContactItem>
-            <MailOutlineIcon style={{ marginRight: "10px" }} />{" "}
-            officedepot@gmail.com
-          </ContactItem>
-
-          <SocialContainer>
-            <MediaIcon color="3B5999">
-              <FacebookIcon />
-            </MediaIcon>
-            <MediaIcon color="55ACEE">
-              <TwitterIcon />
-            </MediaIcon>
-            <MediaIcon color="E4405F">
-              <InstagramIcon />
-            </MediaIcon>
-            <MediaIcon color="FF0000">
-              <YouTubeIcon />
-            </MediaIcon>
-            <MediaIcon color="BD081C">
-              <PinterestIcon />
-            </MediaIcon>
-          </SocialContainer>
-        </Spacer>
-      </RightSide>
-    </Container>
+    <div className="bg-light">
+      <div className="container py-4" >
+        <Row>
+          <Col lg={4}>
+            <div className="py-3">
+              <h1>OfficeDepot</h1>
+              <p className="text-muted">
+                OfficeDepot is dedicated to selling the best items in the market.
+                We take pride in offering our customers the best products in the
+                market, and we never compromise on the quality of the items we sell.
+                Our vast list of products is carefully curated to ensure that every
+                item meets our high standards of excellence.
+              </p>
+            </div>
+          </Col>
+          <Col lg={4}>
+            <div className="py-3">
+              <h3>Links</h3>
+              <ul className="list-unstyled">
+                <li>
+                  <a href="/cart" className="text-muted">
+                    Cart
+                  </a>
+                </li>
+                <li>
+                  <a href="/products" className="text-muted">
+                    Collections
+                  </a>
+                </li>
+                <li>
+                  <a href="/profile" className="text-muted">
+                    My Account
+                  </a>
+                </li>
+                <li>
+                  <a href="/about" className="text-muted">
+                    About
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </Col>
+          <Col lg={4}>
+            <div className="py-3">
+              <h3>Contact</h3>
+              <ul className="list-unstyled">
+                <li className="mb-2">
+                  <div className="d-flex align-items-center">
+                    <RoomIcon style={{ marginRight: "10px" }} />
+                    <span>1 Washington Sq, San Jose, CA 95192</span>
+                  </div>
+                </li>
+                <li className="mb-2">
+                  <div className="d-flex align-items-center">
+                    <PhoneIphoneIcon style={{ marginRight: "10px" }} />
+                    <span>+1(800)-Office-Depot</span>
+                  </div>
+                </li>
+                <li className="mb-2">
+                  <div className="d-flex align-items-center">
+                    <MailOutlineIcon style={{ marginRight: "10px" }} />
+                    <span>officedepot@gmail.com</span>
+                  </div>
+                </li>
+                <li>
+                  <div className="d-flex">
+                    <MediaIcon color="3B5999" className="mr-3">
+                      <FacebookIcon />
+                    </MediaIcon>
+                    <MediaIcon color="55ACEE" className="mr-3">
+                      <TwitterIcon />
+                    </MediaIcon>
+                    <MediaIcon color="E4405F" className="mr-3">
+                      <InstagramIcon />
+                    </MediaIcon>
+                    <MediaIcon color="FF0000" className="mr-3">
+                      <YouTubeIcon />
+                    </MediaIcon>
+                    <MediaIcon color="BD081C">
+                      <PinterestIcon />
+                    </MediaIcon>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </Col>
+        </Row>
+        <div className="border-top pt-3">
+          <p className="text-center text-muted">
+            &copy; {new Date().getFullYear()} OfficeDepot. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
