@@ -8,7 +8,6 @@ import axios from "axios";
 import { GET_ALL_INVENTORY_ENDPOINT, STANDARD_ITEM_GROUPS } from "../constants";
 import otherCollection from "../Images/otherCollection.jpg";
 import ResetScrollPos from "../components/ResetScrollPos";
-import '../css/responsive.css';
 
 const StyledContainer = styled(Container)`
   max-width: 3000px;
