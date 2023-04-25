@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import { Row, Col } from "react-bootstrap";
 import "../css/signup.css";
 const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
+  const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+  const mmYYRegex = /^(0[1-9]|1[0-2])\/(?:\d{2})$/;
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
@@ -12,7 +14,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter full name"
+              placeholder="Enter your full name"
               onChange={handleChange}
               value={formData.name}
             />
@@ -26,6 +28,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
               onChange={handleChange}
               value={formData.email}
               disabled={!signup}
+              isInvalid={formData.email && !emailRegex.test(formData.email)}
             />
           </Form.Group>
 
@@ -83,7 +86,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
               <Form.Group controlId="zip">
                 <Form.Label>ZIP</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="number"
                   placeholder="Enter zip code"
                   onChange={handleChange}
                   value={formData.zip}
@@ -97,7 +100,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
           <Form.Group controlId="ccNumber" className="pad-here">
             <Form.Label>Credit Card Number</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               placeholder="Enter credit card number"
               onChange={handleChange}
               value={formData.ccNumber}
@@ -108,9 +111,13 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
             <Form.Label>Expiration Date</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter expiration date"
+              placeholder="Enter expiration date in MM/YY format"
               onChange={handleChange}
               value={formData.expirationDate}
+              isInvalid={
+                formData.expirationDate &&
+                !mmYYRegex.test(formData.expirationDate)
+              }
             />
           </Form.Group>
 
@@ -121,7 +128,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
           >
             <Form.Label>CVV</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               placeholder="Enter cvv"
               onChange={handleChange}
               value={formData.cvv}
@@ -167,7 +174,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
               <Form.Group controlId="billingZip">
                 <Form.Label>ZIP</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="number"
                   placeholder="Enter zip code"
                   onChange={handleChange}
                   value={formData.billingZip}
@@ -183,6 +190,13 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
           type="submit"
           size="md"
           style={{ marginTop: "2rem" }}
+          disabled={
+            signup
+              ? !mmYYRegex.test(formData.expirationDate) ||
+                !emailRegex.test(formData.email) ||
+                !formData.billingZip
+              : false
+          }
         >
           {signup ? "Submit" : "Update"}
         </Button>
