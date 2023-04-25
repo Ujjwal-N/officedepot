@@ -2,40 +2,38 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/productCollection.css";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { GET_ALL_INVENTORY_ENDPOINT, STANDARD_ITEM_GROUPS } from "../constants";
 import otherCollection from "../Images/otherCollection.jpg";
 import ResetScrollPos from "../components/ResetScrollPos";
+import '../css/responsive.css';
 
 const StyledContainer = styled(Container)`
   max-width: 3000px;
   margin-bottom: 20px;
 `;
 
-const ImgContainer = styled.div`
+const ImgContainer = styled(Row)`
   margin-top: 20px;
-  text-align: center;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
 `;
 
-const ImgWrapper = styled.div`
+const ImgWrapper = styled(Col)`
   margin-top: 20px;
-  margin-right: 40px;
-  height: 400px;
-  width: 600px;
+  margin-right: 20px;
+  margin-bottom: 20px;
   flex-basis: 30%;
 `;
 
-const Image = styled.img`
-  width: 550px;
-  height: 400px;
-  border: 2px solid #444;
+const Image = styled.div`
   width: 100%;
+  height: 0;
+  padding-bottom: 66.67%;
+  background-image: url(${props => props.src});
+  background-size: cover;
+  background-position: center;
   transition: transform 0.2s ease-out;
   cursor: pointer;
 
