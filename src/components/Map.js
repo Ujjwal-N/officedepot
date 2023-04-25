@@ -8,29 +8,31 @@ import {
   Input,
   SkeletonText,
   Text,
-} from '@chakra-ui/react';
-import { FaLocationArrow, FaTimes } from 'react-icons/fa';
+} from "@chakra-ui/react";
+import { FaLocationArrow, FaTimes } from "react-icons/fa";
 import {
   useJsApiLoader,
   GoogleMap,
   Marker,
   Autocomplete,
   DirectionsRenderer,
-} from '@react-google-maps/api';
-import { useRef, useState } from 'react';
+} from "@react-google-maps/api";
+import { useRef, useState } from "react";
 
 const center = { lat: 37.33537504308407, lng: -121.88044923064777 };
 
-function Map() {
+function Map({ userData, warehouse }) {
+  console.log(userData);
+  console.log(warehouse);
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries: ['places'],
+    libraries: ["places"],
   });
 
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
-  const [distance, setDistance] = useState('');
-  const [duration, setDuration] = useState('');
+  const [distance, setDistance] = useState("");
+  const [duration, setDuration] = useState("");
 
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef();
@@ -42,7 +44,7 @@ function Map() {
   }
 
   async function calculateRoute() {
-    if (originRef.current.value === '' || destiantionRef.current.value === '') {
+    if (originRef.current.value === "" || destiantionRef.current.value === "") {
       return;
     }
     // eslint-disable-next-line no-undef
@@ -60,33 +62,33 @@ function Map() {
 
   function clearRoute() {
     setDirectionsResponse(null);
-    setDistance('');
-    setDuration('');
-    originRef.current.value = '';
-    destiantionRef.current.value = '';
+    setDistance("");
+    setDuration("");
+    originRef.current.value = "";
+    destiantionRef.current.value = "";
   }
 
   return (
     <Flex
-      position='relative'
-      flexDirection='column'
-      alignItems='center'
-      h='40vh' //height for map, adjust later for page
-      w='100vw' //width for map, adjust later for page
+      position="relative"
+      flexDirection="column"
+      alignItems="center"
+      h="40vh" //height for map, adjust later for page
+      w="100vw" //width for map, adjust later for page
     >
-      <Box position='absolute' left={0} top={0} h='100%' w='100%'>
+      <Box position="absolute" left={0} top={0} h="100%" w="100%">
         {/* Google Map Box */}
         <GoogleMap
           center={center}
           zoom={15}
-          mapContainerStyle={{ width: '100%', height: '100%' }}
+          mapContainerStyle={{ width: "100%", height: "100%" }}
           options={{
             zoomControl: false,
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
           }}
-          onLoad={map => setMap(map)}
+          onLoad={(map) => setMap(map)}
         >
           <Marker position={center} />
           {directionsResponse && (
@@ -96,58 +98,62 @@ function Map() {
       </Box>
       <Box
         p={4}
-        borderRadius='lg'
+        borderRadius="lg"
         m={4}
-        bgColor='white'
-        shadow='base'
-        minW='container.md'
-        zIndex='1'
-        w='100%' //weight for middle box
-        maxW='50%' //height for middle box 
+        bgColor="white"
+        shadow="base"
+        minW="container.md"
+        zIndex="1"
+        w="100%" //weight for middle box
+        maxW="50%" //height for middle box
       >
-        <HStack spacing={2} justifyContent='space-between'>
+        <HStack spacing={2} justifyContent="space-between">
           <Box flexGrow={1}>
             <Autocomplete>
-              <Input type='text' placeholder='Origin' ref={originRef} />
+              <Input type="text" placeholder="Origin" ref={originRef} />
             </Autocomplete>
           </Box>
           <Box flexGrow={1}>
             <Autocomplete>
               <Input
-                type='text'
-                placeholder='Destination'
+                type="text"
+                placeholder="Destination"
                 ref={destiantionRef}
               />
             </Autocomplete>
           </Box>
 
           <ButtonGroup>
-            <Button colorScheme='linkedin' type='submit' onClick={calculateRoute}>
+            <Button
+              colorScheme="linkedin"
+              type="submit"
+              onClick={calculateRoute}
+            >
               Calculate Route
             </Button>
             <IconButton
-              aria-label='center back'
+              aria-label="center back"
               icon={<FaTimes />}
               onClick={clearRoute}
             />
           </ButtonGroup>
         </HStack>
-        <HStack spacing={4} mt={4} justifyContent='space-between'>
+        <HStack spacing={4} mt={4} justifyContent="space-between">
           <Text>Distance: {distance} </Text>
           <Text>Duration: {duration} </Text>
           <IconButton
-            aria-label='center back'
+            aria-label="center back"
             icon={<FaLocationArrow />}
             isRound
             onClick={() => {
-              map.panTo(center)
-              map.setZoom(15)
+              map.panTo(center);
+              map.setZoom(15);
             }}
           />
         </HStack>
       </Box>
     </Flex>
-  )
+  );
 }
 
-export default Map
+export default Map;
