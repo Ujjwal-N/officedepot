@@ -17,7 +17,7 @@ import {
   Autocomplete,
   DirectionsRenderer,
 } from "@react-google-maps/api";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const center = { lat: 37.33537504308407, lng: -121.88044923064777 };
 const warehouse1 = "777 Story Rd, San Jose, CA 95122";
@@ -30,7 +30,9 @@ function Map({ userData, warehouse }) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
   });
-  const user_address = userData.address;
+  
+  const user_address = userData.address + ", " +  userData.city +  ", " + userData.state + ", " + userData.zip;
+  console.log(userData);
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
@@ -40,20 +42,24 @@ function Map({ userData, warehouse }) {
   const originRef = useRef();
   /** @type React.MutableRefObject<HTMLInputElement> */
   const destinationRef = useRef();
-
+/*
   if (!isLoaded) {
     return <SkeletonText />;
   }
+*/
 
   if(warehouse === '1'){
-    originRef.current.value = warehouse1;
+    warehouse_address = warehouse1;
   }
-  else if(warehouse === '2'){
-    originRef.current.value = warehouse2;
+  else{
+    warehouse_address = warehouse2;
   }
 
-  console.log(originRef.current.value);
+
   async function calculateRoute() {
+    if (originRef.current.value === '' || destinationRef.current.value === '') {
+      return;
+    }
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
     const results = await directionsService.route({
@@ -67,6 +73,11 @@ function Map({ userData, warehouse }) {
     setDuration(results.routes[0].legs[0].duration.text);
   }
 
+  useEffect(() => {
+    calculateRoute();
+  }, []);
+  
+/*
   function clearRoute() {
     setDirectionsResponse(null);
     setDistance("");
@@ -74,13 +85,13 @@ function Map({ userData, warehouse }) {
     originRef.current.value = "";
     destinationRef.current.value = "";
   }
-
+*/
   return (
     <Flex
       position="relative"
       flexDirection="column"
       alignItems="center"
-      h="60vh" //height for map, adjust later for page
+      h="70vh" //height for map, adjust later for page
       w="100vw" //width for map, adjust later for page
     >
       <Box position="absolute" left={0} top={0} h="100%" w="100%">
@@ -117,7 +128,7 @@ function Map({ userData, warehouse }) {
         <HStack spacing={2} justifyContent="space-between">
           <Box flexGrow={1}>
             <Autocomplete>
-              <Input type="text" placeholder="Origin" value={warehouse_address} disabled="true"  />
+              <Input type="text" placeholder="Origin"  ref={originRef} defaultValue={warehouse_address} />
             </Autocomplete>
           </Box>
           <Box flexGrow={1}>
@@ -125,26 +136,14 @@ function Map({ userData, warehouse }) {
               <Input
                 type="text"
                 placeholder="Destination"
-                value={user_address}
-                disabled="true" 
+                ref={destinationRef}
+                defaultValue={user_address}
+                //disabled={true}
               />
             </Autocomplete>
           </Box>
             
-          <ButtonGroup>
-            <Button
-              colorScheme="linkedin"
-              type="submit"
-              onClick={calculateRoute}
-            >
-              Calculate Route
-            </Button>
-            <IconButton
-              aria-label="center back"
-              icon={<FaTimes />}
-              onClick={clearRoute}
-            />
-          </ButtonGroup>
+          
         </HStack>
         <HStack spacing={4} mt={4} justifyContent="space-between">
           <Text>Distance: {distance} </Text>
