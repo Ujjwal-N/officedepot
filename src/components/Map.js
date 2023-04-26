@@ -101,7 +101,7 @@ function Map({ userData, warehouse }) {
           zoom={15}
           mapContainerStyle={{ width: "100%", height: "100%" }}
           options={{
-            zoomControl: false,
+            zoomControl: true,
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
@@ -128,7 +128,13 @@ function Map({ userData, warehouse }) {
         <HStack spacing={2} justifyContent="space-between">
           <Box flexGrow={1}>
             <Autocomplete>
-              <Input type="text" placeholder="Origin"  ref={originRef} defaultValue={warehouse_address} />
+              <Input 
+                type="text" 
+                placeholder="Origin"  
+                ref={originRef} 
+                defaultValue={warehouse_address} 
+                disabled={true}
+              />
             </Autocomplete>
           </Box>
           <Box flexGrow={1}>
@@ -138,7 +144,7 @@ function Map({ userData, warehouse }) {
                 placeholder="Destination"
                 ref={destinationRef}
                 defaultValue={user_address}
-                //disabled={true}
+                disabled={true}
               />
             </Autocomplete>
           </Box>
