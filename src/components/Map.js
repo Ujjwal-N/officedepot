@@ -20,15 +20,17 @@ import {
 import { useRef, useState } from "react";
 
 const center = { lat: 37.33537504308407, lng: -121.88044923064777 };
+const warehouse1 = "777 Story Rd, San Jose, CA 95122";
+const warehouse2 = "2201 Senter Rd, San Jose, CA 95112"
+let warehouse_address;
 
 function Map({ userData, warehouse }) {
-  console.log(userData);
   console.log(warehouse);
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
   });
-
+  const user_address = userData.address;
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
@@ -37,21 +39,26 @@ function Map({ userData, warehouse }) {
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef();
   /** @type React.MutableRefObject<HTMLInputElement> */
-  const destiantionRef = useRef();
+  const destinationRef = useRef();
 
   if (!isLoaded) {
     return <SkeletonText />;
   }
 
+  if(warehouse === '1'){
+    originRef.current.value = warehouse1;
+  }
+  else if(warehouse === '2'){
+    originRef.current.value = warehouse2;
+  }
+
+  console.log(originRef.current.value);
   async function calculateRoute() {
-    if (originRef.current.value === "" || destiantionRef.current.value === "") {
-      return;
-    }
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
     const results = await directionsService.route({
       origin: originRef.current.value,
-      destination: destiantionRef.current.value,
+      destination: destinationRef.current.value,
       // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.DRIVING,
     });
@@ -65,7 +72,7 @@ function Map({ userData, warehouse }) {
     setDistance("");
     setDuration("");
     originRef.current.value = "";
-    destiantionRef.current.value = "";
+    destinationRef.current.value = "";
   }
 
   return (
@@ -73,7 +80,7 @@ function Map({ userData, warehouse }) {
       position="relative"
       flexDirection="column"
       alignItems="center"
-      h="40vh" //height for map, adjust later for page
+      h="60vh" //height for map, adjust later for page
       w="100vw" //width for map, adjust later for page
     >
       <Box position="absolute" left={0} top={0} h="100%" w="100%">
@@ -110,7 +117,7 @@ function Map({ userData, warehouse }) {
         <HStack spacing={2} justifyContent="space-between">
           <Box flexGrow={1}>
             <Autocomplete>
-              <Input type="text" placeholder="Origin" ref={originRef} />
+              <Input type="text" placeholder="Origin" value={warehouse_address} disabled="true"  />
             </Autocomplete>
           </Box>
           <Box flexGrow={1}>
@@ -118,11 +125,12 @@ function Map({ userData, warehouse }) {
               <Input
                 type="text"
                 placeholder="Destination"
-                ref={destiantionRef}
+                value={user_address}
+                disabled="true" 
               />
             </Autocomplete>
           </Box>
-
+            
           <ButtonGroup>
             <Button
               colorScheme="linkedin"
