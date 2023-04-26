@@ -66,7 +66,7 @@ export const admin = () => {
 
             <OrangeContainer> {/* Admin Name */}
               <AdminNameItem> 
-                <h6> Jane Doe  </h6>
+                <h6> Admin  </h6>
               </AdminNameItem>
             </OrangeContainer>
 
