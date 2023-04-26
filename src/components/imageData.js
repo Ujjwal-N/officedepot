@@ -17,28 +17,6 @@ export const sliderItems = [
       </Link>
     ),
   },
-  {
-    id: 2,
-    img: screw,
-    title: "BUY THIS SCREWDRIVER",
-    desc: "TO SCREW YOUR HEAD STRAIGHT",
-    shop: (
-      <Link to="/itemPage" style={{ color: "white", textDecoration: "none" }}>
-        SHOP NOW
-      </Link>
-    ),
-  },
-  {
-    id: 3,
-    img: hammer,
-    title: "HAMMER TIME",
-    desc: "GUARANTEE TO LAST A LIFETIME",
-    shop: (
-      <Link to="/itemPage" style={{ color: "white", textDecoration: "none" }}>
-        SHOP NOW
-      </Link>
-    ),
-  },
 ];
 
 export const productItems = [

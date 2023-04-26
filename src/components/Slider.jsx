@@ -124,13 +124,13 @@ export const Slider = () => {
             </Slide>
           ))}
         </Wrapper>
-        <Arrow direction="left" onClick={() => handleClick("left")}>
+        {/* <Arrow direction="left" onClick={() => handleClick("left")}>
           <ArrowBackIosNewIcon />
         </Arrow>
 
         <Arrow direction="right" onClick={() => handleClick("right")}>
           <ArrowForwardIosIcon />
-        </Arrow>
+        </Arrow> */}
       </Container>
     </div>
   );
