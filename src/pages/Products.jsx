@@ -30,7 +30,7 @@ const Image = styled.div`
   width: 100%;
   height: 0;
   padding-bottom: 66.67%;
-  background-image: url(${props => props.src});
+  background-image: url(${(props) => props.src});
   background-size: cover;
   background-position: center;
   transition: transform 0.2s ease-out;
@@ -89,7 +89,9 @@ export const Products = ({ cart, setCart }) => {
               }}
               state={{
                 itemProps: inventoryItems
-                  ? itemGroup in inventoryItems ? inventoryItems[itemGroup] : []
+                  ? itemGroup in inventoryItems
+                    ? inventoryItems[itemGroup]
+                    : []
                   : undefined,
               }}
             >
@@ -100,30 +102,35 @@ export const Products = ({ cart, setCart }) => {
             </ImgWrapper>
           ))}
           <ImgWrapper
-              as={Link}
-              to={{
-                pathname: "/product",
-                search: `?itemgroup=other`,
-              }}
-              state={{
-                itemProps: inventoryItems
-                  ? Object.keys(inventoryItems).reduce(
-                      (items, key) => {
-                        if (!STANDARD_ITEM_GROUPS.includes(key)) {
-                          items["other"] = inventoryItems[key];
-                        }
-                        return items;
-                      },
-                      { other: [] }
-                    ).other
-                  : undefined,
-              }}
-            >
-              <figure className="position-relative">
-                <Image src={otherCollection} alt="other Collection" />
-                <figcaption>Other</figcaption>
-              </figure>
-            </ImgWrapper>
+            as={Link}
+            to={{
+              pathname: "/product",
+              search: `?itemgroup=other`,
+            }}
+            state={{
+              itemProps: inventoryItems
+                ? Object.keys(inventoryItems).reduce(
+                    (items, key) => {
+                      console.log(items, key);
+                      const itemGroupCategory = STANDARD_ITEM_GROUPS.find(
+                        (group) => group.itemGroup === key
+                      );
+                      if (!itemGroupCategory) {
+                        const otherItems = items["other"] || [];
+                        items["other"] = otherItems.concat(inventoryItems[key]);
+                      }
+                      return items;
+                    },
+                    { other: [] }
+                  ).other
+                : undefined,
+            }}
+          >
+            <figure className="position-relative">
+              <Image src={otherCollection} alt="other Collection" />
+              <figcaption>Other</figcaption>
+            </figure>
+          </ImgWrapper>
         </ImgContainer>
       </StyledContainer>
       <ResetScrollPos />
