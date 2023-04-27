@@ -41,7 +41,7 @@ export const Inventoryproducts = ({ itemProps, cart, setCart, userData }) => {
   const rows = filteredRows.length > 0 ? filteredRows : itemProps || [];
 
   const chunkedRows = useMemo(() => {
-    const chunkSize = 4;
+    const chunkSize = 6;
     const chunkedRows = [];
 
     for (let i = 0; i < rows.length; i += chunkSize) {
