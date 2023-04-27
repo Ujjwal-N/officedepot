@@ -20,7 +20,7 @@ function Cart({ cart, setCart, userData }) {
         <br />
       </div>
       <hr />
-      {userData.name ? (
+      {userData.cart_id ? (
         <Button
           variant="outline-primary"
           as={Link}
