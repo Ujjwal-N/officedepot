@@ -20,7 +20,7 @@ export const Shipping = ({ userData }) => {
       return (
         <div>
           <h1> Pickup Information</h1>
-            <Map userData={userData} warehouse={warehouse} />
+          <Map userData={userData} warehouse={warehouse} />
         </div>
       );
     } else {
@@ -28,7 +28,12 @@ export const Shipping = ({ userData }) => {
       return (
         <div>
           <h1> Pickup Information </h1>
-            <Map userData={userData} warehouse={warehouse} />
+          <h2> Warehouse 1 </h2>
+          <Map userData={userData} warehouse='1' />
+          <br></br>
+          <br></br>
+          <h2> Warehouse 2 </h2>
+          <Map userData={userData} warehouse='2' />
         </div>
       );
     }

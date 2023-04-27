@@ -32,7 +32,6 @@ function Map({ userData, warehouse }) {
   });
   
   const user_address = userData.address + ", " +  userData.city +  ", " + userData.state + ", " + userData.zip;
-  console.log(userData);
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
@@ -42,11 +41,12 @@ function Map({ userData, warehouse }) {
   const originRef = useRef();
   /** @type React.MutableRefObject<HTMLInputElement> */
   const destinationRef = useRef();
-/*
-  if (!isLoaded) {
-    return <SkeletonText />;
-  }
-*/
+
+  /*
+    if (!isLoaded) {
+      return <SkeletonText />;
+    }
+  */
 
   if(warehouse === '1'){
     warehouse_address = warehouse1;
@@ -77,15 +77,16 @@ function Map({ userData, warehouse }) {
     calculateRoute();
   }, []);
   
-/*
-  function clearRoute() {
-    setDirectionsResponse(null);
-    setDistance("");
-    setDuration("");
-    originRef.current.value = "";
-    destinationRef.current.value = "";
-  }
-*/
+  /*
+    function clearRoute() {
+      setDirectionsResponse(null);
+      setDistance("");
+      setDuration("");
+      originRef.current.value = "";
+      destinationRef.current.value = "";
+    }
+  */
+
   return (
     <Flex
       position="relative"
