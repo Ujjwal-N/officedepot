@@ -9,6 +9,22 @@ const Title = styled.h1`
   text-transform: capitalize;
 `;
 
+const Container = styled.div`
+  @media (min-width: 576px) {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    max-width: 1200px;
+  }
+  @media (min-width: 992px) {
+    max-width: 1560px;
+  }
+  @media (min-width: 1200px) {
+    max-width: 1800px;
+  }
+`;
+
 export const Product = ({ cart, setCart, userData }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -25,7 +41,7 @@ export const Product = ({ cart, setCart, userData }) => {
   }, [itemProps])
 
   return (
-    <div>
+    <Container>
       <Title>
         {itemgroup
           ? itemgroup.charAt(0).toUpperCase() + itemgroup.slice(1).toLowerCase()
@@ -41,6 +57,6 @@ export const Product = ({ cart, setCart, userData }) => {
         />
       </div>
       <ResetScrollPos />
-    </div>
+    </Container>
   );
 };
