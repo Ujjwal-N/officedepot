@@ -66,11 +66,11 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
                       }, 0)}
                   </Badge>
                 </Nav.Link>
-                {userData.cart_id && userData.name && (
+                {userData.cart_id ? (
                   <Nav.Link as={Link} to={"/profile"}>
                     Profile
                   </Nav.Link>
-                )}
+                ) : null}
                 {userData.cart_id ? (
                   // <Navbar.Text>Hi {userData.name}!</Navbar.Text>
                   <Dropdown>
