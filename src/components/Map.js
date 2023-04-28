@@ -21,7 +21,7 @@ import { useRef, useState, useEffect } from "react";
 
 const center = { lat: 37.33537504308407, lng: -121.88044923064777 };
 const warehouse1 = "777 Story Rd, San Jose, CA 95122";
-const warehouse2 = "2201 Senter Rd, San Jose, CA 95112"
+const warehouse2 = "2201 Senter Rd, San Jose, CA 95112";
 let warehouse_address;
 
 function Map({ userData, warehouse }) {
@@ -30,8 +30,15 @@ function Map({ userData, warehouse }) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
   });
-  
-  const user_address = userData.address + ", " +  userData.city +  ", " + userData.state + ", " + userData.zip;
+
+  const user_address =
+    userData.address +
+    ", " +
+    userData.city +
+    ", " +
+    userData.state +
+    ", " +
+    userData.zip;
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
@@ -48,16 +55,15 @@ function Map({ userData, warehouse }) {
     }
   */
 
-  if(warehouse === '1'){
+  if (warehouse === "1") {
     warehouse_address = warehouse1;
-  }
-  else{
+  } else {
     warehouse_address = warehouse2;
   }
 
-
   async function calculateRoute() {
-    if (originRef.current.value === '' || destinationRef.current.value === '') {
+    console.log('IS IT CALCULATING???');
+    if (originRef.current.value === "" || destinationRef.current.value === "") {
       return;
     }
     // eslint-disable-next-line no-undef
@@ -75,8 +81,8 @@ function Map({ userData, warehouse }) {
 
   useEffect(() => {
     calculateRoute();
-  }, []);
-  
+  }, [originRef.current, destinationRef.current]);
+
   /*
     function clearRoute() {
       setDirectionsResponse(null);
@@ -97,23 +103,25 @@ function Map({ userData, warehouse }) {
     >
       <Box position="absolute" left={0} top={0} h="100%" w="100%">
         {/* Google Map Box */}
-        <GoogleMap
-          center={center}
-          zoom={15}
-          mapContainerStyle={{ width: "100%", height: "100%" }}
-          options={{
-            zoomControl: true,
-            streetViewControl: false,
-            mapTypeControl: false,
-            fullscreenControl: false,
-          }}
-          onLoad={(map) => setMap(map)}
-        >
-          <Marker position={center} />
-          {directionsResponse && (
-            <DirectionsRenderer directions={directionsResponse} />
-          )}
-        </GoogleMap>
+        {window.google ? (
+          <GoogleMap
+            center={center}
+            zoom={15}
+            mapContainerStyle={{ width: "100%", height: "100%" }}
+            options={{
+              zoomControl: true,
+              streetViewControl: false,
+              mapTypeControl: false,
+              fullscreenControl: false,
+            }}
+            onLoad={(map) => setMap(map)}
+          >
+            <Marker position={center} />
+            {directionsResponse && (
+              <DirectionsRenderer directions={directionsResponse} />
+            )}
+          </GoogleMap>
+        ) : null}
       </Box>
       <Box
         p={4}
@@ -128,29 +136,31 @@ function Map({ userData, warehouse }) {
       >
         <HStack spacing={2} justifyContent="space-between">
           <Box flexGrow={1}>
-            <Autocomplete>
-              <Input 
-                type="text" 
-                placeholder="Origin"  
-                ref={originRef} 
-                defaultValue={warehouse_address} 
-                disabled={true}
-              />
-            </Autocomplete>
+            {window.google ? (
+              <Autocomplete>
+                <Input
+                  type="text"
+                  placeholder="Origin"
+                  ref={originRef}
+                  defaultValue={warehouse_address}
+                  disabled={true}
+                />
+              </Autocomplete>
+            ) : null}
           </Box>
           <Box flexGrow={1}>
-            <Autocomplete>
-              <Input
-                type="text"
-                placeholder="Destination"
-                ref={destinationRef}
-                defaultValue={user_address}
-                disabled={true}
-              />
-            </Autocomplete>
+            {window.google ? (
+              <Autocomplete>
+                <Input
+                  type="text"
+                  placeholder="Destination"
+                  ref={destinationRef}
+                  defaultValue={user_address}
+                  disabled={true}
+                />
+              </Autocomplete>
+            ) : null}
           </Box>
-            
-          
         </HStack>
         <HStack spacing={4} mt={4} justifyContent="space-between">
           <Text>Distance: {distance} </Text>
