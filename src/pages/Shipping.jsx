@@ -12,7 +12,8 @@ export const Shipping = ({ userData }) => {
       return (
         <div>
           <h1> Pickup Information</h1>
-            <Map userData={userData} warehouse={warehouse} />
+          <Map userData={userData} warehouse={warehouse} />
+          <p><strong>NOTE</strong>: You may have an invalid shipping address if directions don't display.</p>
         </div>
       );
     } else if (warehouse === "2") {
@@ -21,6 +22,7 @@ export const Shipping = ({ userData }) => {
         <div>
           <h1> Pickup Information</h1>
           <Map userData={userData} warehouse={warehouse} />
+          <p><strong>NOTE</strong>: You may have an invalid shipping address if directions don't display.</p>
         </div>
       );
     } else {
@@ -29,11 +31,12 @@ export const Shipping = ({ userData }) => {
         <div>
           <h1> Pickup Information </h1>
           <h2> Warehouse 1 </h2>
-          <Map userData={userData} warehouse={'1'} />
+          <Map userData={userData} warehouse={"1"} />
           <br></br>
           <br></br>
           <h2> Warehouse 2 </h2>
-          <Map userData={userData} warehouse={'2'} />
+          <Map userData={userData} warehouse={"2"} />
+          <p><strong>NOTE</strong>: You may have an invalid shipping address if directions don't display.</p>
         </div>
       );
     }
@@ -42,7 +45,8 @@ export const Shipping = ({ userData }) => {
     return (
       <div>
         <h1> Delivery Information</h1>
-          <Map userData={userData} warehouse={warehouse} />
+        <Map userData={userData} warehouse={warehouse} />
+        <p><strong>NOTE</strong>: OSD is not responsible for lost packages if your shipping address is invalid.</p>
       </div>
     );
   }
