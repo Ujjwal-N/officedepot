@@ -35,11 +35,12 @@ export const Profile = ({ userData, setUserData }) => {
             ) {
               orderMap[elem.order_id].warehouse = 3;
             }
+            orderMap[elem.order_id].total += parseFloat(elem.total_price);
           } else {
             orderMap[elem.order_id] = {
               items: [[elem.name, elem.quantity]],
               status: elem.status,
-              total: elem.total_price,
+              total: parseFloat(elem.total_price),
               creationdate: elem.creationdate,
               deliverydate: elem.deliverydate,
               shipping_method: elem.shipping_method,
@@ -77,11 +78,18 @@ export const Profile = ({ userData, setUserData }) => {
       billingAddress,
       billingCity,
       billingState,
-      billingZip
+      billingZip,
     } = userData;
     const [firstname, lastname] = name.split(" ");
     const shippingaddress = address + "\n" + city + "\n" + state + "\n" + zip;
-    const billingaddressFull = billingAddress + "\n" + billingCity + "\n" + billingState + "\n" + billingZip;
+    const billingaddressFull =
+      billingAddress +
+      "\n" +
+      billingCity +
+      "\n" +
+      billingState +
+      "\n" +
+      billingZip;
 
     axios
       .put(UPDATE_CUSTOMER_ENDPOINT + email, {
@@ -91,7 +99,7 @@ export const Profile = ({ userData, setUserData }) => {
         creditcard: ccNumber,
         cvv: cvv,
         expirationdate: expirationDate,
-        billingaddress: billingaddressFull
+        billingaddress: billingaddressFull,
       })
       .then((response) => {
         console.log(response.status);
