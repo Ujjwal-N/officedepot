@@ -62,7 +62,6 @@ function Map({ userData, warehouse }) {
   }
 
   async function calculateRoute() {
-    console.log('IS IT CALCULATING???');
     if (originRef.current.value === "" || destinationRef.current.value === "") {
       return;
     }
