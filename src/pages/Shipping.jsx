@@ -29,11 +29,11 @@ export const Shipping = ({ userData }) => {
         <div>
           <h1> Pickup Information </h1>
           <h2> Warehouse 1 </h2>
-          <Map userData={userData} warehouse={'1'} />
+          <Map userData={userData} warehouse={1} />
           <br></br>
           <br></br>
           <h2> Warehouse 2 </h2>
-          <Map userData={userData} warehouse={'2'} />
+          <Map userData={userData} warehouse={2} />
         </div>
       );
     }
