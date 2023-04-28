@@ -7,12 +7,17 @@ import {
   GET_ORDERS_BY_CUSTOMER_ENDPOINT,
 } from "../constants";
 import ResetScrollPos from "../components/ResetScrollPos";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 export const Profile = ({ userData, setUserData }) => {
   const [showSuccessAlert, setShowAlert] = useState(false);
   const [orderData, setOrderData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!userData.cart_id) {
+      navigate("/home");
+    }
     if (!userData.customer_id) return;
     const orderMap = {};
     axios
@@ -59,22 +64,34 @@ export const Profile = ({ userData, setUserData }) => {
   }, []);
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { name, email, address, city, state, zip, ccNumber } = userData;
+    const {
+      name,
+      email,
+      address,
+      city,
+      state,
+      zip,
+      ccNumber,
+      expirationDate,
+      cvv,
+      billingAddress,
+      billingCity,
+      billingState,
+      billingZip
+    } = userData;
     const [firstname, lastname] = name.split(" ");
     const shippingaddress = address + "\n" + city + "\n" + state + "\n" + zip;
-    //{ firstname, lastname, email, password, shippingaddress, creditcard }
-    console.log({
-      firstname: firstname,
-      lastname: lastname,
-      shippingaddress: shippingaddress,
-      creditcard: ccNumber,
-    });
+    const billingaddressFull = billingAddress + "\n" + billingCity + "\n" + billingState + "\n" + billingZip;
+
     axios
       .put(UPDATE_CUSTOMER_ENDPOINT + email, {
         firstname: firstname,
         lastname: lastname,
         shippingaddress: shippingaddress,
         creditcard: ccNumber,
+        cvv: cvv,
+        expirationdate: expirationDate,
+        billingaddress: billingaddressFull
       })
       .then((response) => {
         console.log(response.status);

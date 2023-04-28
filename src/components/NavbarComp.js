@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
-import { Navbar, Nav, Button, Badge } from "react-bootstrap";
+import { Navbar, Nav, Button, Badge, Dropdown } from "react-bootstrap";
 import {
   BrowserRouter,
   Navigate,
   Routes,
   Route,
-  Link,
-  IndexRedirect,
+  Link
 } from "react-router-dom";
 import { About } from "../pages/About";
 import { Home } from "../pages/Home";
@@ -21,7 +20,12 @@ import CheckoutPage from "../pages/Checkout";
 import { Footer } from "./Footer";
 import { MapPage } from "../pages/MapPage";
 import { Shipping } from "../pages/Shipping";
+
 const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
+  const handleSignOut = () => {
+    window.location.reload();
+  };
+
   return (
     <BrowserRouter>
       <div>
@@ -61,11 +65,24 @@ const NavbarComp = ({ userData, setUserData, cart, setCart }) => {
                       }, 0)}
                   </Badge>
                 </Nav.Link>
-                <Nav.Link as={Link} to={"/profile"}>
-                  Profile
-                </Nav.Link>
-                {userData.name ? (
-                  <Navbar.Text>Hi {userData.name}!</Navbar.Text>
+                {userData.cart_id ? (
+                  <Nav.Link as={Link} to={"/profile"}>
+                    Profile
+                  </Nav.Link>
+                ) : null}
+                {userData.cart_id ? (
+                  // <Navbar.Text>Hi {userData.name}!</Navbar.Text>
+                  <Dropdown>
+                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                      Hi {userData.name}!
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={handleSignOut}>
+                        Sign Out
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 ) : (
                   <Button
                     className="ms-2"
