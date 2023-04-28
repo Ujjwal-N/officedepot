@@ -44,6 +44,7 @@ const Container = styled.div`
 
 const Image = styled.img`
   max-width: 70%;
+  max-height: 50%;
 `;
 
 const Text = styled.p`
