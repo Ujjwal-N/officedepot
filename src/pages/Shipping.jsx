@@ -33,7 +33,7 @@ export const Shipping = ({ userData }) => {
           <br></br>
           <br></br>
           <h2> Warehouse 2 </h2>
-          <Map userData={userData} warehouse={'2'} />
+          <Map userData={userData} warehouse={2} />
         </div>
       );
     }
