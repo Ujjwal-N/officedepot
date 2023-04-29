@@ -141,7 +141,17 @@ export const Profile = ({ userData, setUserData }) => {
         </Col>
         <Col md={5}>
           <h2> Orders</h2>
-          <ListGroup as="ol" style={{ marginRight: "5px" }}>
+          <ListGroup
+            as="ol"
+            style={{
+              marginRight: "5px",
+              padding: "10px",
+              overflowY: "scroll",
+              maxHeight: "80%",
+              border: orderData.length > 0 ? "5px solid lightgray" : "0px",
+              borderRadius: "10px"
+            }}
+          >
             {orderData.map((item) => (
               <>
                 <ListGroup.Item

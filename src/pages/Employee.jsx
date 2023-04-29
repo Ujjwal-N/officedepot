@@ -10,12 +10,16 @@ import {
 const Employee = () => {
   const [data, setData] = useState([]);
   const [addingRow, setAddingRow] = useState(false);
+  const [validName, setValidName] = useState(true);
+  const [validEmail, setValidEmail] = useState(true);
   const [newRowData, setNewRowData] = useState({
     name: "",
     email: "",
     password: "",
     employee_id: "",
   });
+  const firstLastRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   useEffect(() => {
     async function getAllEmployees() {
@@ -45,6 +49,9 @@ const Employee = () => {
   };
 
   const saveRow = () => {
+    if (!validName || !validEmail) {
+      return;
+    }
     setData([...data, { name: newRowData.name, email: newRowData.email }]);
     const [firstname, lastname] = newRowData.name.split(" ");
     axios
@@ -68,6 +75,19 @@ const Employee = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewRowData({ ...newRowData, [name]: value });
+
+    if (name === "name" && !value.match(firstLastRegex)) {
+      setValidName(false);
+    }
+    else if (name === "name" && value.match(firstLastRegex)) {
+      setValidName(true);
+    }
+    else if (name === "email" && !value.match(emailRegex)) {
+      setValidEmail(false);
+    }
+    else if (name === "email" && value.match(emailRegex)) {
+      setValidEmail(true);
+    }
   };
 
   return (
@@ -96,7 +116,11 @@ const Employee = () => {
                   placeholder="Employee Name"
                   value={newRowData.name}
                   onChange={handleInputChange}
+                  isInvalid={!validName}
                 />
+                <Form.Control.Feedback type="invalid">
+                  Please enter in the format "firstname lastname".
+                </Form.Control.Feedback>
               </td>
               <td>
                 <Form.Control
@@ -105,7 +129,11 @@ const Employee = () => {
                   placeholder="Employee Email"
                   value={newRowData.email}
                   onChange={handleInputChange}
+                  isInvalid={!validEmail}
                 />
+                <Form.Control.Feedback type="invalid">
+                  Please enter a valid email.
+                </Form.Control.Feedback>
               </td>
               <td>
                 <Form.Control

@@ -7,12 +7,8 @@ import styled from "styled-components";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PinterestIcon from "@mui/icons-material/Pinterest";
-import {
-  Row,
-  Col,
-
-} from "react-bootstrap";
-
+import { Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const MediaIcon = styled.div`
   width: 40px;
@@ -29,17 +25,18 @@ const MediaIcon = styled.div`
 export const Footer = () => {
   return (
     <div className="bg-light">
-      <div className="container py-4" >
+      <div className="container py-4">
         <Row>
           <Col lg={4}>
             <div className="py-3">
               <h1>OfficeDepot</h1>
               <p className="text-muted">
-                OfficeDepot is dedicated to selling the best items in the market.
-                We take pride in offering our customers the best products in the
-                market, and we never compromise on the quality of the items we sell.
-                Our vast list of products is carefully curated to ensure that every
-                item meets our high standards of excellence.
+                OfficeDepot is dedicated to selling the best items in the
+                market. We take pride in offering our customers the best
+                products in the market, and we never compromise on the quality
+                of the items we sell. Our vast list of products is carefully
+                curated to ensure that every item meets our high standards of
+                excellence.
               </p>
             </div>
           </Col>
@@ -48,24 +45,19 @@ export const Footer = () => {
               <h3>Links</h3>
               <ul className="list-unstyled">
                 <li>
-                  <a href="/cart" className="text-muted">
-                    Cart
-                  </a>
-                </li>
-                <li>
-                  <a href="/products" className="text-muted">
-                    Collections
-                  </a>
-                </li>
-                <li>
-                  <a href="/profile" className="text-muted">
-                    My Account
-                  </a>
-                </li>
-                <li>
-                  <a href="/about" className="text-muted">
+                  <Link to="/about" className="text-muted">
                     About
-                  </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/cart" className="text-muted">
+                    Cart
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/products" className="text-muted">
+                    Collections
+                  </Link>
                 </li>
               </ul>
             </div>
