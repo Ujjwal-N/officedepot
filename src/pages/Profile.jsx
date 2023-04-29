@@ -77,11 +77,18 @@ export const Profile = ({ userData, setUserData }) => {
       billingAddress,
       billingCity,
       billingState,
-      billingZip
+      billingZip,
     } = userData;
     const [firstname, lastname] = name.split(" ");
     const shippingaddress = address + "\n" + city + "\n" + state + "\n" + zip;
-    const billingaddressFull = billingAddress + "\n" + billingCity + "\n" + billingState + "\n" + billingZip;
+    const billingaddressFull =
+      billingAddress +
+      "\n" +
+      billingCity +
+      "\n" +
+      billingState +
+      "\n" +
+      billingZip;
 
     axios
       .put(UPDATE_CUSTOMER_ENDPOINT + email, {
@@ -91,7 +98,7 @@ export const Profile = ({ userData, setUserData }) => {
         creditcard: ccNumber,
         cvv: cvv,
         expirationdate: expirationDate,
-        billingaddress: billingaddressFull
+        billingaddress: billingaddressFull,
       })
       .then((response) => {
         console.log(response.status);
@@ -133,7 +140,17 @@ export const Profile = ({ userData, setUserData }) => {
         </Col>
         <Col md={5}>
           <h2> Orders</h2>
-          <ListGroup as="ol" style={{ marginRight: "5px" }}>
+          <ListGroup
+            as="ol"
+            style={{
+              marginRight: "5px",
+              padding: "10px",
+              overflowY: "scroll",
+              maxHeight: "80%",
+              border: orderData.length > 0 ? "5px solid lightgray" : "0px",
+              borderRadius: "10px"
+            }}
+          >
             {orderData.map((item) => (
               <>
                 <ListGroup.Item

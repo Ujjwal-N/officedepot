@@ -157,7 +157,7 @@ const Customers = () => {
                   <td key={key}>
                     {customer.editing ? (
                       <Form.Control
-                        type={key === "customer_id" ? "number" : "text"}
+                        type={key === "customer_id" || key === "creditcard" ? "number" : "text"}
                         disabled={key === "customer_id"}
                         name={key}
                         value={value}
@@ -189,7 +189,7 @@ const Customers = () => {
               {columnKeys.map((key) => (
                 <td key={key} className={key}>
                   <Form.Control
-                    type={key === "customer_id" ? "number" : "text"}
+                    type={key === "customer_id" || key === "creditcard" ? "number" : "text"}
                     disabled={key === "customer_id"}
                     name={key}
                     placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
