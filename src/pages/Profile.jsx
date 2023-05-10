@@ -111,6 +111,17 @@ export const Profile = ({ userData, setUserData }) => {
       });
   };
   const handleChange = (event) => {
+    if (
+      event.target.id === "ccNumber" ||
+      event.target.id === "zip" ||
+      event.target.id === "cvv" ||
+      event.target.id === "billingZip"
+    ) {
+      if (isNaN(event.target.value) || event.target.value < 0) {
+        event.target.value = "";
+        return;
+      }
+    }
     setUserData({
       ...userData,
       [event.target.id]: event.target.value,
@@ -149,7 +160,7 @@ export const Profile = ({ userData, setUserData }) => {
               overflowY: "scroll",
               maxHeight: "80%",
               border: orderData.length > 0 ? "5px solid lightgray" : "0px",
-              borderRadius: "10px"
+              borderRadius: "10px",
             }}
           >
             {orderData.map((item) => (

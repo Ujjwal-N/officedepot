@@ -6,18 +6,23 @@ import "../css/signup.css";
 const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
   const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
   const mmYYRegex = /^(0[1-9]|1[0-2])\/(?:\d{2})$/;
+  const firstLastRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
         <Col>
           <Form.Group controlId="name" className="pad-here">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Full Name</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter your full name"
               onChange={handleChange}
               value={formData.name}
+              isInvalid={formData.name && !firstLastRegex.test(formData.name)}
             />
+            <Form.Control.Feedback type="invalid">
+              Please enter in the format "firstname lastname".
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group controlId="email" className="pad-here">
@@ -30,6 +35,9 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
               disabled={!signup}
               isInvalid={formData.email && !emailRegex.test(formData.email)}
             />
+            <Form.Control.Feedback type="invalid">
+              Please enter a valid email.
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group
@@ -90,6 +98,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
                   placeholder="Enter zip code"
                   onChange={handleChange}
                   value={formData.zip}
+                  min={0}
                 />
               </Form.Group>
             </Col>
@@ -104,6 +113,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
               placeholder="Enter credit card number"
               onChange={handleChange}
               value={formData.ccNumber}
+              min={0}
             />
           </Form.Group>
 
@@ -119,6 +129,9 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
                 !mmYYRegex.test(formData.expirationDate)
               }
             />
+            <Form.Control.Feedback type="invalid">
+              Please enter a date in the format MM-YY.
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group
@@ -132,6 +145,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
               placeholder="Enter cvv"
               onChange={handleChange}
               value={formData.cvv}
+              min={0}
             />
           </Form.Group>
 
@@ -178,6 +192,7 @@ const UserTextBoxes = ({ handleSubmit, handleChange, formData, signup }) => {
                   placeholder="Enter zip code"
                   onChange={handleChange}
                   value={formData.billingZip}
+                  min={0}
                 />
               </Form.Group>
             </Col>

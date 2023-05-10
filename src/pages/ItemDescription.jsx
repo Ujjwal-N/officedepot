@@ -46,11 +46,13 @@ function ItemDescription({ cart, setCart, userData }) {
 
   useEffect(() => {
     if (!itemInfo) {
-      navigate('/products');
-    };
+      navigate("/products");
+    }
   }, [itemInfo]);
 
-  const imageItem = itemInfo ? images.find((element) => element.name === itemInfo.image) : null;
+  const imageItem = itemInfo
+    ? images.find((element) => element.name === itemInfo.image)
+    : null;
   const [cartValue, setCartValue] = useState(1);
   const inCart = cart.find(
     (element) => element.inventory_id === itemInfo.inventory_id
@@ -70,7 +72,7 @@ function ItemDescription({ cart, setCart, userData }) {
   ));
 
   if (!itemInfo) {
-    return (<p>Redirecting...</p>);
+    return <p>Redirecting...</p>;
   }
 
   return (
@@ -80,12 +82,12 @@ function ItemDescription({ cart, setCart, userData }) {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "flex-start",
-        padding: "10px"
+        padding: "10px",
       }}
     >
       <ItemImage
         src={imageItem ? imageItem.src : ""}
-        alt={`${itemInfo ? itemInfo.name : ''} image placeholder`}
+        alt={`${itemInfo ? itemInfo.name : ""} image placeholder`}
         style={{ width: "40%", marginRight: "20px" }}
       />
       <div
@@ -97,11 +99,11 @@ function ItemDescription({ cart, setCart, userData }) {
           width: "60%",
         }}
       >
-        <h1>{itemInfo ? itemInfo.name : 'item'}</h1>
+        <h1>{itemInfo ? itemInfo.name : "item"}</h1>
         <hr />
         <h2>Description</h2>
-        <p>{itemInfo ? itemInfo.description : 'desc'}</p>
-        <h2>${itemInfo ? itemInfo.price : 'price'}</h2>
+        <p>{itemInfo ? itemInfo.description : "desc"}</p>
+        <h2>${itemInfo ? itemInfo.price : "price"}</h2>
         <p>
           Quantity:
           <select
@@ -115,8 +117,9 @@ function ItemDescription({ cart, setCart, userData }) {
             {options}
           </select>
         </p>
-        <p> Item Group: {itemInfo ? itemInfo.itemgroup : 'group'} </p>
+        <p> Item Group: {itemInfo ? itemInfo.itemgroup : "group"} </p>
         <p> Stock: {itemInfo ? itemInfo.stock : 0} </p>
+        <p> Weight: {itemInfo ? itemInfo.weight : 0} lbs</p>
         <p>
           {inventoryRemaining
             ? ""

@@ -114,6 +114,17 @@ const Inventory = () => {
   };
 
   const handleEditInputChange = (e, index) => {
+    if (
+      e.target.name === "weight" ||
+      e.target.name === "price" ||
+      e.target.name === "stock"
+    ) {
+      if (isNaN(e.target.value) || e.target.value < 0) {
+        e.target.value = "";
+        return;
+      }
+    }
+
     const { name, value } = e.target;
     const updatedData = data.map((row, i) => {
       if (i === index) {

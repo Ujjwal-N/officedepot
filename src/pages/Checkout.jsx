@@ -124,7 +124,7 @@ function CheckoutPage({ cart, setCart, userData }) {
         <ListGroup.Item action onClick={() => handleSelect(0)}>
           <div style={{ display: "flex", alignItems: "center" }}>
             <span style={circleStyle(selected === 0)}></span>
-            <h4 className="mb-0">Pickup</h4>
+            <h4 className="mb-0">Pickup(Any Day)</h4>
           </div>
           <p>Policy: Free for all orders!</p>
           <p>See your pickup location(s) below:</p>
@@ -174,7 +174,7 @@ function CheckoutPage({ cart, setCart, userData }) {
         >
           <div style={{ display: "flex", alignItems: "center" }}>
             <span style={circleStyle(selected === 1)}></span>
-            <h4 className="mb-0">Drone Delivery</h4>
+            <h4 className="mb-0">Same Day Drone Delivery</h4>
           </div>
           <p>
             Policy: Applicable for orders that weigh less than 15lbs. For orders
@@ -187,7 +187,7 @@ function CheckoutPage({ cart, setCart, userData }) {
         <ListGroup.Item action onClick={() => handleSelect(2)}>
           <div style={{ display: "flex", alignItems: "center" }}>
             <span style={circleStyle(selected === 2)}></span>
-            <h4 className="mb-0">Truck Delivery</h4>
+            <h4 className="mb-0">2 Day Truck Delivery</h4>
           </div>
           <p>
             Policy: Free for orders over $100. For orders under $100, there is a
