@@ -38,7 +38,7 @@ function CheckoutPage({ cart, setCart, userData }) {
     if (selected === 0 || subtotal > 100) {
       return 0.0;
     }
-    return 25.0;
+    return 20.0;
   };
 
   const circleStyle = (isSelected) => ({
@@ -178,7 +178,7 @@ function CheckoutPage({ cart, setCart, userData }) {
           </div>
           <p>
             Policy: Applicable for orders that weigh less than 15lbs. For orders
-            under $100, there is a $25 surcharge.
+            under $100, there is a $20 surcharge.
           </p>
           <p>
             Total weight for this order: {(totalWeight * 1.0).toFixed(2)} lbs
@@ -191,7 +191,7 @@ function CheckoutPage({ cart, setCart, userData }) {
           </div>
           <p>
             Policy: Free for orders over $100. For orders under $100, there is a
-            $25 surcharge.
+            $20 surcharge.
           </p>
         </ListGroup.Item>
       </ListGroup>
@@ -230,7 +230,7 @@ function totalFee(orderFee, orderWeight, droneRequest, truckRequest) {
       if (truckRequest) {
         //same day truck delivery request
         shippingDuration = 1;
-        surchargeFee += 25;
+        surchargeFee += 20;
       }
     }
   } else {
